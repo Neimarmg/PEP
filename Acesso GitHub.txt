@@ -1,0 +1,30 @@
+﻿
+https://gist.github.com/leocomelli/2545add34e4fec21ec16
+http://rafaeljeffman.com/_.php?c=git
+
+
+
+
+... ou crie um novo repositório na linha de comando
+
+Git clone https://github.com/Neimarmg/PEP.git
+
+
+
+git init
+git add README.md
+git commit -m "Mensages ?????"
+git remote add origin c
+git push -u origin master
+
+
+
+
+... ou empurre um repositório existente a partir da linha de comando
+
+
+git push -u origin master
+
+
+... ou importar código de outro repositório
+Você pode inicializar este repositório com o código de um projeto Subversion, Mercurial ou TFS.
