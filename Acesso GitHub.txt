@@ -17,7 +17,7 @@ git commit -m "Mensages ?????"
 git remote add origin c
 git push -u origin master
 
-
+---------------------------------------------
 
 
 ... ou empurre um repositório existente a partir da linha de comando
@@ -28,6 +28,7 @@ git push -u origin master
 
 ... ou importar código de outro repositório
 Você pode inicializar este repositório com o código de um projeto Subversion, Mercurial ou TFS.
+
 
 
 phpmyadmin: mysql.n1webhost.com.br
