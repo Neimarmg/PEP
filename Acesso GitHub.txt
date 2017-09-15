@@ -28,3 +28,14 @@ git push -u origin master
 
 ... ou importar código de outro repositório
 Você pode inicializar este repositório com o código de um projeto Subversion, Mercurial ou TFS.
+
+
+phpmyadmin: mysql.n1webhost.com.br
+
+Host: 
+mysql01-farm62.kinghost.
+net
+
+Usuário: n1webhost02
+
+Senha: 84d235g4r8h
