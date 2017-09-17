@@ -1,7 +1,7 @@
 <?xml version="1.0" standalone="yes" ?>
 <DBMODEL Version="4.0">
 <SETTINGS>
-<GLOBALSETTINGS ModelName="pep" IDModel="0" IDVersion="0" VersionStr="1.0.0.0" Comments="" UseVersionHistroy="1" AutoIncVersion="1" DatabaseType="MySQL" ZoomFac="100.00" XPos="0" YPos="0" DefaultDataType="5" DefaultTablePrefix="0" DefSaveDBConn="" DefSyncDBConn="" DefQueryDBConn="" Printer="" HPageCount="4.0" PageAspectRatio="1.440892512336408" PageOrientation="1" PageFormat="A4 (210x297 mm, 8.26x11.7 inches)" SelectedPages="" UsePositionGrid="0" PositionGridX="20" PositionGridY="20" TableNameInRefs="1" DefaultTableType="0" ActivateRefDefForNewRelations="1" FKPrefix="" FKPostfix="" CreateFKRefDefIndex="1" DBQuoteCharacter="`" CreateSQLforLinkedObjects="0" DefModelFont="Tahoma" CanvasWidth="4096" CanvasHeight="2842" />
+<GLOBALSETTINGS ModelName="pep" IDModel="0" IDVersion="0" VersionStr="1.0.0.0" Comments="" UseVersionHistroy="1" AutoIncVersion="1" DatabaseType="MySQL" ZoomFac="100.00" XPos="0" YPos="552" DefaultDataType="5" DefaultTablePrefix="0" DefSaveDBConn="" DefSyncDBConn="" DefQueryDBConn="" Printer="" HPageCount="4.0" PageAspectRatio="1.440892512336408" PageOrientation="1" PageFormat="A4 (210x297 mm, 8.26x11.7 inches)" SelectedPages="" UsePositionGrid="0" PositionGridX="20" PositionGridY="20" TableNameInRefs="1" DefaultTableType="0" ActivateRefDefForNewRelations="1" FKPrefix="" FKPostfix="" CreateFKRefDefIndex="1" DBQuoteCharacter="`" CreateSQLforLinkedObjects="0" DefModelFont="Tahoma" CanvasWidth="4096" CanvasHeight="2842" />
 <DATATYPEGROUPS>
 <DATATYPEGROUP Name="Numeric Types" Icon="1" />
 <DATATYPEGROUP Name="Date and Time Types" Icon="2" />
@@ -456,6 +456,18 @@
 <OPTIONSELECT Value="0" />
 </OPTIONSELECTED>
 </COLUMN>
+<COLUMN ID="1692" ColName="habilitacaoPessoa_PerfisUsuario_idPerfisUsuario" PrevColName="" Pos="1" idDatatype="5" DatatypeParams="" Width="-1" Prec="-1" PrimaryKey="1" NotNull="1" AutoInc="0" IsForeignKey="1" DefaultValue="" Comments="">
+<OPTIONSELECTED>
+<OPTIONSELECT Value="1" />
+<OPTIONSELECT Value="0" />
+</OPTIONSELECTED>
+</COLUMN>
+<COLUMN ID="1691" ColName="habilitacaoPessoa_PerfisUsuario_PermisoesUsuarios_idPermisoesUsuarios" PrevColName="" Pos="1" idDatatype="5" DatatypeParams="" Width="-1" Prec="-1" PrimaryKey="1" NotNull="1" AutoInc="0" IsForeignKey="1" DefaultValue="" Comments="">
+<OPTIONSELECTED>
+<OPTIONSELECT Value="1" />
+<OPTIONSELECT Value="0" />
+</OPTIONSELECTED>
+</COLUMN>
 <COLUMN ID="1010" ColName="desc_2" PrevColName="" Pos="2" idDatatype="20" DatatypeParams="" Width="-1" Prec="-1" PrimaryKey="0" NotNull="0" AutoInc="0" IsForeignKey="0" DefaultValue="" Comments="">
 <OPTIONSELECTED>
 <OPTIONSELECT Value="0" />
@@ -504,6 +516,8 @@
 <INDEXCOLUMN idColumn="1573" LengthParam="0" />
 <INDEXCOLUMN idColumn="1597" LengthParam="0" />
 <INDEXCOLUMN idColumn="1596" LengthParam="0" />
+<INDEXCOLUMN idColumn="1692" LengthParam="0" />
+<INDEXCOLUMN idColumn="1691" LengthParam="0" />
 </INDEXCOLUMNS>
 </INDEX>
 <INDEX ID="1052" IndexName="utilitario_FKIndex1" IndexKind="1" FKRefDef_Obj_id="1050">
@@ -523,6 +537,8 @@
 <INDEXCOLUMN idColumn="1370" LengthParam="0" />
 <INDEXCOLUMN idColumn="1375" LengthParam="0" />
 <INDEXCOLUMN idColumn="1573" LengthParam="0" />
+<INDEXCOLUMN idColumn="1691" LengthParam="0" />
+<INDEXCOLUMN idColumn="1692" LengthParam="0" />
 </INDEXCOLUMNS>
 </INDEX>
 <INDEX ID="1095" IndexName="utilitario_FKIndex3" IndexKind="1" FKRefDef_Obj_id="1093">
@@ -617,7 +633,7 @@
 </INDEX>
 </INDICES>
 </TABLE>
-<TABLE ID="1053" Tablename="habilitacaoPessoa" PrevTableName="Table_06" XPos="382" YPos="184" TableType="0" TablePrefix="0" nmTable="0" Temporary="0" UseStandardInserts="0" StandardInserts="\n" TableOptions="DelayKeyTblUpdates=0\nPackKeys=0\nRowChecksum=0\nRowFormat=0\nUseRaid=0\nRaidType=0\n" Comments="" Collapsed="0" IsLinkedObject="0" IDLinkedModel="-1" Obj_id_Linked="-1" OrderPos="6" >
+<TABLE ID="1053" Tablename="habilitacaoPessoa" PrevTableName="Table_06" XPos="400" YPos="169" TableType="0" TablePrefix="0" nmTable="0" Temporary="0" UseStandardInserts="0" StandardInserts="\n" TableOptions="DelayKeyTblUpdates=0\nPackKeys=0\nRowChecksum=0\nRowFormat=0\nUseRaid=0\nRaidType=0\n" Comments="" Collapsed="0" IsLinkedObject="0" IDLinkedModel="-1" Obj_id_Linked="-1" OrderPos="6" >
 <COLUMNS>
 <COLUMN ID="1055" ColName="idhabilitacaoPessoa" PrevColName="" Pos="0" idDatatype="5" DatatypeParams="" Width="-1" Prec="-1" PrimaryKey="1" NotNull="1" AutoInc="1" IsForeignKey="0" DefaultValue="" Comments="">
 <OPTIONSELECTED>
@@ -679,6 +695,18 @@
 <OPTIONSELECT Value="0" />
 </OPTIONSELECTED>
 </COLUMN>
+<COLUMN ID="1688" ColName="PerfisUsuario_PermisoesUsuarios_idPermisoesUsuarios" PrevColName="" Pos="1" idDatatype="5" DatatypeParams="" Width="-1" Prec="-1" PrimaryKey="1" NotNull="1" AutoInc="0" IsForeignKey="1" DefaultValue="" Comments="">
+<OPTIONSELECTED>
+<OPTIONSELECT Value="1" />
+<OPTIONSELECT Value="0" />
+</OPTIONSELECTED>
+</COLUMN>
+<COLUMN ID="1687" ColName="PerfisUsuario_idPerfisUsuario" PrevColName="" Pos="1" idDatatype="5" DatatypeParams="" Width="-1" Prec="-1" PrimaryKey="1" NotNull="1" AutoInc="0" IsForeignKey="1" DefaultValue="" Comments="">
+<OPTIONSELECTED>
+<OPTIONSELECT Value="1" />
+<OPTIONSELECT Value="0" />
+</OPTIONSELECTED>
+</COLUMN>
 <COLUMN ID="1057" ColName="codPessoa" PrevColName="" Pos="1" idDatatype="5" DatatypeParams="" Width="-1" Prec="-1" PrimaryKey="0" NotNull="0" AutoInc="0" IsForeignKey="0" DefaultValue="" Comments="">
 <OPTIONSELECTED>
 <OPTIONSELECT Value="1" />
@@ -705,6 +733,7 @@
 <RELATION_END ID="1102" />
 <RELATION_END ID="1105" />
 <RELATION_END ID="1137" />
+<RELATION_END ID="1686" />
 </RELATIONS_END>
 <INDICES>
 <INDEX ID="1056" IndexName="PRIMARY" IndexKind="0" FKRefDef_Obj_id="-1">
@@ -719,6 +748,8 @@
 <INDEXCOLUMN idColumn="1366" LengthParam="0" />
 <INDEXCOLUMN idColumn="1373" LengthParam="0" />
 <INDEXCOLUMN idColumn="1571" LengthParam="0" />
+<INDEXCOLUMN idColumn="1688" LengthParam="0" />
+<INDEXCOLUMN idColumn="1687" LengthParam="0" />
 </INDEXCOLUMNS>
 </INDEX>
 <INDEX ID="1139" IndexName="habilitacaoPessoa_FKIndex3" IndexKind="1" FKRefDef_Obj_id="1137">
@@ -747,6 +778,12 @@
 <INDEXCOLUMN idColumn="1366" LengthParam="0" />
 <INDEXCOLUMN idColumn="1373" LengthParam="0" />
 <INDEXCOLUMN idColumn="1571" LengthParam="0" />
+</INDEXCOLUMNS>
+</INDEX>
+<INDEX ID="1689" IndexName="habilitacaoPessoa_FKIndex4" IndexKind="1" FKRefDef_Obj_id="1686">
+<INDEXCOLUMNS>
+<INDEXCOLUMN idColumn="1687" LengthParam="0" />
+<INDEXCOLUMN idColumn="1688" LengthParam="0" />
 </INDEXCOLUMNS>
 </INDEX>
 </INDICES>
@@ -860,7 +897,7 @@
 <OPTIONSELECT Value="0" />
 </OPTIONSELECTED>
 </COLUMN>
-<COLUMN ID="1113" ColName="codTipoAtrividade" PrevColName="" Pos="2" idDatatype="5" DatatypeParams="" Width="-1" Prec="-1" PrimaryKey="0" NotNull="0" AutoInc="0" IsForeignKey="0" DefaultValue="" Comments="">
+<COLUMN ID="1113" ColName="codSitucaoFisica" PrevColName="codTipoAtrividade" Pos="2" idDatatype="5" DatatypeParams="" Width="-1" Prec="-1" PrimaryKey="0" NotNull="0" AutoInc="0" IsForeignKey="0" DefaultValue="" Comments="">
 <OPTIONSELECTED>
 <OPTIONSELECT Value="1" />
 <OPTIONSELECT Value="0" />
@@ -956,7 +993,7 @@
 </INDEX>
 </INDICES>
 </TABLE>
-<TABLE ID="1144" Tablename="AtividadeTreino" PrevTableName="Table_10" XPos="422" YPos="1012" TableType="0" TablePrefix="0" nmTable="0" Temporary="0" UseStandardInserts="0" StandardInserts="\n" TableOptions="DelayKeyTblUpdates=0\nPackKeys=0\nRowChecksum=0\nRowFormat=0\nUseRaid=0\nRaidType=0\n" Comments="" Collapsed="0" IsLinkedObject="0" IDLinkedModel="-1" Obj_id_Linked="-1" OrderPos="18" >
+<TABLE ID="1144" Tablename="AtividadeTreino" PrevTableName="Table_10" XPos="479" YPos="1013" TableType="0" TablePrefix="0" nmTable="0" Temporary="0" UseStandardInserts="0" StandardInserts="\n" TableOptions="DelayKeyTblUpdates=0\nPackKeys=0\nRowChecksum=0\nRowFormat=0\nUseRaid=0\nRaidType=0\n" Comments="" Collapsed="0" IsLinkedObject="0" IDLinkedModel="-1" Obj_id_Linked="-1" OrderPos="18" >
 <COLUMNS>
 <COLUMN ID="1146" ColName="idAtividadeTreino" PrevColName="idAtividadeTreinino" Pos="0" idDatatype="5" DatatypeParams="" Width="-1" Prec="-1" PrimaryKey="1" NotNull="1" AutoInc="1" IsForeignKey="0" DefaultValue="" Comments="">
 <OPTIONSELECTED>
@@ -996,7 +1033,7 @@
 </INDEX>
 </INDICES>
 </TABLE>
-<TABLE ID="1163" Tablename="Exercicios" PrevTableName="Table_11" XPos="409" YPos="470" TableType="0" TablePrefix="0" nmTable="0" Temporary="0" UseStandardInserts="0" StandardInserts="\n" TableOptions="DelayKeyTblUpdates=0\nPackKeys=0\nRowChecksum=0\nRowFormat=0\nUseRaid=0\nRaidType=0\n" Comments="" Collapsed="0" IsLinkedObject="0" IDLinkedModel="-1" Obj_id_Linked="-1" OrderPos="20" >
+<TABLE ID="1163" Tablename="Exercicios" PrevTableName="Table_11" XPos="409" YPos="477" TableType="0" TablePrefix="0" nmTable="0" Temporary="0" UseStandardInserts="0" StandardInserts="\n" TableOptions="DelayKeyTblUpdates=0\nPackKeys=0\nRowChecksum=0\nRowFormat=0\nUseRaid=0\nRaidType=0\n" Comments="" Collapsed="0" IsLinkedObject="0" IDLinkedModel="-1" Obj_id_Linked="-1" OrderPos="20" >
 <COLUMNS>
 <COLUMN ID="1165" ColName="idExercicios" PrevColName="idAtividadesFisicas" Pos="0" idDatatype="5" DatatypeParams="" Width="-1" Prec="-1" PrimaryKey="1" NotNull="1" AutoInc="1" IsForeignKey="0" DefaultValue="" Comments="">
 <OPTIONSELECTED>
@@ -1410,10 +1447,148 @@
 </INDEX>
 </INDICES>
 </TABLE>
+<TABLE ID="1599" Tablename="Usuarios" PrevTableName="Table_15" XPos="17" YPos="1090" TableType="0" TablePrefix="0" nmTable="0" Temporary="0" UseStandardInserts="0" StandardInserts="\n" TableOptions="DelayKeyTblUpdates=0\nPackKeys=0\nRowChecksum=0\nRowFormat=0\nUseRaid=0\nRaidType=0\n" Comments="" Collapsed="0" IsLinkedObject="0" IDLinkedModel="-1" Obj_id_Linked="-1" OrderPos="36" >
+<COLUMNS>
+<COLUMN ID="1643" ColName="PermisoesUsuarios_idPermisoesUsuarios" PrevColName="" Pos="1" idDatatype="5" DatatypeParams="" Width="-1" Prec="-1" PrimaryKey="1" NotNull="1" AutoInc="0" IsForeignKey="1" DefaultValue="" Comments="">
+<OPTIONSELECTED>
+<OPTIONSELECT Value="1" />
+<OPTIONSELECT Value="0" />
+</OPTIONSELECTED>
+</COLUMN>
+<COLUMN ID="1611" ColName="codUsuario" PrevColName="" Pos="4" idDatatype="20" DatatypeParams="" Width="-1" Prec="-1" PrimaryKey="0" NotNull="0" AutoInc="0" IsForeignKey="0" DefaultValue="" Comments="">
+<OPTIONSELECTED>
+<OPTIONSELECT Value="0" />
+</OPTIONSELECTED>
+</COLUMN>
+<COLUMN ID="1603" ColName="codPessoa" PrevColName="" Pos="1" idDatatype="20" DatatypeParams="" Width="-1" Prec="-1" PrimaryKey="0" NotNull="0" AutoInc="0" IsForeignKey="0" DefaultValue="" Comments="">
+<OPTIONSELECTED>
+<OPTIONSELECT Value="0" />
+</OPTIONSELECTED>
+</COLUMN>
+<COLUMN ID="1610" ColName="senha" PrevColName="" Pos="3" idDatatype="20" DatatypeParams="" Width="-1" Prec="-1" PrimaryKey="0" NotNull="0" AutoInc="0" IsForeignKey="0" DefaultValue="" Comments="">
+<OPTIONSELECTED>
+<OPTIONSELECT Value="0" />
+</OPTIONSELECTED>
+</COLUMN>
+<COLUMN ID="1604" ColName="statusUsuario" PrevColName="status_2" Pos="2" idDatatype="22" DatatypeParams="" Width="-1" Prec="-1" PrimaryKey="0" NotNull="0" AutoInc="0" IsForeignKey="0" DefaultValue="" Comments="">
+<OPTIONSELECTED>
+</OPTIONSELECTED>
+</COLUMN>
+</COLUMNS>
+<RELATIONS_END>
+<RELATION_END ID="1642" />
+</RELATIONS_END>
+<INDICES>
+<INDEX ID="1645" IndexName="PRIMARY" IndexKind="0" FKRefDef_Obj_id="-1">
+<INDEXCOLUMNS>
+<INDEXCOLUMN idColumn="1643" LengthParam="0" />
+</INDEXCOLUMNS>
+</INDEX>
+<INDEX ID="1644" IndexName="Usuarios_FKIndex1" IndexKind="1" FKRefDef_Obj_id="1642">
+<INDEXCOLUMNS>
+<INDEXCOLUMN idColumn="1643" LengthParam="0" />
+</INDEXCOLUMNS>
+</INDEX>
+</INDICES>
+</TABLE>
+<TABLE ID="1614" Tablename="PerfisUsuario" PrevTableName="Table_16" XPos="14" YPos="794" TableType="0" TablePrefix="0" nmTable="0" Temporary="0" UseStandardInserts="0" StandardInserts="\n" TableOptions="DelayKeyTblUpdates=0\nPackKeys=0\nRowChecksum=0\nRowFormat=0\nUseRaid=0\nRaidType=0\n" Comments="" Collapsed="0" IsLinkedObject="0" IDLinkedModel="-1" Obj_id_Linked="-1" OrderPos="37" >
+<COLUMNS>
+<COLUMN ID="1616" ColName="idPerfisUsuario" PrevColName="" Pos="0" idDatatype="5" DatatypeParams="" Width="-1" Prec="-1" PrimaryKey="1" NotNull="1" AutoInc="1" IsForeignKey="0" DefaultValue="" Comments="">
+<OPTIONSELECTED>
+<OPTIONSELECT Value="1" />
+<OPTIONSELECT Value="0" />
+</OPTIONSELECTED>
+</COLUMN>
+<COLUMN ID="1638" ColName="PermisoesUsuarios_idPermisoesUsuarios" PrevColName="" Pos="1" idDatatype="5" DatatypeParams="" Width="-1" Prec="-1" PrimaryKey="1" NotNull="1" AutoInc="0" IsForeignKey="1" DefaultValue="" Comments="">
+<OPTIONSELECTED>
+<OPTIONSELECT Value="1" />
+<OPTIONSELECT Value="0" />
+</OPTIONSELECTED>
+</COLUMN>
+<COLUMN ID="1671" ColName="codHabilitacaoPessoa" PrevColName="" Pos="7" idDatatype="5" DatatypeParams="" Width="-1" Prec="-1" PrimaryKey="0" NotNull="1" AutoInc="0" IsForeignKey="0" DefaultValue="" Comments="">
+<OPTIONSELECTED>
+<OPTIONSELECT Value="1" />
+<OPTIONSELECT Value="0" />
+</OPTIONSELECTED>
+</COLUMN>
+<COLUMN ID="1620" ColName="Objeto" PrevColName="" Pos="2" idDatatype="20" DatatypeParams="" Width="-1" Prec="-1" PrimaryKey="0" NotNull="0" AutoInc="0" IsForeignKey="0" DefaultValue="" Comments="">
+<OPTIONSELECTED>
+<OPTIONSELECT Value="0" />
+</OPTIONSELECTED>
+</COLUMN>
+<COLUMN ID="1621" ColName="criar" PrevColName="Criar" Pos="3" idDatatype="22" DatatypeParams="" Width="-1" Prec="-1" PrimaryKey="0" NotNull="0" AutoInc="0" IsForeignKey="0" DefaultValue="" Comments="">
+<OPTIONSELECTED>
+</OPTIONSELECTED>
+</COLUMN>
+<COLUMN ID="1622" ColName="editar" PrevColName="Editar" Pos="4" idDatatype="22" DatatypeParams="" Width="-1" Prec="-1" PrimaryKey="0" NotNull="0" AutoInc="0" IsForeignKey="0" DefaultValue="" Comments="">
+<OPTIONSELECTED>
+</OPTIONSELECTED>
+</COLUMN>
+<COLUMN ID="1623" ColName="deletar" PrevColName="delatar" Pos="5" idDatatype="22" DatatypeParams="" Width="-1" Prec="-1" PrimaryKey="0" NotNull="0" AutoInc="0" IsForeignKey="0" DefaultValue="" Comments="">
+<OPTIONSELECTED>
+</OPTIONSELECTED>
+</COLUMN>
+<COLUMN ID="1624" ColName="consultar" PrevColName="" Pos="6" idDatatype="22" DatatypeParams="" Width="-1" Prec="-1" PrimaryKey="0" NotNull="0" AutoInc="0" IsForeignKey="0" DefaultValue="" Comments="">
+<OPTIONSELECTED>
+</OPTIONSELECTED>
+</COLUMN>
+</COLUMNS>
+<RELATIONS_START>
+<RELATION_START ID="1686" />
+</RELATIONS_START>
+<RELATIONS_END>
+<RELATION_END ID="1637" />
+</RELATIONS_END>
+<INDICES>
+<INDEX ID="1617" IndexName="PRIMARY" IndexKind="0" FKRefDef_Obj_id="-1">
+<INDEXCOLUMNS>
+<INDEXCOLUMN idColumn="1616" LengthParam="0" />
+<INDEXCOLUMN idColumn="1638" LengthParam="0" />
+</INDEXCOLUMNS>
+</INDEX>
+<INDEX ID="1639" IndexName="PerfisUsuario_FKIndex1" IndexKind="1" FKRefDef_Obj_id="1637">
+<INDEXCOLUMNS>
+<INDEXCOLUMN idColumn="1638" LengthParam="0" />
+</INDEXCOLUMNS>
+</INDEX>
+</INDICES>
+</TABLE>
+<TABLE ID="1626" Tablename="PermisoesUsuarios" PrevTableName="Table_17" XPos="16" YPos="984" TableType="0" TablePrefix="0" nmTable="0" Temporary="0" UseStandardInserts="0" StandardInserts="\n" TableOptions="DelayKeyTblUpdates=0\nPackKeys=0\nRowChecksum=0\nRowFormat=0\nUseRaid=0\nRaidType=0\n" Comments="" Collapsed="0" IsLinkedObject="0" IDLinkedModel="-1" Obj_id_Linked="-1" OrderPos="38" >
+<COLUMNS>
+<COLUMN ID="1628" ColName="idPermisoesUsuarios" PrevColName="" Pos="0" idDatatype="5" DatatypeParams="" Width="-1" Prec="-1" PrimaryKey="1" NotNull="1" AutoInc="1" IsForeignKey="0" DefaultValue="" Comments="">
+<OPTIONSELECTED>
+<OPTIONSELECT Value="1" />
+<OPTIONSELECT Value="0" />
+</OPTIONSELECTED>
+</COLUMN>
+<COLUMN ID="1635" ColName="idPerfisUsuario" PrevColName="" Pos="2" idDatatype="5" DatatypeParams="" Width="-1" Prec="-1" PrimaryKey="0" NotNull="0" AutoInc="0" IsForeignKey="0" DefaultValue="" Comments="">
+<OPTIONSELECTED>
+<OPTIONSELECT Value="1" />
+<OPTIONSELECT Value="0" />
+</OPTIONSELECTED>
+</COLUMN>
+<COLUMN ID="1630" ColName="codUsuario" PrevColName="" Pos="1" idDatatype="20" DatatypeParams="(20)" Width="-1" Prec="-1" PrimaryKey="0" NotNull="0" AutoInc="0" IsForeignKey="0" DefaultValue="" Comments="">
+<OPTIONSELECTED>
+<OPTIONSELECT Value="0" />
+</OPTIONSELECTED>
+</COLUMN>
+</COLUMNS>
+<RELATIONS_START>
+<RELATION_START ID="1637" />
+<RELATION_START ID="1642" />
+</RELATIONS_START>
+<INDICES>
+<INDEX ID="1629" IndexName="PRIMARY" IndexKind="0" FKRefDef_Obj_id="-1">
+<INDEXCOLUMNS>
+<INDEXCOLUMN idColumn="1628" LengthParam="0" />
+</INDEXCOLUMNS>
+</INDEX>
+</INDICES>
+</TABLE>
 </TABLES>
 <RELATIONS>
 <RELATION ID="1050" RelationName="Rel_07" Kind="4" SrcTable="1000" DestTable="1001" FKFields="codTipoUtilitario=TipoUtilitario_codTipoUtilitario\n" FKFieldsComments="\n" relDirection="3" MidOffset="0" OptionalStart="0" OptionalEnd="0" CaptionOffsetX="0" CaptionOffsetY="0" StartIntervalOffsetX="0" StartIntervalOffsetY="0" EndIntervalOffsetX="0" EndIntervalOffsetY="0" CreateRefDef="1" Invisible="0" RefDef="Matching=0\nOnDelete=3\nOnUpdate=3\n" Comments="" FKRefDefIndex_Obj_id="1052" Splitted="0" IsLinkedObject="0" IDLinkedModel="-1" Obj_id_Linked="-1" OrderPos="5" />
-<RELATION ID="1084" RelationName="Rel_09" Kind="4" SrcTable="1053" DestTable="1001" FKFields="idhabilitacaoPessoa=habilitacaoPessoa_idhabilitacaoPessoa\nSolicitacaoAvaliacao_idSolicitacaoAvaliacao=habilitacaoPessoa_SolicitacaoAvaliacao_idSolicitacaoAvaliacao\nTreinos_idTreinos=habilitacaoPessoa_Treinos_idTreinos\nTreinos_AtividadeTreino_idAtividadeTreino=habilitacaoPessoa_Treinos_AtividadeTreino_idAtividadeTreino\nSolicitacaoAvaliacao_AvalicacaoAlunos_idAvalicacaoAlunos=habilitacaoPessoa_SolicitacaoAvaliacao_AvalicacaoAlunos_idAvalicacaoAlunos\nSolicitacaoAvaliacao_AvalicacaoAlunos_PlanoAtividadePessoal_resultadosPeriodicos_idresultadosPeriodicos=habilitacaoPessoa_SolicitacaoAvaliacao_AvalicacaoAlunos_PlanoAtividadePessoal_resultadosPeriodicos_idresultadosPeriodicos\nSolicitacaoAvaliacao_AvalicacaoAlunos_PlanoAtividadePessoal_idPlanoAtividadePessoal=habilitacaoPessoa_SolicitacaoAvaliacao_AvalicacaoAlunos_PlanoAtividadePessoal_idPlanoAtividadePessoal\nSolicitacaoAvaliacao_AvalicacaoAlunos_PlanoAtividadePessoal_AgendaTreinamentos_idAgendaTreinamentos=habilitacaoPessoa_SolicitacaoAvaliacao_AvalicacaoAlunos_PlanoAtividadePessoal_AgendaTreinamentos_idAgendaTreinamentos\nSolicitacaoAvaliacao_AvalicacaoAlunos_PlanoAtividadePessoal_AgendaTreinamentos_idPlanoAtividadePessoal=habilitacaoPessoa_SolicitacaoAvaliacao_AvalicacaoAlunos_PlanoAtividadePessoal_AgendaTreinamentos_idPlanoAtividadePessoal\nSolicitacaoAvaliacao_AvalicacaoAlunos_PlanoAtividadePessoal_AgendaTreinamentos_Feeback_idFeeback=habilitacaoPessoa_SolicitacaoAvaliacao_AvalicacaoAlunos_PlanoAtividadePessoal_AgendaTreinamentos_Feeback_idFeeback\n" FKFieldsComments="\n\n\n\n\n\n\n\n\n\n" relDirection="4" MidOffset="0" OptionalStart="0" OptionalEnd="0" CaptionOffsetX="0" CaptionOffsetY="0" StartIntervalOffsetX="0" StartIntervalOffsetY="0" EndIntervalOffsetX="0" EndIntervalOffsetY="0" CreateRefDef="1" Invisible="0" RefDef="Matching=0\nOnDelete=3\nOnUpdate=3\n" Comments="" FKRefDefIndex_Obj_id="1086" Splitted="0" IsLinkedObject="0" IDLinkedModel="-1" Obj_id_Linked="-1" OrderPos="8" />
+<RELATION ID="1084" RelationName="Rel_09" Kind="4" SrcTable="1053" DestTable="1001" FKFields="idhabilitacaoPessoa=habilitacaoPessoa_idhabilitacaoPessoa\nSolicitacaoAvaliacao_idSolicitacaoAvaliacao=habilitacaoPessoa_SolicitacaoAvaliacao_idSolicitacaoAvaliacao\nTreinos_idTreinos=habilitacaoPessoa_Treinos_idTreinos\nTreinos_AtividadeTreino_idAtividadeTreino=habilitacaoPessoa_Treinos_AtividadeTreino_idAtividadeTreino\nSolicitacaoAvaliacao_AvalicacaoAlunos_idAvalicacaoAlunos=habilitacaoPessoa_SolicitacaoAvaliacao_AvalicacaoAlunos_idAvalicacaoAlunos\nSolicitacaoAvaliacao_AvalicacaoAlunos_PlanoAtividadePessoal_resultadosPeriodicos_idresultadosPeriodicos=habilitacaoPessoa_SolicitacaoAvaliacao_AvalicacaoAlunos_PlanoAtividadePessoal_resultadosPeriodicos_idresultadosPeriodicos\nSolicitacaoAvaliacao_AvalicacaoAlunos_PlanoAtividadePessoal_idPlanoAtividadePessoal=habilitacaoPessoa_SolicitacaoAvaliacao_AvalicacaoAlunos_PlanoAtividadePessoal_idPlanoAtividadePessoal\nSolicitacaoAvaliacao_AvalicacaoAlunos_PlanoAtividadePessoal_AgendaTreinamentos_idAgendaTreinamentos=habilitacaoPessoa_SolicitacaoAvaliacao_AvalicacaoAlunos_PlanoAtividadePessoal_AgendaTreinamentos_idAgendaTreinamentos\nSolicitacaoAvaliacao_AvalicacaoAlunos_PlanoAtividadePessoal_AgendaTreinamentos_idPlanoAtividadePessoal=habilitacaoPessoa_SolicitacaoAvaliacao_AvalicacaoAlunos_PlanoAtividadePessoal_AgendaTreinamentos_idPlanoAtividadePessoal\nSolicitacaoAvaliacao_AvalicacaoAlunos_PlanoAtividadePessoal_AgendaTreinamentos_Feeback_idFeeback=habilitacaoPessoa_SolicitacaoAvaliacao_AvalicacaoAlunos_PlanoAtividadePessoal_AgendaTreinamentos_Feeback_idFeeback\nPerfisUsuario_PermisoesUsuarios_idPermisoesUsuarios=habilitacaoPessoa_PerfisUsuario_PermisoesUsuarios_idPermisoesUsuarios\nPerfisUsuario_idPerfisUsuario=habilitacaoPessoa_PerfisUsuario_idPerfisUsuario\n" FKFieldsComments="\n\n\n\n\n\n\n\n\n\n\n\n" relDirection="4" MidOffset="0" OptionalStart="0" OptionalEnd="0" CaptionOffsetX="0" CaptionOffsetY="0" StartIntervalOffsetX="0" StartIntervalOffsetY="0" EndIntervalOffsetX="0" EndIntervalOffsetY="0" CreateRefDef="1" Invisible="0" RefDef="Matching=0\nOnDelete=3\nOnUpdate=3\n" Comments="" FKRefDefIndex_Obj_id="1086" Splitted="0" IsLinkedObject="0" IDLinkedModel="-1" Obj_id_Linked="-1" OrderPos="8" />
 <RELATION ID="1093" RelationName="Rel_10" Kind="4" SrcTable="1011" DestTable="1001" FKFields="idPessoa=Pessoa_idPessoa\nChekinPessoal_idChekinPessoal=Pessoa_ChekinPessoal_idChekinPessoal\n" FKFieldsComments="\n\n" relDirection="3" MidOffset="0" OptionalStart="0" OptionalEnd="0" CaptionOffsetX="0" CaptionOffsetY="0" StartIntervalOffsetX="0" StartIntervalOffsetY="0" EndIntervalOffsetX="0" EndIntervalOffsetY="0" CreateRefDef="1" Invisible="0" RefDef="Matching=0\nOnDelete=3\nOnUpdate=3\n" Comments="" FKRefDefIndex_Obj_id="1095" Splitted="0" IsLinkedObject="0" IDLinkedModel="-1" Obj_id_Linked="-1" OrderPos="8" />
 <RELATION ID="1102" RelationName="Rel_11" Kind="4" SrcTable="1096" DestTable="1053" FKFields="idSolicitacaoAvaliacao=SolicitacaoAvaliacao_idSolicitacaoAvaliacao\nAvalicacaoAlunos_idAvalicacaoAlunos=SolicitacaoAvaliacao_AvalicacaoAlunos_idAvalicacaoAlunos\nAvalicacaoAlunos_PlanoAtividadePessoal_resultadosPeriodicos_idresultadosPeriodicos=SolicitacaoAvaliacao_AvalicacaoAlunos_PlanoAtividadePessoal_resultadosPeriodicos_idresultadosPeriodicos\nAvalicacaoAlunos_PlanoAtividadePessoal_idPlanoAtividadePessoal=SolicitacaoAvaliacao_AvalicacaoAlunos_PlanoAtividadePessoal_idPlanoAtividadePessoal\nAvalicacaoAlunos_PlanoAtividadePessoal_AgendaTreinamentos_idAgendaTreinamentos=SolicitacaoAvaliacao_AvalicacaoAlunos_PlanoAtividadePessoal_AgendaTreinamentos_idAgendaTreinamentos\nAvalicacaoAlunos_PlanoAtividadePessoal_AgendaTreinamentos_idPlanoAtividadePessoal=SolicitacaoAvaliacao_AvalicacaoAlunos_PlanoAtividadePessoal_AgendaTreinamentos_idPlanoAtividadePessoal\nAvalicacaoAlunos_PlanoAtividadePessoal_AgendaTreinamentos_Feeback_idFeeback=SolicitacaoAvaliacao_AvalicacaoAlunos_PlanoAtividadePessoal_AgendaTreinamentos_Feeback_idFeeback\n" FKFieldsComments="\n\n\n\n\n\n\n" relDirection="4" MidOffset="0" OptionalStart="0" OptionalEnd="0" CaptionOffsetX="0" CaptionOffsetY="0" StartIntervalOffsetX="0" StartIntervalOffsetY="0" EndIntervalOffsetX="0" EndIntervalOffsetY="0" CreateRefDef="1" Invisible="0" RefDef="Matching=0\nOnDelete=3\nOnUpdate=3\n" Comments="" FKRefDefIndex_Obj_id="1384" Splitted="0" IsLinkedObject="0" IDLinkedModel="-1" Obj_id_Linked="-1" OrderPos="10" />
 <RELATION ID="1105" RelationName="Rel_12" Kind="4" SrcTable="1096" DestTable="1053" FKFields="idSolicitacaoAvaliacao=SolicitacaoAvaliacao_idSolicitacaoAvaliacao\nAvalicacaoAlunos_idAvalicacaoAlunos=SolicitacaoAvaliacao_AvalicacaoAlunos_idAvalicacaoAlunos\nAvalicacaoAlunos_PlanoAtividadePessoal_resultadosPeriodicos_idresultadosPeriodicos=SolicitacaoAvaliacao_AvalicacaoAlunos_PlanoAtividadePessoal_resultadosPeriodicos_idresultadosPeriodicos\nAvalicacaoAlunos_PlanoAtividadePessoal_idPlanoAtividadePessoal=SolicitacaoAvaliacao_AvalicacaoAlunos_PlanoAtividadePessoal_idPlanoAtividadePessoal\nAvalicacaoAlunos_PlanoAtividadePessoal_AgendaTreinamentos_idAgendaTreinamentos=SolicitacaoAvaliacao_AvalicacaoAlunos_PlanoAtividadePessoal_AgendaTreinamentos_idAgendaTreinamentos\nAvalicacaoAlunos_PlanoAtividadePessoal_AgendaTreinamentos_idPlanoAtividadePessoal=SolicitacaoAvaliacao_AvalicacaoAlunos_PlanoAtividadePessoal_AgendaTreinamentos_idPlanoAtividadePessoal\nAvalicacaoAlunos_PlanoAtividadePessoal_AgendaTreinamentos_Feeback_idFeeback=SolicitacaoAvaliacao_AvalicacaoAlunos_PlanoAtividadePessoal_AgendaTreinamentos_Feeback_idFeeback\n" FKFieldsComments="\n\n\n\n\n\n\n" relDirection="4" MidOffset="0" OptionalStart="0" OptionalEnd="0" CaptionOffsetX="0" CaptionOffsetY="0" StartIntervalOffsetX="0" StartIntervalOffsetY="0" EndIntervalOffsetX="0" EndIntervalOffsetY="0" CreateRefDef="1" Invisible="0" RefDef="Matching=0\nOnDelete=3\nOnUpdate=3\n" Comments="" FKRefDefIndex_Obj_id="1385" Splitted="0" IsLinkedObject="0" IDLinkedModel="-1" Obj_id_Linked="-1" OrderPos="11" />
@@ -1432,6 +1607,9 @@
 <RELATION ID="1491" RelationName="Rel_20" Kind="4" SrcTable="1096" DestTable="1001" FKFields="idSolicitacaoAvaliacao=SolicitacaoAvaliacao_idSolicitacaoAvaliacao\nAvalicacaoAlunos_idAvalicacaoAlunos=SolicitacaoAvaliacao_AvalicacaoAlunos_idAvalicacaoAlunos\nAvalicacaoAlunos_PlanoAtividadePessoal_resultadosPeriodicos_idresultadosPeriodicos=SolicitacaoAvaliacao_AvalicacaoAlunos_PlanoAtividadePessoal_resultadosPeriodicos_idresultadosPeriodicos\nAvalicacaoAlunos_PlanoAtividadePessoal_idPlanoAtividadePessoal=SolicitacaoAvaliacao_AvalicacaoAlunos_PlanoAtividadePessoal_idPlanoAtividadePessoal\nAvalicacaoAlunos_PlanoAtividadePessoal_AgendaTreinamentos_idAgendaTreinamentos=SolicitacaoAvaliacao_AvalicacaoAlunos_PlanoAtividadePessoal_AgendaTreinamentos_idAgendaTreinamentos\nAvalicacaoAlunos_PlanoAtividadePessoal_AgendaTreinamentos_idPlanoAtividadePessoal=SolicitacaoAvaliacao_AvalicacaoAlunos_PlanoAtividadePessoal_AgendaTreinamentos_idPlanoAtividadePessoal\nAvalicacaoAlunos_PlanoAtividadePessoal_AgendaTreinamentos_Feeback_idFeeback=SolicitacaoAvaliacao_AvalicacaoAlunos_PlanoAtividadePessoal_AgendaTreinamentos_Feeback_idFeeback\n" FKFieldsComments="\n\n\n\n\n\n\n" relDirection="4" MidOffset="0" OptionalStart="0" OptionalEnd="0" CaptionOffsetX="0" CaptionOffsetY="0" StartIntervalOffsetX="0" StartIntervalOffsetY="0" EndIntervalOffsetX="0" EndIntervalOffsetY="0" CreateRefDef="1" Invisible="0" RefDef="Matching=0\nOnDelete=3\nOnUpdate=3\n" Comments="" FKRefDefIndex_Obj_id="1498" Splitted="0" IsLinkedObject="0" IDLinkedModel="-1" Obj_id_Linked="-1" OrderPos="34" />
 <RELATION ID="1559" RelationName="Rel_21" Kind="4" SrcTable="1532" DestTable="1297" FKFields="idFeeback=Feeback_idFeeback\n" FKFieldsComments="\n" relDirection="1" MidOffset="0" OptionalStart="0" OptionalEnd="0" CaptionOffsetX="0" CaptionOffsetY="0" StartIntervalOffsetX="0" StartIntervalOffsetY="0" EndIntervalOffsetX="0" EndIntervalOffsetY="0" CreateRefDef="1" Invisible="0" RefDef="Matching=0\nOnDelete=3\nOnUpdate=3\n" Comments="" FKRefDefIndex_Obj_id="1561" Splitted="0" IsLinkedObject="0" IDLinkedModel="-1" Obj_id_Linked="-1" OrderPos="36" />
 <RELATION ID="1595" RelationName="Rel_22" Kind="4" SrcTable="1163" DestTable="1001" FKFields="idExercicios=Exercicios_idExercicios\nAtividadeTreino_idAtividadeTreino=Exercicios_AtividadeTreino_idAtividadeTreino\n" FKFieldsComments="\n\n" relDirection="4" MidOffset="0" OptionalStart="0" OptionalEnd="0" CaptionOffsetX="0" CaptionOffsetY="0" StartIntervalOffsetX="0" StartIntervalOffsetY="0" EndIntervalOffsetX="0" EndIntervalOffsetY="0" CreateRefDef="1" Invisible="0" RefDef="Matching=0\nOnDelete=3\nOnUpdate=3\n" Comments="" FKRefDefIndex_Obj_id="1598" Splitted="0" IsLinkedObject="0" IDLinkedModel="-1" Obj_id_Linked="-1" OrderPos="35" />
+<RELATION ID="1637" RelationName="Rel_21" Kind="4" SrcTable="1626" DestTable="1614" FKFields="idPermisoesUsuarios=PermisoesUsuarios_idPermisoesUsuarios\n" FKFieldsComments="\n" relDirection="1" MidOffset="0" OptionalStart="0" OptionalEnd="0" CaptionOffsetX="0" CaptionOffsetY="0" StartIntervalOffsetX="0" StartIntervalOffsetY="0" EndIntervalOffsetX="0" EndIntervalOffsetY="0" CreateRefDef="1" Invisible="0" RefDef="Matching=0\nOnDelete=3\nOnUpdate=3\n" Comments="" FKRefDefIndex_Obj_id="1639" Splitted="0" IsLinkedObject="0" IDLinkedModel="-1" Obj_id_Linked="-1" OrderPos="39" />
+<RELATION ID="1642" RelationName="Rel_22" Kind="4" SrcTable="1626" DestTable="1599" FKFields="idPermisoesUsuarios=PermisoesUsuarios_idPermisoesUsuarios\n" FKFieldsComments="\n" relDirection="3" MidOffset="0" OptionalStart="0" OptionalEnd="0" CaptionOffsetX="0" CaptionOffsetY="0" StartIntervalOffsetX="0" StartIntervalOffsetY="0" EndIntervalOffsetX="0" EndIntervalOffsetY="0" CreateRefDef="1" Invisible="0" RefDef="Matching=0\nOnDelete=3\nOnUpdate=3\n" Comments="" FKRefDefIndex_Obj_id="1644" Splitted="0" IsLinkedObject="0" IDLinkedModel="-1" Obj_id_Linked="-1" OrderPos="40" />
+<RELATION ID="1686" RelationName="Rel_23" Kind="4" SrcTable="1614" DestTable="1053" FKFields="idPerfisUsuario=PerfisUsuario_idPerfisUsuario\nPermisoesUsuarios_idPermisoesUsuarios=PerfisUsuario_PermisoesUsuarios_idPermisoesUsuarios\n" FKFieldsComments="\n\n" relDirection="1" MidOffset="0" OptionalStart="0" OptionalEnd="0" CaptionOffsetX="0" CaptionOffsetY="0" StartIntervalOffsetX="0" StartIntervalOffsetY="0" EndIntervalOffsetX="0" EndIntervalOffsetY="0" CreateRefDef="1" Invisible="0" RefDef="Matching=0\nOnDelete=3\nOnUpdate=3\n" Comments="" FKRefDefIndex_Obj_id="1689" Splitted="0" IsLinkedObject="0" IDLinkedModel="-1" Obj_id_Linked="-1" OrderPos="41" />
 </RELATIONS>
 <NOTES>
 </NOTES>
