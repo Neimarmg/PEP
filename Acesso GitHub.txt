@@ -1,5 +1,4 @@
 ﻿
-
 ----------------------------------------------------------
 
 ... ou crie um novo repositório na linha de comando
@@ -9,18 +8,27 @@ Git clone https://github.com/Neimarmg/PEP.git
 
 1. git clone "Caminho repositorio git"
 2. git init
-3. git add README.md
+3. git add --all
 4. git commit -m "Mensages ?????"
-5. git remote add origin c
+-------------------------------------
+5. git config push.default simple  
+-------------------------------------
 6. git push -u origin master
 
 
+Obs Apartir do segundo commit na mesma pasta
+
+
 6. git pull
+-------------------------------------
 7. git checkout master
 8. git fetch upstream
 9. git rebase upstream/master
+-------------------------------------
 
 10. git push -u origin master
+
+
 
 
 https://gist.github.com/leocomelli/2545add34e4fec21ec16
