@@ -1,10 +1,4 @@
-﻿AMS AMS ssssssss1111111
-aaaaddd
-----------------------------------------------------------
-
-... ou crie um novo repositório na linha de comando
-
-Git clone https://github.com/Neimarmg/PEP.git
+﻿Git clone https://github.com/Neimarmg/PEP.git
 
 
 1. git clone "Caminho repositorio git"
