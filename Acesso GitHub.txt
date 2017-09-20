@@ -1,4 +1,4 @@
-﻿AMS AMS
+﻿AMS AMS  Neimar
 ----------------------------------------------------------
 
 ... ou crie um novo repositório na linha de comando
