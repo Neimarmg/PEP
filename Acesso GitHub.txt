@@ -1,11 +1,15 @@
-﻿﻿teste aurélio = bone
+﻿aurelio 123 456
 
+<<<<<<< HEAD
 =======
 ﻿
 >>>>>>> c0e2b2446e7482d6e3851d62c8d0e0eb85d95f04
 
 >>>>>>> 693f790710b735ac724aac43abb6e505610561c0
 
+=======
+https://gist.github.com/leocomelli/2545add34e4fec21ec16
+>>>>>>> 02781d7d88ca2213777157c086dd548ecd8d4a5f
 
 Teste commit Rodrigo
 ----------------------------------------------------------
