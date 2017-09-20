@@ -1,4 +1,4 @@
-﻿﻿teste aurélio = boneca
+﻿﻿teste aurélio = bone
 
 =======
 ﻿
