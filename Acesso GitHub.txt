@@ -1,6 +1,4 @@
-<<<<<<< HEAD
-﻿PQP
-=======
+﻿teste aurélio
 
 >>>>>>> 693f790710b735ac724aac43abb6e505610561c0
 https://gist.github.com/leocomelli/2545add34e4fec21ec16
