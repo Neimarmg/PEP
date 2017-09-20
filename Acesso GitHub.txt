@@ -1,4 +1,4 @@
-﻿AMS AMS  Neimar
+﻿Essa bosta do git me revolta AMS AMS  Neimar
 ----------------------------------------------------------
 
 ... ou crie um novo repositório na linha de comando
