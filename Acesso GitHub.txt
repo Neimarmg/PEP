@@ -1,4 +1,5 @@
-﻿﻿teste aurélio
+﻿﻿teste aurélio = boneca
+
 =======
 ﻿
 >>>>>>> c0e2b2446e7482d6e3851d62c8d0e0eb85d95f04
