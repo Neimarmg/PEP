@@ -2,9 +2,9 @@
 class Database
 {
     private static $dbName = 'pep' ;
-    private static $dbHost = 'mysql.pep.kinghost.net' ;
-    private static $dbUsername = 'pep';
-    private static $dbUserPassword = '84d235g4r8h';
+    private static $dbHost = 'localhost'; //'mysql.pep.kinghost.net' ;
+    private static $dbUsername = 'root'; //'pep';
+    private static $dbUserPassword = ''; //'84d235g4r8h';
      
     private static $cont  = null;
      
