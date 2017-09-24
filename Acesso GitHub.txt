@@ -1,9 +1,4 @@
-﻿AMS AMS ssssssss1111111
-aaaaddd
-----------------------------------------------------------
-
-... ou crie um novo repositório na linha de comando
-
+﻿123
 Git clone https://github.com/Neimarmg/PEP.git
 
 
