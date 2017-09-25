@@ -7,7 +7,7 @@ O sistema será desenvolvido em PHP, HTML, CSS e MySql. Será utilizado o framew
 ## Fase Alpha
 Projeto a ser desenvolvido, em fase Alpha.
 
-### Team:
+# Team
 Aurélio Santana,
 Daniel,
 Mariana Bianchini,
