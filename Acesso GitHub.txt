@@ -20,7 +20,6 @@ Obs Apartir do segundo commit na mesma pasta
 7. git checkout master
 8. git fetch upstream
 9. git rebase upstream/master
-
 -------------------------------------
 
 10. git push -u origin master
