@@ -1,0 +1,29 @@
+@extends('layouts.app')
+
+@section('content')
+    <div class="row" align="center">
+        <div class="col-md-12">
+            <form action="/exercicio" method="POST">
+                <div class="form-group">
+                    {{ csrf_field() }}
+                    @if(isset($user))
+                        {{ method_field('PUT') }}
+                    @endif
+                    <input type="text" name="nome" placeholder="Nome" class="form-control"
+                      value="{{ isset($exercicio) ? $exercicio->nome : '' }}">
+                    <input type="number" name="ordem" placeholder="Ordem" class="form-control"
+                      value="{{ isset($exercicio) ? $exercicio->ordem : '' }}">
+                    <input type="number" name="carga" placeholder="Carga" class="form-control"
+                      value="{{ isset($exercicio) ? $exercicio->carga : '' }}">
+                    <input type="number" name="series" placeholder="Séries" class="form-control"
+                      value="{{ isset($exercicio) ? $exercicio->series : '' }}">
+                    <input type="number" name="repeticoes" placeholder="Repetições" class="form-control"
+                      value="{{ isset($exercicio) ? $exercicio->repeticoes : '' }}">
+                    <button type="submit" class="btn btn-sm btn-success">Salvar</button>
+                    <a href="/exercicio" class="btn btn-sm btn-info">Cancelar</a>
+                    <input type="hidden" value="{{ csrf_token() }}" name="_token">
+                </div>
+            </form>
+        </div>
+    </div>
+@endsection
