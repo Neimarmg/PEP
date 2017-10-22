@@ -27,7 +27,9 @@
                             <tr>
                                 <td>{{ ($key+1) }}</td>
                                 <td>{{ $exercicio->nome }}</td>
-                                <td></td>
+                                <td>
+                                    {{ $exercicio->grupo_muscular_id }}
+                                </td>
                                 <td>{{ $exercicio->ordem }}</td>
                                 <td>{{ $exercicio->carga }}</td>
                                 <td>{{ $exercicio->series }}</td>

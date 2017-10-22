@@ -12,6 +12,6 @@ class Exercicio extends Model
      * @var array
      */
      protected $fillable = [
-        'nome', 'ordem', 'carga', 'series', 'repeticoes',
+        'nome', 'grupo_muscular_id', 'ordem', 'carga', 'series', 'repeticoes',
     ];
 }

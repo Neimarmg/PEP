@@ -81,7 +81,7 @@ class GrupoMuscularController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request,[
-            'nome'=>'required|unique:grupo_musculars',
+            'nome'=>'required',
             'tipo'=>'required',
         ]);
         $grupoMuscular = [
