@@ -14,8 +14,10 @@ class ExercicioController extends Controller
      */
     public function index()
     {
-        $exercicios = exercicio::all(); 
-        return view('exercicios.exercicio',compact('exercicios'));
+        $exercicios ['exercicios'] = Exercicio::all(); 
+        // $exercicios = Exercicio::all(); 
+        return view('exercicios.exercicio',$exercicios);
+        // return view('exercicios.exercicio',compact('exercicios'));
     }
 
     /**
@@ -37,6 +39,12 @@ class ExercicioController extends Controller
     public function store(Request $request)
     {
         $exercicio = new Exercicio;
+        $this->validate($request,[
+            'nome'=>'required|unique:exercicios',
+            // 'carga'=>'required',
+            // 'series'=>'required',
+            // 'repeticoes'=>'required',
+        ]);
         $exercicio->nome = $request->nome;
         $exercicio->ordem = $request->ordem;
         $exercicio->carga = $request->carga;
@@ -65,8 +73,8 @@ class ExercicioController extends Controller
      */
     public function edit($id)
     {
-        $data['exercicio'] = Exercicio::find($id);
-        return view('exercicios.formulario',$data);
+        $exercicio['exercicio'] = Exercicio::find($id);
+        return view('exercicios.formulario',$exercicio);
     }
 
     /**
@@ -78,7 +86,24 @@ class ExercicioController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,[
+            'nome'=>'required|unique:exercicios',
+            // 'carga'=>'required',
+            // 'series'=>'required',
+            // 'repeticoes'=>'required',
+        ]);
+        $exercicio = [
+            'nome' => $request->nome,
+            'ordem' => $request->ordem,
+            'carga' => $request->carga,
+            'series' => $request->series,
+            'repeticoes' => $request->repeticoes,
+        ];
+        $update = Exercicio::find($id)->update($exercicio);
+        if($update)
+            return redirect('exercicio');
+        else
+            return redirect()->back()->withInput();
     }
 
     /**

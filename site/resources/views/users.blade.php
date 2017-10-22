@@ -1,6 +1,5 @@
 @extends('layouts.app')
 @section('content')
-<a href="home" class="btn btn-sm btn-primary">Voltar</a>
     <center>
         <h3>CRUD NOVOS USUARIOS</h3>
         @if(Session::has('success'))
@@ -45,5 +44,6 @@
                 </table>
             </div>
         </div>
+        <a href="home" class="btn btn-sm btn-primary">Voltar</a>
     </center>
 @endsection

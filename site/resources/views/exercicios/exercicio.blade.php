@@ -9,8 +9,8 @@
                     <thead>
                         <tr>
                             <th width="5">No</th>
-                            <th>Nome</th>
-                            <th>Grupo Muscular</th>
+                            <th width="150">Nome</th>
+                            <th width="150">Grupo Muscular</th>
                             <th width="5">Ordem</th>
                             <th width="5">Carga</th>
                             <th width="5">Séries</th>

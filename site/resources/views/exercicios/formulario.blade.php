@@ -3,10 +3,10 @@
 @section('content')
     <div class="row" align="center">
         <div class="col-md-12">
-            <form action="/exercicio" method="POST">
+            <form action="{{ URL('exercicio') }}{{ isset($exercicio) ? '/' . $exercicio->id : '' }}" method="POST">
                 <div class="form-group">
                     {{ csrf_field() }}
-                    @if(isset($user))
+                    @if(isset($exercicio))
                         {{ method_field('PUT') }}
                     @endif
                     <input type="text" name="nome" placeholder="Nome" class="form-control"
@@ -21,9 +21,14 @@
                       value="{{ isset($exercicio) ? $exercicio->repeticoes : '' }}">
                     <button type="submit" class="btn btn-sm btn-success">Salvar</button>
                     <a href="/exercicio" class="btn btn-sm btn-info">Cancelar</a>
-                    <input type="hidden" value="{{ csrf_token() }}" name="_token">
                 </div>
             </form>
+            @if(count($errors)>0)
+            @foreach($errors->all() as $error)
+                {{$error}}
+                <br>
+            @endforeach
+        @endif
         </div>
     </div>
 @endsection
