@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <center>
-        <h3>CRUD NOVOS USUARIOS</h3>
+        <h3>Lista de Usuários</h3>
         @if(Session::has('success'))
             <h3>{{ Session::get('success') }} </h3>            
         @else

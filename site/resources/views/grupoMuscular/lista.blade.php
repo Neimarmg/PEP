@@ -2,40 +2,33 @@
 
 @section('content')
     <center>
-        <h3>Lista de exercícios</h3>            
+        <h3>Lista de Grupo Musculares</h3>            
         <div class="row col-md-12">
             <div class="table-responsive">
                 <table class="table table-hover table-bordered" >
                     <thead>
                         <tr>
                             <th width="5">No</th>
-                            <th>Nome</th>
-                            <th width="300">Grupo Muscular</th>
-                            <th width="5">Ordem</th>
-                            <th width="5">Carga</th>
-                            <th width="5">Séries</th>
-                            <th width="5">Repetições</th>
+                            <th>Grupo Muscular</th>
+                            <th width="300">Tipo</th>
                             <th width="5">
                                 <center>
-                                    <a href="exercicio/create" class="btn btn-xs btn-success">Novo Exercício</a>
+                                    <a href="grupoMuscular/create" class="btn btn-xs btn-success">Novo Grupo Muscular</a>
                                 </center>
                             </th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($exercicios as $key =>$exercicio)
+                        @foreach($grupoMuscular as $key =>$grupoMusc)
                             <tr>
                                 <td>{{ ($key+1) }}</td>
-                                <td>{{ $exercicio->nome }}</td>
-                                <td></td>
-                                <td>{{ $exercicio->ordem }}</td>
-                                <td>{{ $exercicio->carga }}</td>
-                                <td>{{ $exercicio->series }}</td>
-                                <td>{{ $exercicio->repeticoes }}</td>
+                                <td>{{ $grupoMusc->nome }}</td>
+                                <td>{{ $grupoMusc->tipo }}</td>
                                 <td>
                                     <center>
-                                        <a href="{{ URL('exercicio/' . $exercicio->id . '/edit') }}" class="btn btn-xs btn-info">Editar</a>
-                                        <form action="{{ URL('exercicio/' . $exercicio->id) }}" method="POST">
+                                        <a href="{{ URL('grupoMuscular/' . $grupoMusc->id . '/edit') }}" class="btn btn-xs btn-info">Editar</a>
+
+                                        <form action="{{ URL('grupoMuscular/' . $grupoMusc->id) }}" method="POST">
                                             {{ csrf_field() }}
                                             {{ method_field('DELETE') }}
                                             <button type="submit" class="btn btn-xs btn-danger">Remover</button>

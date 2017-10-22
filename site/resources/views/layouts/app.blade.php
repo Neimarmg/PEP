@@ -43,6 +43,9 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
+                        @auth
+                            <li><a href="{{ url('/home') }}">Home</a></li>
+                        @endauth
                         @guest
                             <li><a href="{{ route('login') }}">Entrar</a></li>
                             <li><a href="{{ route('register') }}">Criar conta</a></li>

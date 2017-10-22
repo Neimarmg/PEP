@@ -2,6 +2,7 @@
 @section('content')
     <div class="row">
         <div class="col-md-12">
+        <h3>Lista de exercícios</h3> 
             <form action="{{ URL('users') }}{{ isset($user) ? '/' . $user->id : '' }}" method="POST">
                 <div class="form-group">
                     {{ csrf_field() }}

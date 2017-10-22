@@ -14,8 +14,9 @@
                         </div>
                     @endif
 
-                    <a href="users" class="btn btn-sm btn-primary">Lista de Usuários</a>
-                    <a href="exercicio" class="btn btn-sm btn-primary">Lista de exercícios</a>
+                    <a href="users" class="btn btn-sm btn-primary">Gerenciar Usuários</a>
+                    <a href="grupoMuscular" class="btn btn-sm btn-primary">Gerenciar grupos musculares</a>
+                    <a href="exercicio" class="btn btn-sm btn-primary">Gerenciar exercícios</a>
                     {{--  Você está logado!  --}}
                 </div>
             </div>

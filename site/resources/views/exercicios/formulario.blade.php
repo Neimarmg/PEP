@@ -2,6 +2,7 @@
 
 @section('content')
     <div class="row" align="center">
+        <h3>Cadastro de exercício</h3> 
         <div class="col-md-12">
             <form action="{{ URL('exercicio') }}{{ isset($exercicio) ? '/' . $exercicio->id : '' }}" method="POST">
                 <div class="form-group">
@@ -24,11 +25,11 @@
                 </div>
             </form>
             @if(count($errors)>0)
-            @foreach($errors->all() as $error)
-                {{$error}}
-                <br>
-            @endforeach
-        @endif
+                @foreach($errors->all() as $error)
+                    {{$error}}
+                    <br>
+                @endforeach
+            @endif
         </div>
     </div>
 @endsection

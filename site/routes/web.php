@@ -18,6 +18,7 @@ Route::get('/', function () {
 Route::group(['prefix' => ''], function () {
     Route::resource('users', 'LearnController');
     Route::resource('exercicio', 'ExercicioController');
+    Route::resource('grupoMuscular', 'GrupoMuscularController');
 });
 Auth::routes();
 
