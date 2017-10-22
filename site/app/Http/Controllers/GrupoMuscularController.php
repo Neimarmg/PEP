@@ -16,7 +16,7 @@ class GrupoMuscularController extends Controller
     {
         // return view('grupomuscular.lista');
         $grupomMscular ['grupoMuscular']= GrupoMuscular::all(); 
-        return view('grupomuscular.lista',$grupomMscular);
+        return view('grupoMuscular.lista',$grupomMscular);
     }
 
     /**
@@ -26,7 +26,7 @@ class GrupoMuscularController extends Controller
      */
     public function create()
     {
-        return view('grupomuscular.cadastro');
+        return view('grupoMuscular.cadastro');
     }
 
     /**
