@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: mysql01-farm62.kinghost.net
--- Tempo de geração: 20/10/2017 às 17:43
+-- Tempo de geração: 22/10/2017 às 17:11
 -- Versão do servidor: 5.7.18-log
 -- Versão do PHP: 5.3.28
 
@@ -404,6 +404,41 @@ INSERT INTO `Exercicios` (`codExercicio`, `codModalidade`, `nome`, `codNivel`, `
 -- --------------------------------------------------------
 
 --
+-- Estrutura para tabela `exercicios`
+--
+
+CREATE TABLE IF NOT EXISTS `exercicios` (
+  `id` int(10) unsigned NOT NULL,
+  `nome` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `ordem` tinyint(3) unsigned DEFAULT NULL,
+  `carga` double(8,2) DEFAULT NULL,
+  `series` tinyint(3) unsigned DEFAULT NULL,
+  `repeticoes` tinyint(3) unsigned DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Fazendo dump de dados para tabela `exercicios`
+--
+
+INSERT INTO `exercicios` (`id`, `nome`, `ordem`, `carga`, `series`, `repeticoes`, `created_at`, `updated_at`) VALUES
+(1, 'Leg Pres', 4, 40.00, 3, 10, '2017-10-22 09:29:37', '2017-10-22 09:29:37'),
+(2, 'Extensão', 5, 2.00, 3, 10, '2017-10-22 09:32:30', '2017-10-22 09:32:30'),
+(3, 'Flexão', 2, 7.00, 3, 10, '2017-10-22 09:34:34', '2017-10-22 09:34:34'),
+(4, 'Adução', 9, 6.00, 3, 10, '2017-10-22 09:35:10', '2017-10-22 09:35:10'),
+(5, 'Abdução', 8, 6.00, 3, 10, '2017-10-22 09:35:56', '2017-10-22 09:35:56'),
+(14, 'Rosca Roldana', 10, 10.00, 3, 10, '2017-10-22 13:00:42', '2017-10-22 13:00:42'),
+(15, 'Rosca Tríceps', 0, 0.00, 0, 0, '2017-10-22 13:01:10', '2017-10-22 13:01:10'),
+(16, 'Testa', 0, 0.00, 0, 0, '2017-10-22 13:01:32', '2017-10-22 13:01:32'),
+(17, 'Rosca Direta', 3, 8.00, 3, 10, '2017-10-22 13:02:28', '2017-10-22 13:02:28'),
+(18, 'Rosca Alternada', 0, 0.00, 0, 0, '2017-10-22 13:03:10', '2017-10-22 13:03:10'),
+(19, 'Supino Reto', 0, 0.00, 0, 0, '2017-10-22 13:03:24', '2017-10-22 13:03:24'),
+(20, 'Supino Inclinado', 0, 0.00, 0, 0, '2017-10-22 13:03:37', '2017-10-22 13:03:37');
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura para tabela `Feedback`
 --
 
@@ -433,6 +468,35 @@ CREATE TABLE IF NOT EXISTS `Fornecedores` (
   `bairro` varchar(50) NOT NULL,
   `cep` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `grupo_musculars`
+--
+
+CREATE TABLE IF NOT EXISTS `grupo_musculars` (
+  `id` int(10) unsigned NOT NULL,
+  `nome` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tipo` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Fazendo dump de dados para tabela `grupo_musculars`
+--
+
+INSERT INTO `grupo_musculars` (`id`, `nome`, `tipo`, `created_at`, `updated_at`) VALUES
+(1, 'Tríceps', 'A', '2017-10-22 18:53:18', '2017-10-22 19:07:18'),
+(2, 'Membros Inferiores', 'A', '2017-10-22 19:02:35', '2017-10-22 19:02:35'),
+(3, 'Bíceps', 'A', '2017-10-22 19:39:00', '2017-10-22 19:39:00'),
+(4, 'Peitoral', 'B', '2017-10-22 20:08:48', '2017-10-22 20:08:48'),
+(5, 'Dorsais', 'B', '2017-10-22 20:09:04', '2017-10-22 20:09:04'),
+(6, 'Deltóides', 'B', '2017-10-22 20:09:34', '2017-10-22 20:09:34'),
+(7, 'Trapézio', 'B', '2017-10-22 20:09:52', '2017-10-22 20:09:52'),
+(8, 'Abdominais', 'C', '2017-10-22 20:10:29', '2017-10-22 20:10:29'),
+(9, 'Lombar', 'C', '2017-10-22 20:10:47', '2017-10-22 20:10:47');
 
 -- --------------------------------------------------------
 
@@ -472,7 +536,7 @@ CREATE TABLE IF NOT EXISTS `migrations` (
   `id` int(10) unsigned NOT NULL,
   `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Fazendo dump de dados para tabela `migrations`
@@ -480,7 +544,9 @@ CREATE TABLE IF NOT EXISTS `migrations` (
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (1, '2014_10_12_000000_create_users_table', 1),
-(2, '2014_10_12_100000_create_password_resets_table', 1);
+(2, '2014_10_12_100000_create_password_resets_table', 1),
+(5, '2017_10_22_032003_create_exercicios_table', 2),
+(7, '2017_10_22_161356_create_grupo_musculars_table', 3);
 
 -- --------------------------------------------------------
 
@@ -699,19 +765,68 @@ CREATE TABLE IF NOT EXISTS `users` (
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=62 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Fazendo dump de dados para tabela `users`
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Rodrigo Avellar', 'ramprofissional@gmail.com', '$2y$10$Ud7OQFZR/sCxQGBTOeafG.dSGIDh1XDW0KwRp3UPzvXegL2f7yGxe', 'lutreY897dD2xXHzRMr9EhT0Uik5RWsb4Nsjq9OOwtUA9qrGJE10yVdNKyBc', '2017-10-08 13:08:13', '2017-10-08 13:39:15'),
+(1, 'Rodrigo Avellar', 'ramprofissional@gmail.com', '$2y$10$Ud7OQFZR/sCxQGBTOeafG.dSGIDh1XDW0KwRp3UPzvXegL2f7yGxe', 'NbsEUnERxqM136GRE3NCpYv1IMiC82jC8vVE7UdtaqRnQK2uWNWLkSeYHw1p', '2017-10-08 13:08:13', '2017-10-08 13:39:15'),
 (2, 'Daniel Dias', 'danieldiasrosa2016@gmail.com', '698dc19d489c4e4db73e28a713eab07b', 'FzihGiBBz3KQSpDckGNcwPHJ2EINfADekqJzlP1qaybc7rpZsuFUyjw26LmY', '2017-10-08 13:10:54', '2017-10-08 13:28:06'),
 (3, 'Mariana Biancini', 'marianabianchini18@gmail.com', '$2y$10$ZdIls0mIuYfC8YFHAYRQb.k0Sq/7wup.rhDPUxREmyt0wvV3yIZXS', NULL, NULL, '2017-10-08 13:29:00'),
 (4, 'Neimar Gobbi', 'neimarg@gmail.com', '$2y$10$mdz5Ab9G7W1YvxNXWw4Sxuy8D1B8lZPKlUHhtYmuR2uJynvIAAfgG', NULL, NULL, '2017-10-08 13:29:32'),
 (5, 'Aurélio', 'aumasa2000@gmail.com', '$2y$10$rz5kM1djard2E7kXcglE8O81YQ9UIwx1ooaFnFs4ha6eZkvMyg0Ry', NULL, NULL, '2017-10-08 13:59:15'),
-(7, 'daniel', 'daniel@daniel.com', '$2y$10$0mE.YiwnKXh5vn9fBa7uC.Jt7fPyBgCPUVkt1BZj8NJ/EfUKETKsS', '0XwcPWIQoSbiV14QUFrNxomTlLn8tn8lOQZJGpYZ0bTEgVVnRTucBzdkCaZQ', '2017-10-19 06:55:06', '2017-10-19 06:55:06');
+(11, 'Catharine Farrell', 'alisha.klein@example.com', '$2y$10$YrIq5lHYm39CTHF8jBnereL4wfNHf2.rJqs8ySdbxYbenNU80Ooee', 'um9wIlQAgv', '2017-10-22 19:27:26', '2017-10-22 19:27:26'),
+(12, 'Isaac Hoppe', 'lou47@example.net', '$2y$10$YrIq5lHYm39CTHF8jBnereL4wfNHf2.rJqs8ySdbxYbenNU80Ooee', 'sTEqDJUrLp', '2017-10-22 19:27:27', '2017-10-22 19:27:27'),
+(13, 'Jordane Larson', 'weissnat.rebeka@example.net', '$2y$10$YrIq5lHYm39CTHF8jBnereL4wfNHf2.rJqs8ySdbxYbenNU80Ooee', '8HZsdlmnzL', '2017-10-22 19:27:27', '2017-10-22 19:27:27'),
+(14, 'Dennis Graham', 'zkuphal@example.net', '$2y$10$YrIq5lHYm39CTHF8jBnereL4wfNHf2.rJqs8ySdbxYbenNU80Ooee', '2U1kTEqa5t', '2017-10-22 19:27:27', '2017-10-22 19:27:27'),
+(15, 'Jillian Steuber', 'gprice@example.com', '$2y$10$YrIq5lHYm39CTHF8jBnereL4wfNHf2.rJqs8ySdbxYbenNU80Ooee', '75RP9h3nlF', '2017-10-22 19:27:27', '2017-10-22 19:27:27'),
+(16, 'Adelbert Dickens', 'vada.luettgen@example.org', '$2y$10$YrIq5lHYm39CTHF8jBnereL4wfNHf2.rJqs8ySdbxYbenNU80Ooee', 'kAcLcki7bd', '2017-10-22 19:27:27', '2017-10-22 19:27:27'),
+(17, 'Ms. Kyla Towne', 'thea.orn@example.org', '$2y$10$YrIq5lHYm39CTHF8jBnereL4wfNHf2.rJqs8ySdbxYbenNU80Ooee', 'jWXPokwJbm', '2017-10-22 19:27:27', '2017-10-22 19:27:27'),
+(18, 'Kylie Ward II', 'dale56@example.org', '$2y$10$YrIq5lHYm39CTHF8jBnereL4wfNHf2.rJqs8ySdbxYbenNU80Ooee', 'aMpcKRpYjb', '2017-10-22 19:27:27', '2017-10-22 19:27:27'),
+(19, 'Prof. Felicity Konopelski IV', 'dillon56@example.net', '$2y$10$YrIq5lHYm39CTHF8jBnereL4wfNHf2.rJqs8ySdbxYbenNU80Ooee', '9GnOH81ldv', '2017-10-22 19:27:27', '2017-10-22 19:27:27'),
+(20, 'Tressie Orn PhD', 'gzboncak@example.com', '$2y$10$YrIq5lHYm39CTHF8jBnereL4wfNHf2.rJqs8ySdbxYbenNU80Ooee', 'Ksy6NEWyrN', '2017-10-22 19:27:27', '2017-10-22 19:27:27'),
+(21, 'Dr. Eli Gorczany MD', 'hhagenes@example.net', '$2y$10$YrIq5lHYm39CTHF8jBnereL4wfNHf2.rJqs8ySdbxYbenNU80Ooee', '664fmtoRqt', '2017-10-22 19:27:27', '2017-10-22 19:27:27'),
+(22, 'Mr. Jarvis Pollich', 'wisozk.kristopher@example.com', '$2y$10$YrIq5lHYm39CTHF8jBnereL4wfNHf2.rJqs8ySdbxYbenNU80Ooee', 'D6nCI3vZ0L', '2017-10-22 19:27:27', '2017-10-22 19:27:27'),
+(23, 'Baron Bayer', 'harber.merl@example.com', '$2y$10$YrIq5lHYm39CTHF8jBnereL4wfNHf2.rJqs8ySdbxYbenNU80Ooee', 'i9FlGWGEch', '2017-10-22 19:27:27', '2017-10-22 19:27:27'),
+(24, 'Magdalen Roob', 'pearl16@example.com', '$2y$10$YrIq5lHYm39CTHF8jBnereL4wfNHf2.rJqs8ySdbxYbenNU80Ooee', 'XQucNBglso', '2017-10-22 19:27:27', '2017-10-22 19:27:27'),
+(25, 'Pedro Ruecker', 'piper73@example.org', '$2y$10$YrIq5lHYm39CTHF8jBnereL4wfNHf2.rJqs8ySdbxYbenNU80Ooee', 'DuP8tLluRa', '2017-10-22 19:27:27', '2017-10-22 19:27:27'),
+(26, 'Dr. Dorris DuBuque PhD', 'flossie.miller@example.net', '$2y$10$YrIq5lHYm39CTHF8jBnereL4wfNHf2.rJqs8ySdbxYbenNU80Ooee', 'BvNVBko5QW', '2017-10-22 19:27:27', '2017-10-22 19:27:27'),
+(27, 'Dr. Luna Wehner DDS', 'ansel.nolan@example.org', '$2y$10$YrIq5lHYm39CTHF8jBnereL4wfNHf2.rJqs8ySdbxYbenNU80Ooee', 'QRaJ97T2IK', '2017-10-22 19:27:28', '2017-10-22 19:27:28'),
+(28, 'Jillian Dach', 'poreilly@example.org', '$2y$10$YrIq5lHYm39CTHF8jBnereL4wfNHf2.rJqs8ySdbxYbenNU80Ooee', 'yRXm4bv4cL', '2017-10-22 19:27:28', '2017-10-22 19:27:28'),
+(29, 'Albertha Hansen', 'fatima.abbott@example.com', '$2y$10$YrIq5lHYm39CTHF8jBnereL4wfNHf2.rJqs8ySdbxYbenNU80Ooee', 'HzrWEPMTFY', '2017-10-22 19:27:28', '2017-10-22 19:27:28'),
+(30, 'Dillan Bode', 'emard.madalyn@example.net', '$2y$10$YrIq5lHYm39CTHF8jBnereL4wfNHf2.rJqs8ySdbxYbenNU80Ooee', '7ruS59RYwX', '2017-10-22 19:27:28', '2017-10-22 19:27:28'),
+(31, 'Waldo Bergnaum II', 'fernser@example.org', '$2y$10$YrIq5lHYm39CTHF8jBnereL4wfNHf2.rJqs8ySdbxYbenNU80Ooee', '0ahBLeIr6W', '2017-10-22 19:27:28', '2017-10-22 19:27:28'),
+(32, 'Mr. Fredy Lubowitz', 'ppfannerstill@example.net', '$2y$10$YrIq5lHYm39CTHF8jBnereL4wfNHf2.rJqs8ySdbxYbenNU80Ooee', 'tcithGycaD', '2017-10-22 19:27:28', '2017-10-22 19:27:28'),
+(33, 'Casimir Nienow', 'utremblay@example.org', '$2y$10$YrIq5lHYm39CTHF8jBnereL4wfNHf2.rJqs8ySdbxYbenNU80Ooee', 'jvKmFfsaCj', '2017-10-22 19:27:28', '2017-10-22 19:27:28'),
+(34, 'Jessyca West', 'pblick@example.net', '$2y$10$YrIq5lHYm39CTHF8jBnereL4wfNHf2.rJqs8ySdbxYbenNU80Ooee', '8JV4Q64f1T', '2017-10-22 19:27:28', '2017-10-22 19:27:28'),
+(35, 'Miss Deborah Hegmann II', 'tre.walker@example.net', '$2y$10$YrIq5lHYm39CTHF8jBnereL4wfNHf2.rJqs8ySdbxYbenNU80Ooee', '65LT5VX3b4', '2017-10-22 19:27:28', '2017-10-22 19:27:28'),
+(36, 'Max Mitchell', 'schoen.isabella@example.org', '$2y$10$YrIq5lHYm39CTHF8jBnereL4wfNHf2.rJqs8ySdbxYbenNU80Ooee', 'FYHeinwufD', '2017-10-22 19:27:28', '2017-10-22 19:27:28'),
+(37, 'Kitty Trantow', 'wyatt25@example.org', '$2y$10$YrIq5lHYm39CTHF8jBnereL4wfNHf2.rJqs8ySdbxYbenNU80Ooee', 'zobjTel9Ec', '2017-10-22 19:27:28', '2017-10-22 19:27:28'),
+(38, 'Sierra Schuppe', 'alivia.raynor@example.org', '$2y$10$YrIq5lHYm39CTHF8jBnereL4wfNHf2.rJqs8ySdbxYbenNU80Ooee', 'msr6QMXIkW', '2017-10-22 19:27:28', '2017-10-22 19:27:28'),
+(39, 'Colt Nolan', 'lbradtke@example.net', '$2y$10$YrIq5lHYm39CTHF8jBnereL4wfNHf2.rJqs8ySdbxYbenNU80Ooee', '1hc7Znr59n', '2017-10-22 19:27:28', '2017-10-22 19:27:28'),
+(40, 'Ms. Asa McCullough V', 'santiago.kemmer@example.net', '$2y$10$YrIq5lHYm39CTHF8jBnereL4wfNHf2.rJqs8ySdbxYbenNU80Ooee', 'siAdVLO3J9', '2017-10-22 19:27:28', '2017-10-22 19:27:28'),
+(41, 'Brando Bosco', 'aidan53@example.org', '$2y$10$YrIq5lHYm39CTHF8jBnereL4wfNHf2.rJqs8ySdbxYbenNU80Ooee', 'VXqP6RbRfp', '2017-10-22 19:27:28', '2017-10-22 19:27:28'),
+(42, 'Lavina Stehr IV', 'monte.kreiger@example.net', '$2y$10$YrIq5lHYm39CTHF8jBnereL4wfNHf2.rJqs8ySdbxYbenNU80Ooee', 'ibVGxVmqR8', '2017-10-22 19:27:29', '2017-10-22 19:27:29'),
+(43, 'Elna Hermann', 'marcus.hartmann@example.com', '$2y$10$YrIq5lHYm39CTHF8jBnereL4wfNHf2.rJqs8ySdbxYbenNU80Ooee', 'EnFNe6yUZr', '2017-10-22 19:27:29', '2017-10-22 19:27:29'),
+(44, 'Tillman Becker V', 'denesik.ludwig@example.org', '$2y$10$YrIq5lHYm39CTHF8jBnereL4wfNHf2.rJqs8ySdbxYbenNU80Ooee', 'KJl7jyFxzT', '2017-10-22 19:27:29', '2017-10-22 19:27:29'),
+(45, 'Bella Feest', 'thiel.jimmie@example.net', '$2y$10$YrIq5lHYm39CTHF8jBnereL4wfNHf2.rJqs8ySdbxYbenNU80Ooee', '3NNfwFmxlC', '2017-10-22 19:27:29', '2017-10-22 19:27:29'),
+(46, 'Bridget Hirthe Jr.', 'agustina.hamill@example.org', '$2y$10$YrIq5lHYm39CTHF8jBnereL4wfNHf2.rJqs8ySdbxYbenNU80Ooee', 'DAdEHpRQkm', '2017-10-22 19:27:29', '2017-10-22 19:27:29'),
+(47, 'Mr. Jeramie Rice', 'gregory.lesch@example.com', '$2y$10$YrIq5lHYm39CTHF8jBnereL4wfNHf2.rJqs8ySdbxYbenNU80Ooee', 'g3Dt4dUY2S', '2017-10-22 19:27:29', '2017-10-22 19:27:29'),
+(48, 'Mr. Blake Ratke', 'frederic.mckenzie@example.net', '$2y$10$YrIq5lHYm39CTHF8jBnereL4wfNHf2.rJqs8ySdbxYbenNU80Ooee', 'OOWMGXOEhl', '2017-10-22 19:27:29', '2017-10-22 19:27:29'),
+(49, 'Dr. Melody Lemke MD', 'jovani.stamm@example.net', '$2y$10$YrIq5lHYm39CTHF8jBnereL4wfNHf2.rJqs8ySdbxYbenNU80Ooee', 'DtXuNoQrE8', '2017-10-22 19:27:29', '2017-10-22 19:27:29'),
+(50, 'Marion Gutmann', 'carlie50@example.com', '$2y$10$YrIq5lHYm39CTHF8jBnereL4wfNHf2.rJqs8ySdbxYbenNU80Ooee', 'DRryhXXHFb', '2017-10-22 19:27:29', '2017-10-22 19:27:29'),
+(51, 'Domenick McDermott', 'reba.dooley@example.org', '$2y$10$YrIq5lHYm39CTHF8jBnereL4wfNHf2.rJqs8ySdbxYbenNU80Ooee', 'GIF5c8wvgi', '2017-10-22 19:27:29', '2017-10-22 19:27:29'),
+(52, 'Jonathon Kreiger PhD', 'stamm.willard@example.org', '$2y$10$YrIq5lHYm39CTHF8jBnereL4wfNHf2.rJqs8ySdbxYbenNU80Ooee', 't944yJBSbM', '2017-10-22 19:27:29', '2017-10-22 19:27:29'),
+(53, 'Kaleigh Brown', 'rhoda43@example.net', '$2y$10$YrIq5lHYm39CTHF8jBnereL4wfNHf2.rJqs8ySdbxYbenNU80Ooee', 'aCiN86zA6Q', '2017-10-22 19:27:29', '2017-10-22 19:27:29'),
+(54, 'Ms. Katlyn Hartmann', 'jgusikowski@example.net', '$2y$10$YrIq5lHYm39CTHF8jBnereL4wfNHf2.rJqs8ySdbxYbenNU80Ooee', 'ITE3GxCjXu', '2017-10-22 19:27:29', '2017-10-22 19:27:29'),
+(55, 'Susana Balistreri', 'hickle.providenci@example.net', '$2y$10$YrIq5lHYm39CTHF8jBnereL4wfNHf2.rJqs8ySdbxYbenNU80Ooee', 'CHHEjiXKIJ', '2017-10-22 19:27:29', '2017-10-22 19:27:29'),
+(56, 'Renee Littel', 'xankunding@example.com', '$2y$10$YrIq5lHYm39CTHF8jBnereL4wfNHf2.rJqs8ySdbxYbenNU80Ooee', 'bS2dIRtcuR', '2017-10-22 19:27:29', '2017-10-22 19:27:29'),
+(57, 'Dr. Nathaniel Leuschke V', 'cole05@example.org', '$2y$10$YrIq5lHYm39CTHF8jBnereL4wfNHf2.rJqs8ySdbxYbenNU80Ooee', 'AN09qyQah8', '2017-10-22 19:27:29', '2017-10-22 19:27:29'),
+(58, 'Katharina Berge', 'leola20@example.com', '$2y$10$YrIq5lHYm39CTHF8jBnereL4wfNHf2.rJqs8ySdbxYbenNU80Ooee', 'vPqqlYRU1S', '2017-10-22 19:27:29', '2017-10-22 19:27:29'),
+(59, 'Trystan Halvorson', 'marks.aylin@example.org', '$2y$10$YrIq5lHYm39CTHF8jBnereL4wfNHf2.rJqs8ySdbxYbenNU80Ooee', 'cQLJjcsus0', '2017-10-22 19:27:30', '2017-10-22 19:27:30'),
+(60, 'Charlie Huels', 'carli44@example.com', '$2y$10$YrIq5lHYm39CTHF8jBnereL4wfNHf2.rJqs8ySdbxYbenNU80Ooee', 'qvXgBj4kc2', '2017-10-22 19:27:30', '2017-10-22 19:27:30');
 
 -- --------------------------------------------------------
 
@@ -747,7 +862,7 @@ CREATE TABLE IF NOT EXISTS `Utilitarios` (
   `Obs` text NOT NULL,
   `codSubGrupo` int(11) NOT NULL,
   `favorita` tinyint(1) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=80 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=90 DEFAULT CHARSET=latin1;
 
 --
 -- Fazendo dump de dados para tabela `Utilitarios`
@@ -815,7 +930,14 @@ INSERT INTO `Utilitarios` (`codUtilitario`, `utilitario`, `codTipoUtilirario`, `
 (76, 'Hidroginastica', 18, '', 0, 0),
 (77, 'Pilates', 18, '', 0, 0),
 (78, 'Orientada', 19, '', 0, 0),
-(79, 'Livre', 19, '', 0, 0);
+(79, 'Livre', 19, '', 0, 0),
+(80, 'Membros Inferiores', 16, '', 0, 0),
+(82, 'Dorsais', 16, '', 0, 0),
+(83, 'Deltóides', 16, '', 0, 0),
+(85, 'Abdominais', 16, '', 0, 0),
+(86, 'Lombar', 16, '', 0, 0),
+(88, 'Bíceps', 16, '', 0, 0),
+(89, 'Bíceps', 16, '', 0, 0);
 
 --
 -- Índices de tabelas apagadas
@@ -852,10 +974,22 @@ ALTER TABLE `Exercicios`
   ADD PRIMARY KEY (`codExercicio`);
 
 --
+-- Índices de tabela `exercicios`
+--
+ALTER TABLE `exercicios`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Índices de tabela `Feedback`
 --
 ALTER TABLE `Feedback`
   ADD PRIMARY KEY (`codFeedback`);
+
+--
+-- Índices de tabela `grupo_musculars`
+--
+ALTER TABLE `grupo_musculars`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Índices de tabela `HabilitacaoPessoa`
@@ -965,10 +1099,20 @@ ALTER TABLE `ChekinPessoal`
 ALTER TABLE `Exercicios`
   MODIFY `codExercicio` smallint(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
+-- AUTO_INCREMENT de tabela `exercicios`
+--
+ALTER TABLE `exercicios`
+  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=24;
+--
 -- AUTO_INCREMENT de tabela `Feedback`
 --
 ALTER TABLE `Feedback`
   MODIFY `codFeedback` smallint(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de tabela `grupo_musculars`
+--
+ALTER TABLE `grupo_musculars`
+  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT de tabela `HabilitacaoPessoa`
 --
@@ -978,7 +1122,7 @@ ALTER TABLE `HabilitacaoPessoa`
 -- AUTO_INCREMENT de tabela `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT de tabela `PerfisUsuario`
 --
@@ -1018,7 +1162,7 @@ ALTER TABLE `Treinos`
 -- AUTO_INCREMENT de tabela `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
+  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=62;
 --
 -- AUTO_INCREMENT de tabela `Usuarios`
 --
@@ -1028,7 +1172,7 @@ ALTER TABLE `Usuarios`
 -- AUTO_INCREMENT de tabela `Utilitarios`
 --
 ALTER TABLE `Utilitarios`
-  MODIFY `codUtilitario` smallint(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=80;
+  MODIFY `codUtilitario` smallint(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=90;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
