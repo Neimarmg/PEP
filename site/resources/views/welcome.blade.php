@@ -77,7 +77,7 @@
                 </div>
             @endif
 
-{{--  <div class="content">asdadadas</div>  --}}
+<!--{{--  <div class="content">asdadadas</div>  --}}-->
 
             <div class="content">
                 <img src="logo.png">
@@ -91,7 +91,6 @@
                     <a href="">Link2</a>
                     <a href="">Link3</a>
                     <a href="">Link4</a>
-                    <a href="">Link5</a>
                 </div>
             </div>
         </div>
