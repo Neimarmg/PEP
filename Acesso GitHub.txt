@@ -1,5 +1,4 @@
-﻿123
-Git clone https://github.com/Neimarmg/PEP.git
+﻿Git clone https://github.com/Neimarmg/PEP.git
 
 
 1. git clone "Caminho repositorio git"
@@ -25,8 +24,6 @@ Obs Apartir do segundo commit na mesma pasta
 10. git push -u origin master
 
 
-
-
 https://gist.github.com/leocomelli/2545add34e4fec21ec16
 http://rafaeljeffman.com/_.php?c=git
 ---------------------------------------------
@@ -40,20 +37,3 @@ git push -u origin master
 
 ... ou importar código de outro repositório
 Você pode inicializar este repositório com o código de um projeto Subversion, Mercurial ou TFS.
-
-
-
-BANCO:
-
-phpmyadmin: mysql.pep.kinghost.net
-Usuário: pep
-Senha: 84d235g4r8h
-
-
-ACESSO SV WEB:
-
-FTP: ftp.pep.kinghost.net ou ftp.web1513.kinghost.net
-ACESSO WEB: http://webftp.kinghost.net/
-USUARIO: pep
-
-SENHA: ads2017

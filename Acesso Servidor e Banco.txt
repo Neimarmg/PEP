@@ -1,0 +1,14 @@
+BANCO:
+
+phpmyadmin: mysql.pep.kinghost.net
+Usuário: pep
+Senha: 84d235g4r8h
+
+
+ACESSO SV WEB:
+
+FTP: ftp.pep.kinghost.net ou ftp.web1513.kinghost.net
+ACESSO WEB: http://webftp.kinghost.net/
+USUARIO: pep
+
+SENHA: ads2017

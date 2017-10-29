@@ -9,7 +9,7 @@ Projeto a ser desenvolvido, em fase Alpha.
 
 # Team
 Aurélio Santana,
-Daniel,
+Daniel Dias,
 Mariana Bianchini,
-Neimar,
+Neimar Gobi,
 Rodrigo Avellar de Muniagurria.
