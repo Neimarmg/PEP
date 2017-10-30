@@ -3,12 +3,12 @@
 
 1. git clone "Caminho repositorio git"
 2. git init
-3. git add --all
-4. git commit -m "Mensages ?????"
+3. git add --all                      *
+4. git commit -m "Mensages ?????"     **
 -------------------------------------
 5. git config push.default simple  
 -------------------------------------
-6. git push -u origin master
+6. git push -u origin master          ***
 
 
 Obs Apartir do segundo commit na mesma pasta

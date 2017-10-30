@@ -84,7 +84,7 @@ git status
 git push -u origin master
 
 
-# Boostrap 4 com Laravel
+# Boostrap 4 com Laravel (NÃO USARESMOS ESSA VERSÃO NO PROJETO)
 1) Com o projeto criado instalar o npm packages pelo terminal:
 npm install
 
