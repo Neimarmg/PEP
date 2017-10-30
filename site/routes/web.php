@@ -12,13 +12,14 @@
 */
 
 Route::get('/', function () {
-    // return view('teste');
-    return view('welcome');
+    return view('teste');
+    // return view('welcome');
 });
 
 Route::group(['prefix' => ''], function () {
     Route::resource('users', 'LearnController');
     Route::resource('exercicio', 'ExercicioController');
+    Route::resource('aurelio', 'ExercicioController');
     Route::resource('grupoMuscular', 'GrupoMuscularController');
 });
 Auth::routes();
