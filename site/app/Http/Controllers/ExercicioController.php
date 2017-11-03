@@ -127,10 +127,10 @@ class ExercicioController extends Controller
         $exercicio = Exercicio::find($id);
         if($exercicio){
             $exercicio->destroy($id);
-            $msg = 'Exercício removido com Sucesso.';
+            $msg = '* EXERCÍCIO REMOVIDO COM SUCESSO *';
         }
         else{
-            $msg = 'Exercício não encontrado';
+            $msg = '* EXERCÍCIO NÃO ENCONTRADO *';
         }
         return redirect()
             ->back()
