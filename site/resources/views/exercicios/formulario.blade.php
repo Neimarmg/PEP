@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
+@auth
+
 <div class="row" align="center">
     <h3>Cadastro de exercício</h3> 
     <form class="form-horizontal col-lg-offset-3"
@@ -76,6 +78,12 @@
         @endforeach
     @endif
 </div>
+
+@endauth
+
+@guest
+    @include('shared.filtroLogado')
+@endguest
 @endsection
 
 {{-- Posteriormente: Para fazer upload de imagem!!!

@@ -13,7 +13,7 @@ class TreinoController extends Controller
      */
     public function index()
     {
-        //
+        $this->middleware('auth');        
     }
 
     /**

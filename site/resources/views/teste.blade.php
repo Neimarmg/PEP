@@ -1,6 +1,5 @@
 @extends('layouts.app')
 @section('content')
-    abacaxi
 
 <div class="container-fluid">
 	<div class="row">

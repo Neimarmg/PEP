@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+@auth
     <center>
         <h3>Lista de Grupo Musculares</h3>            
         <div class="row col-md-12">
@@ -43,4 +44,9 @@
         </div>
         <a href="home" class="btn btn-sm btn-primary">Voltar</a>
     </center>
+@endauth
+
+@guest
+    @include('shared.filtroLogado')
+@endguest
 @endsection

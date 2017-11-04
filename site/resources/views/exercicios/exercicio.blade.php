@@ -1,11 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
+{{--  @auth  --}}
     <center>
         <h3>Lista de exercícios</h3>            
         <div class="row col-md-12">
             <div class="table-responsive">
-                <table class="table table-hover table-bordered" >
+                <table class="table table-striped table-hover table-bordered" >
                     <thead>
                         <tr>
                             <th width="5">No</th>
@@ -30,8 +31,8 @@
                                 <td>
                                     {{ $exercicio->grupo_muscular_id }}
                                 </td>
-                                <td>{{ $exercicio->ordem }}</td>
-                                <td>{{ $exercicio->carga }}</td>
+                                <td>{{ $exercicio->ordem }}º</td>
+                                <td>{{ $exercicio->carga }}kg</td>
                                 <td>{{ $exercicio->series }}</td>
                                 <td>{{ $exercicio->repeticoes }}</td>
                                 <td>
@@ -52,4 +53,10 @@
         </div>
         <a href="home" class="btn btn-sm btn-primary">Voltar</a>
     </center>
+{{--  @endauth
+
+@guest
+    @include('shared.filtroLogado')
+@endguest  --}}
+
 @endsection

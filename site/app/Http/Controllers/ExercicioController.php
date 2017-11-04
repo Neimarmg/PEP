@@ -19,6 +19,14 @@ class ExercicioController extends Controller
         $grupoMusculars ['grupoMusculars'] = GrupoMuscular::all(); 
         return view('exercicios.exercicio',$exercicios,$grupoMusculars);
         // return view('exercicios.exercicio',compact('exercicios'));
+
+        // $exercicios ['exercicios'] = Exercicio::all();
+        // $grupoMusculars ['grupoMusculars'] = GrupoMuscular::all(); 
+        // if($this->middleware('auth')){
+        //     return view('shared.filtroLogado');
+        // } else {
+        //     return view('exercicios.exercicio',$exercicios,$grupoMusculars);            
+        // }
     }
 
     /**
