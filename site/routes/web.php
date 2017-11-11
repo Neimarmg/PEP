@@ -16,13 +16,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::group(['prefix' => ''], function () {
-    Route::resource('users', 'LearnController');
-    // Route::resource('exercicio', 'ExercicioController')->middleware('auth');
-    Route::resource('exercicio', 'ExercicioController');
-    Route::resource('aurelio', 'ExercicioController');
-    Route::resource('grupoMuscular', 'GrupoMuscularController');
-});
+// Route::group(['prefix' => ''], function () {
+//     Route::resource('users', 'LearnController');
+//     // Route::resource('exercicio', 'ExercicioController')->middleware('auth');
+//     Route::resource('exercicio', 'ExercicioController');
+//     Route::resource('aurelio', 'ExercicioController');
+//     Route::resource('grupoMuscular', 'GrupoMuscularController');
+// });
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/admin', 'AdminController@index');
