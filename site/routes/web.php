@@ -12,8 +12,8 @@
 */
 
 Route::get('/', function () {
-    return view('teste');
-    // return view('welcome');
+    // return view('teste');
+    return view('welcome');
 });
 
 Route::group(['prefix' => ''], function () {
