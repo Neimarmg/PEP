@@ -12,8 +12,15 @@
 */
 
 Route::get('/', function () {
-    // return view('teste');
     return view('welcome');
+});
+
+Route::get('/selectLogin', function () {
+    return view('auth.selectLogin');
+});
+
+Route::get('/formtreino', function () {
+    return view('treino.formulario');
 });
 
 Route::group(['prefix' => ''], function () {
@@ -34,3 +41,10 @@ Route::prefix('admin')->group(function() {
     Route::get('/', 'AdminController@index')->name('admin.dashboard');
     Route::get('/logout', 'Auth\AdminLoginController@logout')->name('admin.logout');
 });
+
+// Route::prefix('treino')->group(function() {
+//     Route::get('/login', 'Auth\TreinoLoginController@showLoginForm')->name('treino.login');
+//     Route::post('/login', 'Auth\TreinoLoginController@login')->name('treino.login.submit');
+//     Route::get('/', 'TreinoController@index')->name('treino.dashboard');
+//     Route::get('/logout', 'Auth\TreinoLoginController@logout')->name('treino.logout');
+// });

@@ -21,6 +21,7 @@
                     <a href="users" class="btn btn-sm btn-primary">Gerenciar Usuários</a>
                     <a href="grupoMuscular" class="btn btn-sm btn-primary">Gerenciar grupos musculares</a>
                     <a href="exercicio" class="btn btn-sm btn-primary">Gerenciar exercícios</a>
+                    <a href="admin/logout" class="btn btn-sm btn-primary">Deslogar Admin</a>
                     {{--  Você está logado!  --}}
                 </div>
             </div>
