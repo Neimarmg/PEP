@@ -77,21 +77,27 @@
                 </div>
             @endif
 
-{{--  <div class="content">asdadadas</div>  --}}
-
             <div class="content">
-                <img src="logo.png">
-                <div class="title m-b-md">
-                    PEP
-                </div>
-                <h3>Programa de Exercício Pessoal</h3>
-                <br>
-                <div class="links">
-                    <a href="">Link1</a>
-                    <a href="">Link2</a>
-                    <a href="">Link3</a>
-                    <a href="">Link4</a>
-                    <a href="">Link5</a>
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        <div class="panel">
+                            @component('components.who')
+                            @endcomponent
+                        </div>
+                        {{--  <img src="logo.png">
+                        <div class="title m-b-md">
+                            PEP
+                        </div>
+                        <h3>Programa de Exercício Pessoal</h3>
+                        <br>
+                        <div class="links">
+                            <a href="">Link1</a>
+                            <a href="">Link2</a>
+                            <a href="">Link3</a>
+                            <a href="">Link4</a>
+                            <a href="">Link5</a>
+                        </div>  --}}
+                    </div>
                 </div>
             </div>
         </div>
