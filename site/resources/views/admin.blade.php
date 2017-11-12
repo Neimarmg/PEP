@@ -1,99 +1,32 @@
-<!doctype html>
-<html lang="{{ app()->getLocale() }}">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.app')
 
-        <title>PEP</title>
+@section('content')
+@auth
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+                <div class="panel-heading">Portal do Administrador</div>
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
-        <link rel="icon" href="/logo2.png" type="image/x-icon">
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Raleway', sans-serif;
-                font-weight: 100;
-                height: 100vh;
-                margin: 0;
-            }
+                <div class="panel-body">
+                    @if (session('status'))
+                        <div class="alert alert-success">
+                            {{ session('status') }}
+                        </div>
+                    @endif
 
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 12px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Entrar</a>
-                        <a href="{{ route('register') }}">Criar Conta</a>
-                    @endauth
-                </div>
-            @endif
-
-{{--  <div class="content">asdadadas</div>  --}}
-
-            <div class="content">
-                <img src="logo.png">
-                <div class="title m-b-md">
-                    PEP - ADMIN
-                </div>
-                <h3>Programa de Exercício Pessoal</h3>
-                <br>
-                <div class="links">
-                    <a href="">Link1</a>
-                    <a href="">Link2</a>
-                    <a href="">Link3</a>
-                    <a href="">Link4</a>
-                    <a href="">Link5</a>
+                    <a href="users" class="btn btn-sm btn-primary">Gerenciar Usuários</a>
+                    <a href="grupoMuscular" class="btn btn-sm btn-primary">Gerenciar grupos musculares</a>
+                    <a href="exercicio" class="btn btn-sm btn-primary">Gerenciar exercícios</a>
+                    {{--  Você está logado!  --}}
                 </div>
             </div>
         </div>
-    </body>
-</html>
+    </div>
+</div>
+@endauth
+
+@guest
+    @include('shared.filtroLogado')
+@endguest
+@endsection
