@@ -18,8 +18,6 @@ return [
         'passwords' => 'users',
     ],
 
-    // Auth::guard('admin')->check($credentials)
-
     /*
     |--------------------------------------------------------------------------
     | Authentication Guards
@@ -46,7 +44,6 @@ return [
             'driver' => 'token',
             'provider' => 'users',
         ],
-
         'admin' => [
             'driver' => 'session',
             'provider' => 'admins',

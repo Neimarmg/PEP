@@ -17,7 +17,7 @@ Route::get('/', function () {
 });
 
 // Route::group(['prefix' => ''], function () {
-//     Route::resource('users', 'LearnController');
+//     Route::resource('users', 'UserController');
 //     // Route::resource('exercicio', 'ExercicioController')->middleware('auth');
 //     Route::resource('exercicio', 'ExercicioController');
 //     Route::resource('aurelio', 'ExercicioController');
@@ -26,4 +26,9 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/admin', 'AdminController@index');
+
+Route::prefix('admin')->group(function() {
+    Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
+    Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');
+    Route::get('/', 'AdminController@index')->name('admin.dashboard');
+});
