@@ -10,6 +10,7 @@
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
         <link rel="icon" href="/logo2.png" type="image/x-icon">
+        
         <!-- Styles -->
         <style>
             html, body {
@@ -84,7 +85,7 @@
                             @component('components.who')
                             @endcomponent
                         </div>
-                        {{--  <img src="logo.png">
+                        <img src="logo.png" height=200>
                         <div class="title m-b-md">
                             PEP
                         </div>
@@ -94,9 +95,7 @@
                             <a href="">Link1</a>
                             <a href="">Link2</a>
                             <a href="">Link3</a>
-                            <a href="">Link4</a>
-                            <a href="">Link5</a>
-                        </div>  --}}
+                        </div>
                     </div>
                 </div>
             </div>

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-@auth
+@auth()
     <center>
         <h3>Lista de Grupo Musculares</h3>            
         <div class="row col-md-12">
@@ -47,6 +47,9 @@
 @endauth
 
 @guest
-    @include('shared.filtroLogado')
+    {{--  @include('components.filtroLogado')  --}}
+    @component('components.filtroLogado')
+        
+    @endcomponent
 @endguest
 @endsection

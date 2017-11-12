@@ -14,7 +14,7 @@ class GrupoMuscularController extends Controller
      */
     public function index()
     {
-        $this->middleware('auth');
+        // $this->middleware('auth');
         $grupomMscular ['grupoMuscular']= GrupoMuscular::all(); 
         return view('grupoMuscular.lista',$grupomMscular);
     }

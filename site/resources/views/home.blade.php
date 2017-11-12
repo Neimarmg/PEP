@@ -30,6 +30,7 @@
 @endauth
 
 @guest
-    @include('shared.filtroLogado')
+    @component('components.filtroLogado')
+    @endcomponent
 @endguest
 @endsection
