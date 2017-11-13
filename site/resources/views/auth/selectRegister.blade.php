@@ -1,12 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-@auth
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Portal do Treinador</div>
+                <div class="panel-heading">Cadastrar como...</div>
 
                 <div class="panel-body">
                     @if (session('status'))
@@ -14,23 +13,13 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    
-                    @component('components.who')
-                    @endcomponent
 
-                    <a href="users" class="btn btn-sm btn-primary">Gerenciar Usuários</a>
-                    <a href="grupoMuscular" class="btn btn-sm btn-primary">Gerenciar grupos musculares</a>
-                    <a href="exercicio" class="btn btn-sm btn-primary">Gerenciar exercícios</a>
+                    <a href="{{ url('instrutor/register') }}" class="btn btn-sm btn-primary">Instrutor</a>
+                    <a href="{{ route('register') }}" class="btn btn-sm btn-primary">Aluno</a>
                     {{--  Você está logado!  --}}
                 </div>
             </div>
         </div>
     </div>
 </div>
-@endauth
-
-@guest
-    @component('components.filtroLogado')
-    @endcomponent
-@endguest
 @endsection

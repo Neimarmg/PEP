@@ -1,9 +1,12 @@
 @extends('layouts.app')
-
 @section('content')
-@auth()
     <center>
-        <h3>Lista de Grupo Musculares</h3> 
+        <h3>Lista de Usuários</h3>
+        @if(Session::has('success'))
+            <h3>{{ Session::get('success') }} </h3>            
+        @else
+            
+        @endif
         <div class="col-md-3"></div>           
         <div class="col-md-6">
             <div class="panel">
@@ -12,26 +15,25 @@
                         <thead>
                             <tr>
                                 <th width="5">No</th>
-                                <th>Grupo Muscular</th>
-                                <th width="300">Tipo</th>
-                                <th width="5">
+                                <th>Nome</th>
+                                <th>Email</th>
+                                <th>
                                     <center>
-                                        <a href="grupoMuscular/create" class="btn btn-xs btn-success">Novo Grupo Muscular</a>
+                                    <a href="{{ route('register') }}" class="btn btn-xs btn-success">Novo Usuário</a>
                                     </center>
                                 </th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($grupoMuscular as $key =>$grupoMusc)
+                            @foreach($users as $key =>$user)
                                 <tr>
                                     <td>{{ ($key+1) }}</td>
-                                    <td>{{ $grupoMusc->nome }}</td>
-                                    <td>{{ $grupoMusc->tipo }}</td>
+                                    <td>{{ $user->name }}</td>
+                                    <td>{{ $user->email }}</td>
                                     <td>
                                         <center>
-                                            <a href="{{ URL('grupoMuscular/' . $grupoMusc->id . '/edit') }}" class="btn btn-xs btn-info">Editar</a>
-
-                                            <form action="{{ URL('grupoMuscular/' . $grupoMusc->id) }}" method="POST">
+                                            <a href="{{ URL('users/' . $user->id . '/edit') }}" class="btn btn-xs btn-info">Editar</a>
+                                            <form action="{{ URL('users/' . $user->id) }}" method="POST">
                                                 {{ csrf_field() }}
                                                 {{ method_field('DELETE') }}
                                                 <button type="submit" class="btn btn-xs btn-danger">Remover</button>
@@ -44,16 +46,8 @@
                     </table>
                 </div>
             </div>
-            <a href="home" class="btn btn-sm btn-primary">Voltar</a>        
+            <a href="home" class="btn btn-sm btn-primary">Voltar</a>
         </div>           
-        <div class="col-md-3"></div>  
+        <div class="col-md-3"></div> 
     </center>
-@endauth
-
-@guest
-    {{--  @include('components.filtroLogado')  --}}
-    @component('components.filtroLogado')
-        
-    @endcomponent
-@endguest
 @endsection

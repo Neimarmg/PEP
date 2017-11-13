@@ -15,7 +15,7 @@
                     @endif
 
                     <a href="admin/login" class="btn btn-sm btn-primary">Administrador</a>
-                    <a href="" class="btn btn-sm btn-primary">Instrutor</a>
+                    <a href="instrutor/login" class="btn btn-sm btn-primary">Instrutor</a>
                     <a href="login" class="btn btn-sm btn-primary">Aluno</a>
                     {{--  Você está logado!  --}}
                 </div>

@@ -13,11 +13,6 @@ class AdminLoginController extends Controller
         $this->middleware('guest:admin', ['except'=> ['logout']]);
     }
 
-    public function showLoginForm()
-    {
-        return view('auth.admin-login');
-    }
-
     public function login(Request $request)
     {
         // validate the form data
@@ -39,6 +34,6 @@ class AdminLoginController extends Controller
     public function logout()
     {
         Auth::guard('admin')->logout();
-        return redirect('/');
+        return redirect('/admin');
     }
 }

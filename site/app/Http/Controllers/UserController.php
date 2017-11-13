@@ -16,7 +16,7 @@ class UserController extends Controller
     public function index()
     {
         $data['users'] = User::all();
-        return view('users',$data);
+        return view('users.aluno.users',$data);
     }
 
     /**
@@ -26,7 +26,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('create');
+        return view('auth.register');
     }
 
     /**
@@ -69,7 +69,7 @@ class UserController extends Controller
     public function edit($id)
     {
         $data['user'] = User::find($id);
-        return view('create',$data);
+        return view('users.aluno.create',$data);
     }
 
     /**
@@ -84,14 +84,14 @@ class UserController extends Controller
         if($request->has('password')){
             $password = $request->password;
             $user = [
-                'name' => $request->nome,
+                'name' => $request->name,
                 'email' => $request->email,
                 'password' => $password,
             ];
         }
         else{
             $user = [
-                'name' => $request->nome,
+                'name' => $request->name,
                 'email' => $request->email,
             ];
         }
