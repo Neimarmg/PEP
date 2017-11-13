@@ -44,6 +44,14 @@ return [
             'driver' => 'token',
             'provider' => 'users',
         ],
+        'aluno' => [
+            'driver' => 'session',
+            'provider' => 'alunos',
+        ],
+        'aluno-api' => [
+            'driver' => 'token',
+            'provider' => 'alunos',
+        ],
         'admin' => [
             'driver' => 'session',
             'provider' => 'admins',
@@ -51,6 +59,14 @@ return [
         'admin-api' => [
             'driver' => 'token',
             'provider' => 'admins',
+        ],
+        'instrutor' => [
+            'driver' => 'session',
+            'provider' => 'instrutors',
+        ],
+        'instrutor-api' => [
+            'driver' => 'token',
+            'provider' => 'instrutors',
         ],
     ],
 
@@ -76,11 +92,15 @@ return [
             'driver' => 'eloquent',
             'model' => App\User::class,
         ],
+        'alunos' => [
+            'driver' => 'eloquent',
+            'model' => App\User::class,
+        ],
         'admins' => [
             'driver' => 'eloquent',
             'model' => App\Admin::class,
         ],
-        'instrutores' => [
+        'instrutors' => [
             'driver' => 'eloquent',
             'model' => App\Instrutor::class,
         ],
@@ -112,13 +132,18 @@ return [
             'table' => 'password_resets',
             'expire' => 60,
         ],
+        'alunos' => [
+            'provider' => 'alunos',
+            'table' => 'password_resets',
+            'expire' => 60,
+        ],
         'admins' => [
             'provider' => 'admins',
             'table' => 'password_resets',
             'expire' => 60,
         ],
-        'instrutores' => [
-            'provider' => 'instrutores',
+        'instrutors' => [
+            'provider' => 'instrutors',
             'table' => 'password_resets',
             'expire' => 60,
         ],

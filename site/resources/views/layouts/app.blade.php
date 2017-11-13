@@ -35,8 +35,8 @@
                         <li><a href="{{ url('/home') }}">Home</a></li>
                     @endauth
                     @guest
-                        <li><a href="{{ route('login') }}"></span> Entrar</a></li>
-                        <li><a href="{{ route('register') }}">Criar conta</a></li>
+                        <li><a href="{{ url('/selectLogin') }}"></span> Entrar</a></li>
+                        <li><a href="{{ url('/selectRegister') }}"></span> Criar conta</a></li>
                     @else
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
