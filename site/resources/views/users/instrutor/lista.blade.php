@@ -23,14 +23,14 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($instrutors as $key =>$instrutor)
+                        @foreach($instrutores as $key =>$instrutor)
                             <tr>
                                 <td>{{ ($key+1) }}</td>
                                 <td>{{ $instrutor->name }}</td>
                                 <td>{{ $instrutor->email }}</td>
                                 <td>
                                     <center>
-                                        <a href="{{ URL('instrutors/' . $instrutor->id . '/edit') }}" class="btn btn-xs btn-info">Editar</a>
+                                        <a href="{{ URL('instrutor/' . $instrutor->id . '/edit') }}" class="btn btn-xs btn-info">Editar</a>
                                         <form action="{{ URL('instrutor/' . $instrutor->id) }}" method="POST">
                                             {{ csrf_field() }}
                                             {{ method_field('DELETE') }}

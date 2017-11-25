@@ -11,91 +11,74 @@ class InstrutorController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+     public function __construct()
+     {
+         $this->middleware('auth');
+     }
+
     public function index()
     {
         $data['instrutors'] = Instrutor::all();
         return view('users.instrutor.lista',$data);
     }
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
     {
-        return view('users.instrutor.create');
+        return view('users.instrutor.register');
     }
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    
+    // public function store(Request $request)
+    // {
+    //     $instrutor = [
+    //         'name' => $request->nome,
+    //         'email' => $request->email,
+    //         'password' => Hash::make($request->nome),
+    //     ];
+    //     $save = Instrutor::insert($instrutor);
+    //     if($save)
+    //         return redirect('instrutors');
+    //     else
+    //         return redirect()->back()->withInput();
+    // }
+
     public function store(Request $request)
     {
-        // $instrutor = new Instrutor;
-        // $this->validate($request,[
-        //     'name'=>'required|unique:instrutors',
-        //     'email'=>'required|unique:instrutors',
-        // ]);
-        // $instrutor->name = $request->name;
-        // $instrutor->email = $request->email;
-        // $instrutor->password = $request->Hash::make($request->name);
-        // $instrutor->save();
-        
-        // return redirect('instrutor');
-        $instrutor = [
-            'name' => $request->nome,
-            'email' => $request->email,
-            'password' => Hash::make($request->nome),
-        ];
-        $save = Instrutor::insert($instrutor);
-        if($save)
-            return redirect('instrutors');
-        else
+        $instrutor = new Instrutor;
+        $this->validate($request,[
+            'nome'=>'required|unique:instrutors',
+            'email'=>'required|unique:instrutors',
+        ]);
+        $instrutor->name = $request->name;
+        $instrutor->email = $request->email;
+        $instrutor->password = $request->Hash::make($request->name);
+        $instrutor->save();
             return redirect()->back()->withInput();
     }
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
+    // public function edit($id)
+    // {
+    //     $data['instrutors'] = Instrutor::find($id);
+    //     return view('users.instrutor.lista',$data);
+    // }
     public function edit($id)
     {
         $data['instrutors'] = Instrutor::find($id);
-        return view('users.instrutor.lista',$data);
+        return view('users.instrutor.register',$data);
     }
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(Request $request, $id)
     {
         if($request->has('password')){
             $password = $request->password;
             $instrutor = [
-                'name' => $request->name,
+                'name' => $request->nome,
                 'email' => $request->email,
                 'password' => $password,
             ];
         }
         else{
             $instrutor = [
-                'name' => $request->name,
+                'name' => $request->nome,
                 'email' => $request->email,
             ];
         }
@@ -105,12 +88,7 @@ class InstrutorController extends Controller
         else
             return redirect()->back()->withInput();
     }
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy($id)
     {
         $instrutor = Instrutor::find($id);

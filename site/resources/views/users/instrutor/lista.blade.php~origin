@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <center>
-        <h3>Lista de Usuários</h3>
+        <h3>Lista de Instrutores</h3>
         @if(Session::has('success'))
             <h3>{{ Session::get('success') }} </h3>            
         @else
@@ -17,21 +17,21 @@
                             <th>Email</th>
                             <th>
                                 <center>
-                                <a href="{{ URL('users/create') }}" class="btn btn-xs btn-success">Novo Usuário</a>
+                                <a href="{{ URL('instrutor/create') }}" class="btn btn-xs btn-success">Novo Instrutor</a>
                                 </center>
                             </th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($users as $key =>$user)
+                        @foreach($instrutors as $key =>$instrutor)
                             <tr>
                                 <td>{{ ($key+1) }}</td>
-                                <td>{{ $user->name }}</td>
-                                <td>{{ $user->email }}</td>
+                                <td>{{ $instrutor->name }}</td>
+                                <td>{{ $instrutor->email }}</td>
                                 <td>
                                     <center>
-                                        <a href="{{ URL('users/' . $user->id . '/edit') }}" class="btn btn-xs btn-info">Editar</a>
-                                        <form action="{{ URL('users/' . $user->id) }}" method="POST">
+                                        <a href="{{ URL('instrutors/' . $instrutor->id . '/edit') }}" class="btn btn-xs btn-info">Editar</a>
+                                        <form action="{{ URL('instrutor/' . $instrutor->id) }}" method="POST">
                                             {{ csrf_field() }}
                                             {{ method_field('DELETE') }}
                                             <button type="submit" class="btn btn-xs btn-danger">Remover</button>

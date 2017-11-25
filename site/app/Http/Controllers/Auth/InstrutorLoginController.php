@@ -5,17 +5,13 @@ namespace App\Http\Controllers\Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Auth;
+use App\Exercicio;
 
 class InstrutorLoginController extends Controller
 {
     public function __construct()
     {
         $this->middleware('guest:instrutor', ['except'=> ['logout']]);
-    }
-
-    public function showLoginForm()
-    {
-        return view('auth.instrutor-login');
     }
 
     public function login(Request $request)
@@ -26,7 +22,7 @@ class InstrutorLoginController extends Controller
             'password' => 'required|min:5'
         ]);
 
-        // Attempt to log the user in
+        // Attempt to log the instrutor in
         if(Auth::guard('instrutor')->attempt(['email' => $request->email, 'password' => $request->password], $request->remember)){
             // If successfull, then redirect to their intended location
             return redirect()->intended(route('instrutor.dashboard'));
@@ -39,6 +35,6 @@ class InstrutorLoginController extends Controller
     public function logout()
     {
         Auth::guard('instrutor')->logout();
-        return redirect('/');
+        return redirect('/instrutor');
     }
 }

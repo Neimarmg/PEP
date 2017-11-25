@@ -64,7 +64,9 @@ class ExercicioController extends Controller
         $exercicio->series = $request->series;
         $exercicio->repeticoes = $request->repeticoes;
         $exercicio->save();
-        return redirect('exercicio');
+        // return redirect('exercicio');
+        return redirect()->back()->withInput();
+        
         // return redirect('exercicio',$grupoMusculars);
     }
 

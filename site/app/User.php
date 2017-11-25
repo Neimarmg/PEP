@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+// use App\Role;
 
 class User extends Authenticatable
 {
@@ -15,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'instrutor_id',
     ];
 
     /**
@@ -26,4 +27,35 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function role()
+    {
+        return $this->belongsToMany(Role::Class, 'role_user');
+    }
+
+    // public function roles()
+    // {
+    //   return $this->hasone(Role::class);
+    // }
+
+    // public function authorizeRoles($roles)
+    // {
+    //     if (is_array($roles)) {
+    //         return $this->hasAnyRole($roles) || abort(401, 'This action is unauthorized.');
+    //     }
+    //     return $this->hasRole($roles) || abort(401, 'This action is unauthorized.');
+    // }
+
+    // // Check multiple roles
+    // public function hasAnyRole($roles)
+    // {
+    //     return null !== $this->roles()->whereIn('titulo', $roles)->first();
+    // }
+
+    // // Check one role
+    // public function hasRole($role)
+    // {
+    //     return null !== $this->roles()->where('titulo', $role)->first();
+    // }
+    
 }
