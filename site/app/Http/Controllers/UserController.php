@@ -41,6 +41,7 @@ class UserController extends Controller
             'name' => $request->nome,
             'email' => $request->email,
             'password' => Hash::make($request->nome),
+            'instrutor_id' => $request->instrutor_id,
         ];
         $save = User::insert($user);
         if($save)
@@ -87,12 +88,14 @@ class UserController extends Controller
                 'name' => $request->name,
                 'email' => $request->email,
                 'password' => $password,
+                'instrutor_id' => $request->instrutor_id,
             ];
         }
         else{
             $user = [
                 'name' => $request->name,
                 'email' => $request->email,
+                'instrutor_id' => $request->instrutor_id,
             ];
         }
         $update = User::find($id)->update($user);

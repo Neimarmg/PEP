@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Auth;
@@ -42,5 +43,18 @@ class LoginController extends Controller
     {
         Auth::guard('web')->logout();
         return redirect('/home');
+    }
+
+    protected function sendLoginResponse(Request $request)
+    {
+        $request->session()->regenerate();
+        $this->clearLoginAttempts($request);
+        foreach ($this->guard()->user()->role as $role) {
+            if($role->titulo == 'aluno'){
+                return redirect('/home');
+            }elseif($role->titulo == 'instrutor'){
+                return redirect('/instrutor');
+            }
+        }
     }
 }

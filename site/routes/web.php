@@ -39,9 +39,9 @@ Route::group(['prefix' => ''], function () {
 });
 
 Route::prefix('instrutor')->group(function() {
-//     Route::view('/login', 'users.instrutor.login')->name('instrutor.login');
+    Route::view('/login', 'users.instrutor.login')->name('instrutor.login');
     Route::view('/register', 'users.instrutor.register')->name('instrutor.register');
-//     Route::post('/login', 'Auth\InstrutorLoginController@login')->name('instrutor.login.submit');
+    Route::post('/login', 'Auth\InstrutorLoginController@login')->name('instrutor.login.submit');
 //     Route::post('/store', 'InstrutorController@store')->name('instrutor.store.submit');
     Route::get('/', 'InstrutorController@index')->name('instrutor.dashboard');
 //     Route::get('/logout', 'Auth\InstrutorLoginController@logout')->name('instrutor.logout');
