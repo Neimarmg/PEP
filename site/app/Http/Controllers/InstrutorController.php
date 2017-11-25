@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use App\Instrutor;
 use Hash;
@@ -9,42 +7,40 @@ use Hash;
 class InstrutorController extends Controller
 {
     /**
-     * Create a new controller instance.
+     * Show the application dashboard.
      *
-     * @return void
+     * @return \Illuminate\Http\Response
      */
      public function __construct()
      {
          $this->middleware('auth');
      }
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $data['instrutors'] = Instrutor::all();
         return view('users.instrutor.lista',$data);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         return view('users.instrutor.register');
     }
+    
+    // public function store(Request $request)
+    // {
+    //     $instrutor = [
+    //         'name' => $request->nome,
+    //         'email' => $request->email,
+    //         'password' => Hash::make($request->nome),
+    //     ];
+    //     $save = Instrutor::insert($instrutor);
+    //     if($save)
+    //         return redirect('instrutors');
+    //     else
+    //         return redirect()->back()->withInput();
+    // }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $instrutor = new Instrutor;
@@ -56,51 +52,20 @@ class InstrutorController extends Controller
         $instrutor->email = $request->email;
         $instrutor->password = $request->Hash::make($request->name);
         $instrutor->save();
-        
-        // return redirect('instrutor');
-
-        // $instrutor = [
-        //     'name' => $request->nome,
-        //     'email' => $request->email,
-        //     'password' => Hash::make($request->nome),
-        // ];
-        // $save = Instrutor::insert($instrutor);
-        // if($save)
-        //     return redirect('instrutors');
-        // else
             return redirect()->back()->withInput();
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    // public function edit($id)
+    // {
+    //     $data['instrutors'] = Instrutor::find($id);
+    //     return view('users.instrutor.lista',$data);
+    // }
     public function edit($id)
     {
-        $data['instrutor'] = Instrutor::find($id);
+        $data['instrutors'] = Instrutor::find($id);
         return view('users.instrutor.register',$data);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         if($request->has('password')){
@@ -124,12 +89,6 @@ class InstrutorController extends Controller
             return redirect()->back()->withInput();
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         $instrutor = Instrutor::find($id);

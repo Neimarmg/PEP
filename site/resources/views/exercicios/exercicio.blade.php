@@ -58,7 +58,6 @@
         <div class="col-md-3"></div> 
     </center>
 {{--  @endauth
-
 @guest
     @include('shared.filtroLogado')
 @endguest  --}}
