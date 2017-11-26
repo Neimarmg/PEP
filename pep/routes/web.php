@@ -52,3 +52,20 @@ Route::prefix('instrutor')->group(function() {
     Route::GET('register','Instrutor\RegisterController@showRegistrationForm')->name('instrutor.register');
     Route::POST('register','Instrutor\RegisterController@register');
 });
+
+Route::group(['prefix' => ''], function () {
+    Route::resource('exercicio', 'ExercicioController');
+    Route::resource('treino', 'TreinoController');
+    Route::resource('grupoMuscular', 'GrupoMuscularController');
+    // Route::GET('/', 'Instrutor\LoginController@showLoginForm')->name('instrutor.login');
+    // Route::POST('/','Instrutor\LoginController@login');
+});
+
+// Route::group(['prefix' => ''], function () {
+//     Route::resource('users', 'UserController');
+//     Route::resource('instrutors', 'InstrutorController');
+//     // Route::resource('exercicio', 'ExercicioController')->middleware('auth');
+//     Route::resource('exercicio', 'ExercicioController');
+//     // Route::resource('instrutor', 'InstrutorController');
+//     Route::resource('grupoMuscular', 'GrupoMuscularController');
+// });

@@ -3,12 +3,12 @@
     <tr>
         <td><a href="instrutor/lista" class="btn btn-sm btn-primary">Gerenciar Instrutores</a></td>
         <td></td>
-        <td><a href="grupoMuscular" class="btn btn-sm btn-primary">Gerenciar grupos musculares</a></td>
+        <td><a href="{{ url('/grupoMuscular') }}" class="btn btn-sm btn-primary">Gerenciar grupos musculares</a></td>
     </tr>
     <tr>
         <td><a href="alunos/lista" class="btn btn-sm btn-primary">Gerenciar Alunos</a></td>
         <td></td>
-        <td><a href="exercicio" class="btn btn-sm btn-primary">Gerenciar exercícios</a></td>
+        <td><a href="{{ url('/exercicio') }}" class="btn btn-sm btn-primary">Gerenciar exercícios</a></td>
     </tr>
     <tr>
         <td><a href="{{ url('/home') }}" class="btn btn-sm btn-primary">Portal Administrador</a></td>

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-@auth()
+@auth('instrutor','web')
     <center>
         <h3>Lista de Grupo Musculares</h3> 
         <div class="col-md-3"></div>           
@@ -44,16 +44,14 @@
                     </table>
                 </div>
             </div>
-            <a href="home" class="btn btn-sm btn-primary">Voltar</a>        
+            <a href="{{ URL('instrutor') }}" class="btn btn-sm btn-primary">Voltar</a>        
         </div>           
         <div class="col-md-3"></div>  
     </center>
 @endauth
 
-@guest
-    {{--  @include('components.filtroLogado')  --}}
-    @component('components.filtroLogado')
-        
+@guest('instrutor','web')
+    @component('components.filtroLogado')        
     @endcomponent
 @endguest
 @endsection

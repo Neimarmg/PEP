@@ -1,18 +1,18 @@
 @extends('layouts.app')
 
 @section('content')
-@auth
+@auth('instrutor','web')
 
 <div class="row" align="center">
     <h3>Cadastro de exercício</h3> 
     <form class="form-horizontal col-lg-offset-3"
      action="{{ URL('exercicio') }}{{ isset($exercicio) ? '/' . $exercicio->id : '' }}"
      method="POST">
-        <fieldset>
-            {{ csrf_field() }}
             @if(isset($exercicio))
                 {{ method_field('PUT') }}
             @endif
+        <fieldset>
+            {{ csrf_field() }}
 
             <div class="form-group">
                 <label class="col-lg-2 control-label">Nome</label>
@@ -66,7 +66,7 @@
 
             <div class="form-group">
                 <div class="col-lg-4 col-lg-offset-2">
-                    <a href="/exercicio" class="btn btn-default">Cancelar</a>
+                    <a href="{{ URL('exercicio') }}" class="btn btn-default">Cancelar</a>
                     <button type="submit" class="btn btn-primary">Salvar</button>
                 </div>
             </div>
@@ -81,9 +81,9 @@
 
 @endauth
 
-@guest
+{{--  @guest
     @include('shared.filtroLogado')
-@endguest
+@endguest  --}}
 @endsection
 
 {{-- Posteriormente: Para fazer upload de imagem!!!
