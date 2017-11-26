@@ -13,8 +13,11 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
-                    Você está logado como aluno!
+     
+                    @component('components.who')
+                    @endcomponent
+                    @component('components.botoes')
+                    @endcomponent
                 </div>
             </div>
         </div>

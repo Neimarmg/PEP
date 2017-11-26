@@ -20,6 +20,7 @@ class TabelaInstrutors extends Migration
             $table->string('registro');
             $table->string('email')->unique();
             $table->string('password');   
+            $table->rememberToken();
             $table->timestamps();
         });
     }

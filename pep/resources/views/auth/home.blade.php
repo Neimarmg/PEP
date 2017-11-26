@@ -13,8 +13,10 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
-                    Você está logado como Administrador!
+                    @component('components.who')
+                    @endcomponent
+                    @component('components.botoes')
+                    @endcomponent
                 </div>
             </div>
         </div>
