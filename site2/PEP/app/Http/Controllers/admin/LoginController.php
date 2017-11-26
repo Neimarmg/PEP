@@ -38,8 +38,8 @@ class LoginController extends Controller
         return view('admin.login');
     }
 
-    public function guard()
-    {
-        return Auth::guard('admin');
-    }
+    // public function guard()
+    // {
+    //     return Auth::guard('admin');
+    // }
 }
