@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Aluno;
+use App\Instrutor;
 
 class TreinoController extends Controller
 {
@@ -23,7 +25,8 @@ class TreinoController extends Controller
 
     public function create()
     {
-        return view('treino.cadastro');
+        $alunos ['alunos'] = Aluno::all();
+        return view('treino.cadastro',$alunos);
     }
 
     public function store(Request $request)
