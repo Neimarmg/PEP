@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Instrutor;
 use App\Aluno;
+use App\Treino;
+use App\Exercicio;
 
 class InstrutorController extends Controller
 {
@@ -18,14 +20,25 @@ class InstrutorController extends Controller
 
     public function index()
     {
-        $instrutor ['instrutors'] = Instrutor::all();
-        return view('instrutor.home', $instrutor);
+        // $exercicio = treino::find(1)->exercicios;
+        // $treino = exercicio::find(1)->treinos;
+        // return $treino;
+        // return view('instrutor.home', $instrutor, $alunos);
+        return view('instrutor.home');
     }
 
     public function show()
     {
         $data['instrutors'] = Instrutor::all();
         return view('instrutor.lista',$data);
+    }
+    
+    public function gerenciaTreinos($id)
+    {
+        // $treinos ['treinos'] = Treino::all();   Auth::user()->name
+        $treinos ['treinos'] = Instrutor::find($id)->treinos;
+        $alunos ['alunos'] = Instrutor::find($id)->alunos;
+        return view('instrutor.treinos', $treinos);
     }
 
     public function create()

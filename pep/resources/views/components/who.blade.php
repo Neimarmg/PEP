@@ -1,3 +1,6 @@
+<div align="center">
+<h4>ACESSOS (Temporário)</h4>
+
 {{--  Checar se está logado como ADMINISTRADOR  --}}
 @if(Auth::guard('web')->check()) 
     <p class="text-success">
@@ -30,3 +33,4 @@
         Você está deslogado como <strong>ALUNO</strong>
     </p>
 @endif
+</div>

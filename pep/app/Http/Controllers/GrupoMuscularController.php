@@ -14,11 +14,6 @@ class GrupoMuscularController extends Controller
         // $this->middleware('instrutor',['except'=>'test']);
     }
     
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         // $this->middleware('auth');
@@ -26,22 +21,11 @@ class GrupoMuscularController extends Controller
         return view('grupoMuscular.lista',$grupomMscular);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         return view('grupoMuscular.cadastro');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $novo = new GrupoMuscular;
@@ -55,36 +39,17 @@ class GrupoMuscularController extends Controller
         return redirect('grupoMuscular');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         $grupoMuscular['grupoMuscular'] = GrupoMuscular::find($id);
         return view('grupoMuscular.cadastro',$grupoMuscular);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         $this->validate($request,[
@@ -102,12 +67,6 @@ class GrupoMuscularController extends Controller
             return redirect()->back()->withInput();
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         $grupoMuscular = GrupoMuscular::find($id);

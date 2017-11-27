@@ -17,7 +17,7 @@ Route::prefix('')->group(function() {
     Route::view('/','welcome');
     Route::get('/home', 'HomeController@index')->name('home');
     Route::view('/selectLogin', 'auth.selectLogin');
-    Route::view('/selectRegister','auth.selectRegister');
+    Route::view('/selectRegister','auth.selectRegister');    
     //  GET|HEAD | login                  | login            | App\Http\Controllers\Auth\LoginController@showLoginForm
     //  POST     | login                  |                  | App\Http\Controllers\Auth\LoginController@login
     //  POST     | logout                 | logout           | App\Http\Controllers\Auth\LoginController@logout
@@ -39,6 +39,8 @@ Route::group(['prefix' => ''], function () {
 
 Route::prefix('aluno')->group(function() {
     Route::GET('/home', 'AlunoController@index');
+    Route::GET('/{id}/addinstrutor','AlunoController@selecionarInstrutor');
+    Route::PUT('/registerInstrutor/{id}','AlunoController@updateInstrutor');
     Route::GET('/lista', 'AlunoController@show')->name('instrutor.lista');
     Route::GET('/{id}/edit', 'AlunoController@edit');
     Route::PUT('/{id}', 'AlunoController@update');
@@ -56,6 +58,7 @@ Route::prefix('aluno')->group(function() {
 Route::prefix('instrutor')->group(function() {
     Route::GET('/home', 'InstrutorController@index');
     Route::GET('/alunos/{id}', 'InstrutorController@alunos');
+    Route::GET('/{id}/treinos', 'InstrutorController@gerenciaTreinos');
     Route::GET('/lista', 'InstrutorController@show')->name('instrutor.lista');
     Route::GET('/{id}/edit', 'InstrutorController@edit');
     Route::PUT('/{id}', 'InstrutorController@update');

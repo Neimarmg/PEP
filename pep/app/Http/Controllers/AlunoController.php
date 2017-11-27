@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Aluno;
+use App\Instrutor;
 
 class AlunoController extends Controller
 {
@@ -17,7 +18,15 @@ class AlunoController extends Controller
     public function index()
     {
         $alunos ['alunos'] = Aluno::all();
-        return view('aluno.home', $alunos);
+        $instrutores ['instrutores'] = Instrutor::all();
+        return view('aluno.home', $alunos,$instrutores);
+    }
+
+    public function selecionarInstrutor($id)
+    {
+        $aluno['aluno'] = Aluno::find($id);        
+        $instrutores ['instrutores'] = Instrutor::all();
+        return view('aluno.addinstrutor',$aluno,$instrutores);
     }
 
     public function show()
@@ -50,9 +59,19 @@ class AlunoController extends Controller
             $aluno = [
                 'name' => $request->name,
                 'lastname' => $request->lastname,
-                'registro' => $request->registro,
             ];
         }
+        $update = Aluno::find($id)->update($aluno);
+        if($update)
+            return redirect('aluno');
+        else
+            return redirect()->back()->withInput();
+    }
+
+    public function updateInstrutor(Request $request, $id)
+    {
+        $aluno = [ 'instrutor_id' => $request->instrutor_id, ];
+
         $update = Aluno::find($id)->update($aluno);
         if($update)
             return redirect('aluno');

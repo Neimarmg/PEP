@@ -31,7 +31,12 @@
                                     <td>{{ ($key+1) }}</td>
                                     <td>{{ $exercicio->nome }}</td>
                                     <td>
+                                        {{--  @foreach($grupoMusculars as $musc)
+                                            
+                                        @endforeach  --}}
+
                                         {{ $exercicio->grupo_muscular_id }}
+
                                     </td>
                                     <td>{{ $exercicio->ordem }}º</td>
                                     <td>{{ $exercicio->carga }}kg</td>

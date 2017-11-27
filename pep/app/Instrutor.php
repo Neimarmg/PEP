@@ -6,6 +6,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Notifications\InstrutorResetPasswordNotification;
 use App\Aluno;
+use App\Treino;
 
 class Instrutor extends Authenticatable
 {
@@ -27,5 +28,10 @@ class Instrutor extends Authenticatable
     public function alunos()
     {
         return $this->hasMany(Aluno::Class);
+    }
+
+    public function treinos()
+    {
+        return $this->hasMany(Treino::Class);
     }
 }

@@ -1,6 +1,5 @@
 @extends('layouts.app')
 @section('content')
-@if(Auth::check()) {{Auth::user()->id}} @endif
     @foreach($alunos as $aluno)
         <h4> {{ $aluno->name }} </h4>
     @endforeach
