@@ -18,6 +18,9 @@
                     @endcomponent
                     @component('components.botoes')
                     @endcomponent
+                    <br>
+                    @component('components.portal_aluno')
+                    @endcomponent
                 </div>
             </div>
         </div>

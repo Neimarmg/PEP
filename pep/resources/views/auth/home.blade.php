@@ -13,6 +13,14 @@
                             {{ session('status') }}
                         </div>
                     @endif
+                    
+                    
+                    @if(Auth::check()) 
+                    <h4>Olá, {{Auth::user()->name}}!!! 
+                    Seu nº de id é: {{Auth::user()->id}}</h4>
+                    @endif
+
+
                     @component('components.who')
                     @endcomponent
                     @component('components.botoes')

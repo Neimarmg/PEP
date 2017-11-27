@@ -6,12 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class GrupoMuscular extends Model
 {
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-     protected $fillable = [
+    protected $fillable = [
         'nome', 'tipo',
     ];
 }

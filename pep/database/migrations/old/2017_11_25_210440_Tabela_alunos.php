@@ -18,6 +18,7 @@ class TabelaAlunos extends Migration
             $table->string('name');
             $table->string('lastname');
             $table->string('email')->unique();
+            $table->integer('instrutor_id');
             $table->string('password');            
             $table->rememberToken();
             $table->timestamps();

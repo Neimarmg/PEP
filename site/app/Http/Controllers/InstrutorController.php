@@ -6,11 +6,6 @@ use Hash;
 
 class InstrutorController extends Controller
 {
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Http\Response
-     */
      public function __construct()
      {
          $this->middleware('auth');

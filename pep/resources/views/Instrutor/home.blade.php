@@ -13,7 +13,10 @@
                             {{ session('status') }}
                         </div>
                     @endif  --}}
-                    
+                    {{--  @foreach($alunos as $aluno)
+                        <h4> {{ $aluno->name }} </h4>
+                    @endforeach  --}}
+
                     @component('components.who')
                     @endcomponent
                     @component('components.botoes')

@@ -5,25 +5,16 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Notifications\AlunoResetPasswordNotification;
+use App\Instrutor;
 
 class Aluno extends Authenticatable
 {
     use Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
     protected $fillable = [
-        'name', 'lastname', 'email', 'password',
+        'name', 'lastname', 'instrutor_id', 'email', 'password',
     ];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
     protected $hidden = [
         'password', 'remember_token',
     ];
@@ -31,5 +22,10 @@ class Aluno extends Authenticatable
     public function sendPasswordResetNotification($token)
     {
         $this->notify(new AlunoResetPasswordNotification($token));
+    }
+
+    public function instrutor()
+    {
+        return $this->belongsTo(Instrutor::Class);
     }
 }

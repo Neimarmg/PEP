@@ -1,7 +1,7 @@
 <table class="table">
 <tbody>
     <tr>
-        <td><a href="{{ url('instrutor/lista') }}" class="btn btn-sm btn-primary">Gerenciar Instrutores</a></td>
+        <td><a href="{{ url('instrutor/lista') }}" class="btn btn-sm btn-primary">Adquirir Instrutor</a></td>
         <td></td>
         <td><a href="{{ url('/grupoMuscular') }}" class="btn btn-sm btn-primary">Gerenciar grupos musculares</a></td>
     </tr>
