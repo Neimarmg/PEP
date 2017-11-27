@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Aluno;
 use App\Instrutor;
+use App\Treino;
 
 class TreinoController extends Controller
 {
@@ -18,7 +19,7 @@ class TreinoController extends Controller
     public function index()
     {
         // $this->middleware('auth'); 
-        $treinos ['treinos'] = Exercicio::all();
+        $treinos ['treinos'] = Treino::all();
         // $grupoMusculars ['grupoMusculars'] = GrupoMuscular::all(); 
         return view('treino.lista',$treinos);       
     }
@@ -30,8 +31,15 @@ class TreinoController extends Controller
     }
 
     public function store(Request $request)
-    {
-        //
+    {   
+        // $id = Auth::user()->id;     
+        $treino = new Treino;
+        $treino->instrutor_id = $request->instrutor_id;
+        $treino->aluno_id = $request->aluno_id;
+        $treino->titulo = $request->titulo;
+        $treino->comentario = $request->comentario;
+        $treino->save();
+        return redirect('instrutor/treinos');
     }
 
     public function show($id)
@@ -46,7 +54,7 @@ class TreinoController extends Controller
 
     public function update(Request $request, $id)
     {
-        //
+        
     }
 
     public function destroy($id)

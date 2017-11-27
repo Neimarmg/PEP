@@ -13,7 +13,7 @@
             @endif
         <fieldset>
             {{ csrf_field() }}
-
+            {{--  <input type="hidden" name="_token" value="{{ csrf_token() }}">  --}}
             <div class="form-group">
                 <label class="col-lg-2 control-label">Nome</label>
                 <div class="col-lg-4">
@@ -21,20 +21,46 @@
                             value="{{ isset($exercicio) ? $exercicio->nome : '' }}">
                 </div>
             </div>
+
             <div class="form-group">
-                <label for="select" class="col-lg-2 control-label">Grupo Muscular</label>
+                <label class="col-lg-2 control-label">Grupo Muscular</label>
                 <div class="col-lg-4">
+                    <input type="text" name="grupo_muscular_id" placeholder="grupo musc" class="form-control"
+                            value="{{ isset($exercicio) ? $exercicio->grupo_muscular_id : '' }}">
+                </div>
+            </div>
+
+            {{--  <div class="form-group driver-drop">
+                <div class="input-group">
+                    <label for="select" class="col-lg-2 control-label">Grupo Muscular</label>
+                    <select class="form-control" id="grupo_muscular_id" name="grupo_muscular_id" required="required">
+                        <option disabled selected>Select Driver:</option>
+                        @foreach($grupoMusculars as $musc)
+                                    <option value="{{ $musc->id }}">{{ $musc->nome }}</option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>  --}}
+
+
+            {{--  <div class="form-group">
+                <label for="select" class="col-lg-2 control-label">Grupo Muscular</label>
+                <div class="col-lg-4">  --}}
                 {{--  {!! Form::select('grupoMusculars',['' => 'selecione ...'+$grupoMusculars],'',['id' => 'grupoMusculars']) !!}  --}}
-                    <form>
-                        <select class="form-control" id="id">
+                    {{--  <form>  --}}
+                        {{--  <select class="form-control" name="grupo_muscular_id" onchange="this.form.submit()">  --}}
                         {{--  <select class="form-control" id="id" value="{{ isset($exercicio) ? $exercicio->grupo_muscular_id : '' }}">  --}}
-                            @foreach($grupoMusculars as $grupoMuscular)
-                                <option>{{ $grupoMuscular->nome }}</option>
+                            {{--  @foreach($grupoMusculars as $grupoMuscular)
+                                <option value="{{ $grupoMuscular->id }}">{{ $grupoMuscular->id }} {{ $grupoMuscular->nome }}</option>
                             @endforeach
                         </select>
                     </form>
                 </div>
-            </div>
+            </div>  --}}
+
+
+
+
             <div class="form-group">
                 <label class="col-lg-2 control-label">Ordem</label>
                 <div class="col-lg-4">

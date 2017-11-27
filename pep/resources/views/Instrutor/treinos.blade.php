@@ -7,6 +7,7 @@
         <div class="col-md-6">
             <div class="panel">
                 <div class="table-responsive">
+                <h4> {{ Auth::user()->id }}</h4>
                     <table class="table table-striped table-hover table-bordered" >
                         <thead>
                             <tr>

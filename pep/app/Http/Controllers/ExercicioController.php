@@ -44,12 +44,9 @@ class ExercicioController extends Controller
         $exercicio = new Exercicio;
         $this->validate($request,[
             'nome'=>'required|unique:exercicios',
-            // 'carga'=>'required',
-            // 'series'=>'required',
-            // 'repeticoes'=>'required',
         ]);
         $exercicio->nome = $request->nome;
-        // $exercicio->grupo_muscular_id = $request->grupo_Muscular_id;
+        $exercicio->grupo_muscular_id = $request->grupo_muscular_id;
         $exercicio->ordem = $request->ordem;
         $exercicio->carga = $request->carga;
         $exercicio->series = $request->series;
@@ -75,17 +72,10 @@ class ExercicioController extends Controller
 
     public function update(Request $request, $id)
     {
-        // $this->validate($request,[
-            // 'nome'=>'required|unique:exercicios',
-            // 'grupo_musular_id'=>'required',
-            // 'carga'=>'required',
-            // 'series'=>'required',
-            // 'repeticoes'=>'required',
-        // ]);
         $grupoMusculars ['grupoMusculars'] = GrupoMuscular::all();        
         $exercicio = [
             'nome' => $request->nome,
-            // 'grupo_musular_id' => $request->grupo_musular_id,
+            'grupo_muscular_id' => $request->grupo_musular_id,
             'ordem' => $request->ordem,
             'carga' => $request->carga,
             'series' => $request->series,
