@@ -13,7 +13,7 @@
             @endif
         <fieldset>
             {{ csrf_field() }}
-            {{--  <input type="hidden" name="_token" value="{{ csrf_token() }}">  --}}
+            <input type="hidden" name="_token" value="{{ csrf_token() }}">
             <div class="form-group">
                 <label class="col-lg-2 control-label">Nome</label>
                 <div class="col-lg-4">
@@ -30,17 +30,17 @@
                 </div>
             </div>
 
-            {{--  <div class="form-group driver-drop">
+            <div class="form-group driver-drop">
                 <div class="input-group">
                     <label for="select" class="col-lg-2 control-label">Grupo Muscular</label>
                     <select class="form-control" id="grupo_muscular_id" name="grupo_muscular_id" required="required">
-                        <option disabled selected>Select Driver:</option>
+                        <option disabled selected>Grupo muscular...</option>
                         @foreach($grupoMusculars as $musc)
                                     <option value="{{ $musc->id }}">{{ $musc->nome }}</option>
                         @endforeach
                     </select>
                 </div>
-            </div>  --}}
+            </div>
 
 
             {{--  <div class="form-group">

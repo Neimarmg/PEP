@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Aluno;
 use App\Instrutor;
 use App\Treino;
+use App\Exercicio;
 
 class TreinoController extends Controller
 {
@@ -27,7 +28,8 @@ class TreinoController extends Controller
     public function create()
     {
         $alunos ['alunos'] = Aluno::all();
-        return view('treino.cadastro',$alunos);
+        $exercicios ['exercicios'] = Exercicio::all();
+        return view('treino.cadastro',$alunos,$exercicios);
     }
 
     public function store(Request $request)
