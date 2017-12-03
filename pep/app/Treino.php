@@ -12,19 +12,19 @@ class Treino extends Model
     protected $fillable = [
         'instrutor_id', 'aluno_id', 'titulo', 'comentario',
     ];
-
-    public function exercicios()
-    {
-        return $this->belongsToMany(Exercicio::Class);
-    }
-
+    
     public function instrutor()
     {
         return $this->belongsTo(Instrutor::Class);
     }
-
+    
     public function aluno()
     {
         return $this->belongsTo(Aluno::Class);
-    }
+    }   
+    
+        public function exercicios()
+        {
+            return $this->belongsToMany(Exercicio::Class);
+        }
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Exercicio;
 use App\GrupoMuscular;
+use App\Atividade;
 
 class ExercicioController extends Controller
 {
@@ -19,43 +20,33 @@ class ExercicioController extends Controller
     {
         $exercicios ['exercicios'] = Exercicio::all();
         $grupoMusculars ['grupoMusculars'] = GrupoMuscular::all(); 
-        return view('exercicio.lista',$exercicios,$grupoMusculars);
-        // return view('exercicio.lista',compact('exercicios'));
-
-        // $exercicios ['exercicios'] = Exercicio::all();
-        // $grupoMusculars ['grupoMusculars'] = GrupoMuscular::all(); 
-        // if($this->middleware('auth')){
-        //     return view('shared.filtroLogado');
-        // } else {
-        //     return view('exercicio.lista',$exercicios,$grupoMusculars);            
-        // }
+        $atividades ['atividades'] = Atividade::all(); 
+        return view('exercicio.lista', $exercicios, $grupoMusculars, $atividades);
     }
 
     public function create()
     {
-        $grupoMusculars ['grupoMusculars'] = GrupoMuscular::all(); 
-        return view('exercicio.cadastro',$grupoMusculars);
+        $grupoMusculars ['grupoMusculars'] = GrupoMuscular::all();
+        $atividades ['atividades'] = Atividade::all();
+        return view('exercicio.cadastro',$grupoMusculars,$atividades);
     }
 
     public function store(Request $request)
-    {
-        // $grupoMusculars ['grupoMusculars'] = GrupoMuscular::all();      
-        // $grupoMusculars ['grupoMusculars'] = GrupoMuscular::lists('id','nome')->all();      
+    {    
         $exercicio = new Exercicio;
         $this->validate($request,[
             'nome'=>'required|unique:exercicios',
+            'grupo_muscular_id'=>'required',
         ]);
         $exercicio->nome = $request->nome;
         $exercicio->grupo_muscular_id = $request->grupo_muscular_id;
-        $exercicio->ordem = $request->ordem;
-        $exercicio->carga = $request->carga;
-        $exercicio->series = $request->series;
-        $exercicio->repeticoes = $request->repeticoes;
+        // OLD!!!! $exercicio->ordem = $request->ordem;
+        // $exercicio->carga = $request->carga;
+        // $exercicio->series = $request->series;
+        // $exercicio->repeticoes = $request->repeticoes;
         $exercicio->save();
         return redirect('exercicio');
         // return redirect()->back()->withInput();
-        
-        // return redirect('exercicio',$grupoMusculars);
     }
 
     public function show($id)
@@ -65,21 +56,22 @@ class ExercicioController extends Controller
 
     public function edit($id)
     {
-        $grupoMusculars ['grupoMusculars'] = GrupoMuscular::all();              
+        $grupoMusculars ['grupoMusculars'] = GrupoMuscular::all();
+        $atividades ['atividades'] = Atividade::all();
         $exercicio['exercicio'] = Exercicio::find($id);
-        return view('exercicio.cadastro',$exercicio,$grupoMusculars);
+        return view('exercicio.cadastro',$exercicio,$grupoMusculars,$atividades);
     }
 
     public function update(Request $request, $id)
     {
-        $grupoMusculars ['grupoMusculars'] = GrupoMuscular::all();        
+        $grupoMusculars ['grupoMusculars'] = GrupoMuscular::all();
         $exercicio = [
             'nome' => $request->nome,
-            'grupo_muscular_id' => $request->grupo_musular_id,
-            'ordem' => $request->ordem,
-            'carga' => $request->carga,
-            'series' => $request->series,
-            'repeticoes' => $request->repeticoes,
+            'grupo_muscular_id' => $request->grupo_muscular_id,
+            // 'ordem' => $request->ordem,
+            // 'carga' => $request->carga,
+            // 'series' => $request->series,
+            // 'repeticoes' => $request->repeticoes,
         ];
         $update = Exercicio::find($id)->update($exercicio);
         if($update)

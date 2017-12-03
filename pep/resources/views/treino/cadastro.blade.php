@@ -16,17 +16,30 @@
 
                         <input id="instrutor_id" type="hidden" class="form-control" name="instrutor_id" value="{{Auth::user()->id}}">
 
-                        <div class="form-group">
+                        <div class="form-group{{ $errors->has('aluno_id') ? ' has-error' : '' }}">
                             <label for="select" class="col-md-4 control-label">Aluno</label>
                             <div class="col-md-6">
                                 <select class="form-control" id="aluno_id" name="aluno_id" required="required">
-                                    <option disabled selected>Selecionar aluno...</option>
+                                    @if(isset($treino))
+                                        <option enable selected value="{{ $treino->aluno_id }}">
+                                            @if($treino->aluno != null)
+                                                {{$treino->aluno->name}} {{$treino->aluno->lastname}}
+                                            @endif   
+                                        </option>
+                                    @else
+                                        <option disabled selected>Selecionar aluno...</option>
+                                    @endif
                                     @foreach($alunos as $aluno)
                                         @if($aluno->instrutor_id == Auth::user()->id)
                                             <option value="{{ $aluno->id }}">{{ $aluno->name }}</option>
                                         @endif
                                     @endforeach
                                 </select>
+                                @if ($errors->has('aluno_id'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('aluno_id') }}</strong>
+                                    </span>
+                                @endif
                             </div>
                         </div>
 
@@ -37,33 +50,47 @@
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            <label for="titulo" class="col-md-4 control-label">Comentário</label>
+                        <div class="form-group{{ $errors->has('id') ? ' has-error' : '' }}">
+                            <label for="select" class="col-lg-4 control-label">Exercício</label>
                             <div class="col-md-6">
-                                <textarea class="form-control" rows="5" id="comentario" name="comentario" placeholder="Comentario..."></textarea>
+                                <select class="form-control" id="id" name="id" required="required">
+                                    @if(isset($exercicio))
+                                        <option enable selected value="{{ $exercicio->id }}">
+                                            @if($exercicio != null)
+                                                {{$exercicio->nome}}
+                                            @endif   
+                                        </option>
+                                    @else
+                                        <option disabled selected>Selecionar exercício...</option>
+                                    @endif
+                                    @foreach($exercicios as $ex)
+                                        <option value="{{ $ex->id }}">{{ $ex->nome }}</option>
+                                    @endforeach
+                                </select>
+                                @if ($errors->has('id'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('id') }}</strong>
+                                    </span>
+                                @endif
                             </div>
                         </div>
 
-                        {{--  <div class="form-group">
-                            <label for="select" class="col-md-4 control-label">Selecionar exercício</label>
+                        <div class="form-group">
+                            <label for="titulo" class="col-md-4 control-label">Comentário</label>
                             <div class="col-md-6">
-                                <select class="form-control" id="aluno_id" name="aluno_id" required="required">
-                                    <option disabled selected>Selecionar exercícios...</option>
-                                    @foreach($exercicios as $exercicio)
-                                            <option value="{{ $exercicio->id }}">{{ $exercicio->nome }}</option>
-                                    @endforeach
-                                </select>
+                                <textarea class="form-control" rows="5" id="comentario" name="comentario" placeholder="Comentario..." >
+@if(isset($treino))
+@if($treino->comentario != null){{$treino->comentario}}@endif
+@endif</textarea>
                             </div>
-                        </div>  --}}
+                        </div>
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <a href="{{ url('instrutor')}}{{'/' . Auth::user()->id . '/treinos' }}" class="btn btn-sm btn-primary">
                                     Voltar
                                 </a>
-                                <button type="submit" class="btn btn-sm btn-primary">
-                                    Adicionar Treino
-                                </button>
+                                <button type="submit" class="btn btn-sm btn-primary">Adicionar Treino</button>
                             </div>
                         </div>
                     </form>

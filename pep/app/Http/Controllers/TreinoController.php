@@ -34,33 +34,73 @@ class TreinoController extends Controller
 
     public function store(Request $request)
     {   
-        // $id = Auth::user()->id;     
         $treino = new Treino;
-        $treino->instrutor_id = $request->instrutor_id;
-        $treino->aluno_id = $request->aluno_id;
-        $treino->titulo = $request->titulo;
-        $treino->comentario = $request->comentario;
+        $this->validate($request,[
+            'instrutor_id'=>'required',
+            'aluno_id'=>'required',
+            'titulo'=>'required',
+        ]);
+        $treino = [
+            'instrutor_id' => $request->instrutor_id,
+            'aluno_id' => $request->aluno_id,
+            'titulo' => $request->titulo,
+            'comentario' => $request->comentario,
+        ];
         $treino->save();
-        return redirect('instrutor/treinos');
+        // return redirect('instrutor/treinos');
+        return $this->index();  
     }
 
     public function show($id)
     {
-        //
+        
     }
 
     public function edit($id)
     {
-        //
+        $alunos ['alunos'] = Aluno::all();
+        $treino['treino'] = Treino::find($id);
+        return view('treino.cadastro',$treino,$alunos);
     }
 
     public function update(Request $request, $id)
     {
-        
+        $this->validate($request,[
+            'instrutor_id'=>'required',
+            'aluno_id'=>'required',
+            'titulo'=>'required',
+        ]);
+        $treino = [
+            'instrutor_id' => $request->instrutor_id,
+            'aluno_id' => $request->aluno_id,
+            'titulo' => $request->titulo,
+            'comentario' => $request->comentario,
+        ];
+        $update = Treino::find($id)->update($treino);
+        if($update)
+            return redirect('treino');
+        else
+            return redirect()->back()->withInput();
     }
 
     public function destroy($id)
     {
-        //
+        $treino = Treino::find($id);
+        if($treino){
+            $treino->destroy($id);
+            $msg = 'Treino removido com Sucesso.';
+        }
+        else{
+            $msg = 'Treino não encontrado';
+        }
+        return redirect()
+            ->back()
+            ->withSucess($msg);  
+    }
+
+    public function lista($id)
+    {
+        $treinos ['treinos'] = Instrutor::find($id)->treinos;
+        return view('treino.lista', $treinos);
     }
 }

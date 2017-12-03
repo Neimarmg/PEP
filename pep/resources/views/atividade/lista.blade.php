@@ -3,7 +3,7 @@
 @section('content')
 {{--  @auth('instrutor')  --}}
     <center>
-        <h3>Lista de exercícios</h3>
+        <h3>Lista de atividades</h3>
         <div class="col-md-3"></div>           
         <div class="col-md-6">            
             <div class="panel">
@@ -12,8 +12,12 @@
                         <thead>
                             <tr>
                                 <th width="5">No</th>
-                                <th width="300">Nome</th>
+                                <th>Nome</th>
                                 <th width="300">Grupo Muscular</th>
+                                <th width="5">Ordem</th>
+                                <th width="5">Carga</th>
+                                <th width="5">Séries</th>
+                                <th width="5">Repetições</th>
                                 <th width="5">
                                     <center>
                                         <a href="exercicio/create" class="btn btn-xs btn-success">Novo Exercício</a>
@@ -31,8 +35,13 @@
                                             
                                         @endforeach  --}}
 
-                                        {{ $exercicio->grupoMuscular->nome }}
+                                        {{ $exercicio->grupo_muscular_id }}
+
                                     </td>
+                                    <td>{{ $exercicio->ordem }}º</td>
+                                    <td>{{ $exercicio->carga }}kg</td>
+                                    <td>{{ $exercicio->series }}</td>
+                                    <td>{{ $exercicio->repeticoes }}</td>
                                     <td>
                                         <center>
                                             <a href="{{ URL('exercicio/' . $exercicio->id . '/edit') }}" class="btn btn-xs btn-info">Editar</a>

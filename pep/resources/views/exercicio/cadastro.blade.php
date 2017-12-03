@@ -3,9 +3,13 @@
 @section('content')
 @auth('instrutor','web')
 
-<div class="row" align="center">
-    <h3>Cadastro de exercício</h3> 
-    <form class="form-horizontal col-lg-offset-3"
+<div class="container">
+<div class="row">
+<div class="col-md-8 col-md-offset-2">
+<div class="panel panel-default">
+    <div class="panel-heading"><h4 align='center'>Cadastro de exercício</h4></div>
+    <div class="panel-body">
+    <form class="form-horizontal"
      action="{{ URL('exercicio') }}{{ isset($exercicio) ? '/' . $exercicio->id : '' }}"
      method="POST">
             @if(isset($exercicio))
@@ -14,97 +18,63 @@
         <fieldset>
             {{ csrf_field() }}
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
-            <div class="form-group">
-                <label class="col-lg-2 control-label">Nome</label>
-                <div class="col-lg-4">
+            <div class="form-group{{ $errors->has('nome') ? ' has-error' : '' }}">
+            
+                <label class="col-lg-4 control-label">Nome</label>
+                <div class="col-md-6">
                     <input type="text" name="nome" placeholder="Nome" class="form-control"
                             value="{{ isset($exercicio) ? $exercicio->nome : '' }}">
+                    @if ($errors->has('nome'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('nome') }}</strong>
+                        </span>
+                    @endif
                 </div>
             </div>
 
-            <div class="form-group">
-                <label class="col-lg-2 control-label">Grupo Muscular</label>
-                <div class="col-lg-4">
-                    <input type="text" name="grupo_muscular_id" placeholder="grupo musc" class="form-control"
-                            value="{{ isset($exercicio) ? $exercicio->grupo_muscular_id : '' }}">
-                </div>
-            </div>
-
-            <div class="form-group driver-drop">
-                <div class="input-group">
-                    <label for="select" class="col-lg-2 control-label">Grupo Muscular</label>
+            <div class="form-group{{ $errors->has('grupo_muscular_id') ? ' has-error' : '' }}">
+                <label for="select" class="col-lg-4 control-label">Grupo Muscular</label>
+                <div class="col-md-6">
                     <select class="form-control" id="grupo_muscular_id" name="grupo_muscular_id" required="required">
-                        <option disabled selected>Grupo muscular...</option>
+                        @if(isset($exercicio))
+                            <option enable selected value="{{ $exercicio->grupo_muscular_id }}">
+                                @if($exercicio->grupoMuscular != null)
+                                    {{$exercicio->grupoMuscular->nome}}
+                                @endif   
+                            </option>
+                        @else
+                            <option disabled selected>Selecionar grupoMuscular...</option>
+                        @endif
                         @foreach($grupoMusculars as $musc)
-                                    <option value="{{ $musc->id }}">{{ $musc->nome }}</option>
+                            <option value="{{ $musc->id }}">{{ $musc->nome }}</option>
                         @endforeach
                     </select>
-                </div>
-            </div>
-
-
-            {{--  <div class="form-group">
-                <label for="select" class="col-lg-2 control-label">Grupo Muscular</label>
-                <div class="col-lg-4">  --}}
-                {{--  {!! Form::select('grupoMusculars',['' => 'selecione ...'+$grupoMusculars],'',['id' => 'grupoMusculars']) !!}  --}}
-                    {{--  <form>  --}}
-                        {{--  <select class="form-control" name="grupo_muscular_id" onchange="this.form.submit()">  --}}
-                        {{--  <select class="form-control" id="id" value="{{ isset($exercicio) ? $exercicio->grupo_muscular_id : '' }}">  --}}
-                            {{--  @foreach($grupoMusculars as $grupoMuscular)
-                                <option value="{{ $grupoMuscular->id }}">{{ $grupoMuscular->id }} {{ $grupoMuscular->nome }}</option>
-                            @endforeach
-                        </select>
-                    </form>
-                </div>
-            </div>  --}}
-
-
-
-
-            <div class="form-group">
-                <label class="col-lg-2 control-label">Ordem</label>
-                <div class="col-lg-4">
-                    <input type="number" name="ordem" placeholder="Ordem" class="form-control"
-                            value="{{ isset($exercicio) ? $exercicio->ordem : '' }}">
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="col-lg-2 control-label">Carga</label>
-                <div class="col-lg-4">
-                    <input type="number" name="carga" placeholder="Carga" class="form-control"
-                            value="{{ isset($exercicio) ? $exercicio->carga : '' }}">
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="col-lg-2 control-label">Séries</label>
-                <div class="col-lg-4">
-                    <input type="number" name="series" placeholder="Séries" class="form-control"
-                            value="{{ isset($exercicio) ? $exercicio->series : '' }}">
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="col-lg-2 control-label">Repetições</label>
-                <div class="col-lg-4">
-                    <input type="number" name="repeticoes" placeholder="Repetições" class="form-control"
-                            value="{{ isset($exercicio) ? $exercicio->repeticoes : '' }}">
+                    @if ($errors->has('grupo_muscular_id'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('grupo_muscular_id') }}</strong>
+                        </span>
+                    @endif
                 </div>
             </div>
 
             <div class="form-group">
-                <div class="col-lg-4 col-lg-offset-2">
-                    <a href="{{ URL('exercicio') }}" class="btn btn-default">Cancelar</a>
-                    <button type="submit" class="btn btn-primary">Salvar</button>
+                <div class="col-md-6 col-md-offset-4">
+                    <a href="{{ URL('exercicio') }}" class="btn btn-sm  btn-default">Cancelar</a>
+                    <button type="submit" class="btn btn-sm  btn-primary">Salvar</button>
                 </div>
             </div>
         </fieldset>
     </form>
-    @if(count($errors)>0)
+    </div>
+    {{--  @if(count($errors)>0)
         @foreach($errors->all() as $error)
             {{$error}}<br>
         @endforeach
-    @endif
+    @endif  --}}
 </div>
-
+</div>
+</div>
+</div>
 @endauth
 
 {{--  @guest

@@ -67,27 +67,26 @@
     </head>
     <body>
         <div class="flex-center position-ref full-height">
-            {{--  @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ url('/selectLogin') }}">Entrar</a>
-                        <a href="{{ url('/selectRegister') }}">Criar Conta</a>
-                    @endauth
-                </div>
-            @endif  --}}
-
+            <div>
             @if (Route::has('login'))
                 <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ url('/selectLogin') }}">Entrar</a>
-                        <a href="{{ url('/selectRegister') }}">Criar Conta</a>
-                    @endauth
+                @if(auth('web')->user() || auth('instrutor')->user() || auth('aluno')->user())
+                    @if(auth('web')->user())
+                        <a href="{{ url('/home') }}">Admin Home</a>
+                    @endif
+                    @if(auth('instrutor')->user())
+                        <a href="{{ url('/instrutor/home') }}">Home Instrutor</a>
+                    @endif
+                    @if(auth('aluno')->user())
+                        <a href="{{ url('/aluno/home') }}">Aluno Home</a>
+                    @endif
+                @else
+                    <a href="{{ url('/selectLogin') }}">Entrar</a>
+                    <a href="{{ url('/selectRegister') }}">Criar Conta</a>
+                @endif
                 </div>
             @endif
+            </div>
 
             <div class="content">
                 <div class="row">
@@ -102,11 +101,6 @@
                         </div>
                         <h3>Programa de Exercício Pessoal</h3>
                         <br>
-                        <div class="links">
-                            <a href="">Link1</a>
-                            <a href="">Link2</a>
-                            <a href="">Link3</a>
-                        </div>
                     </div>
                 </div>
             </div>

@@ -33,5 +33,5 @@ class Instrutor extends Authenticatable
     public function treinos()
     {
         return $this->hasMany(Treino::Class);
-    }
+    }    
 }

@@ -35,9 +35,7 @@ class InstrutorController extends Controller
     
     public function gerenciaTreinos($id)
     {
-        // $treinos ['treinos'] = Treino::all();   Auth::user()->name
         $treinos ['treinos'] = Instrutor::find($id)->treinos;
-        $alunos ['alunos'] = Instrutor::find($id)->alunos;
         return view('instrutor.treinos', $treinos);
     }
 
@@ -95,7 +93,7 @@ class InstrutorController extends Controller
 
     public function alunos($id)
     {
-        $alunos = Instrutor::find($id)->alunos;
+        return $alunos ['alunos'] = Instrutor::find($id)->alunos;
         return view('instrutor/alunos',compact('alunos'));
     }
 }

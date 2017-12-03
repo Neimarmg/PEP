@@ -13,13 +13,10 @@
                     Seu id é: {{Auth::user()->id}}</h4>
                 @endif
 
-                <p align="center"><a href="{{ url('instrutor')}}{{'/' . Auth::user()->id . '/treinos' }}" class="btn btn-sm btn-primary">Gerenciar Treinos</a></p>
+                <p align="center"><a href="{{ url('treino/lista/' . Auth::user()->id) }}" class="btn btn-sm btn-primary">Gerenciar Treinos</a></p>
+                <p align="center"><a href="{{ url('atividade/lista/' . Auth::user()->id) }}" class="btn btn-sm btn-primary">Gerenciar Atividades</a></p>
 
-                    {{--  @foreach($alunos as $aluno)
-                        <h4> {{ $aluno->name }} </h4>
-                    @endforeach  --}}
-
-<br><br><br><br><br><br><br><br><br><br>
+                <br><br><br><br><br><br><br><br><br><br>
                     @component('components.who')
                     @endcomponent
                     <br>

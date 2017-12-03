@@ -29,13 +29,18 @@ Route::prefix('')->group(function() {
     //  POST     | register               |                  | App\Http\Controllers\Auth\RegisterController@register
 });
 
-
-Route::group(['prefix' => ''], function () {
-    Route::resource('exercicio', 'ExercicioController');
-    Route::resource('treino', 'TreinoController');
-    Route::resource('grupoMuscular', 'GrupoMuscularController');
-    // Route::resource('instrutor', 'InstrutorController');
+Route::resource('treino', 'TreinoController');
+// Route::resource('atividade', 'AtividadeController');
+Route::resource('grupoMuscular', 'GrupoMuscularController');
+Route::resource('exercicio', 'ExercicioController');
+    
+Route::prefix('treino')->group(function() {
+    Route::GET('/lista/{id}', 'TreinoController@lista');
 });
+
+// Route::prefix('atividade')->group(function() {
+//     Route::GET('/lista/{id}', 'TreinoController@lista');
+// });
 
 Route::prefix('aluno')->group(function() {
     Route::GET('/home', 'AlunoController@index');

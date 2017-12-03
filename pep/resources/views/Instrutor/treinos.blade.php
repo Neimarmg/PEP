@@ -7,7 +7,7 @@
         <div class="col-md-6">
             <div class="panel">
                 <div class="table-responsive">
-                <h4> {{ Auth::user()->id }}</h4>
+                {{--  <h4> {{ Auth::user()->id }}</h4>  --}}
                     <table class="table table-striped table-hover table-bordered" >
                         <thead>
                             <tr>
@@ -26,7 +26,7 @@
                                 <tr>
                                     <td>{{ $treino->id }}</td>
                                     <td>{{ $treino->titulo }}</td>
-                                    <td>{{ $treino->aluno_id }}</td>
+                                    <td>{{ $treino->aluno->name }} {{ $treino->aluno->lastname }}</td>
                                     <td>
                                         <center>
                                             <a href="{{ URL('treino/' . $treino->id . '/edit') }}" class="btn btn-xs btn-info">Editar</a>

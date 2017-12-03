@@ -1,36 +1,37 @@
 <div align="center">
-<h4>ACESSOS (Temporário)</h4>
-
 {{--  Checar se está logado como ADMINISTRADOR  --}}
 @if(Auth::guard('web')->check()) 
     <p class="text-success">
-        Você está logado como <strong>ADMINISTRADOR</strong>
+    Olá, <strong>{{auth('web')->user()->name}} {{auth('web')->user()->lastname}}</strong>!
+    Você está logado como <strong>ADMINISTRADOR</strong>
     </p>
-@else
+{{--  @else
     <p class="text-danger">
         Você está deslogado como <strong>ADMINISTRADOR</strong>
-    </p>
+    </p>  --}}
 @endif
 
 {{--  Checar se está logado como INSTRUTOR  --}}
 @if(Auth::guard('instrutor')->check()) 
     <p class="text-success">
+        Olá, <strong>{{auth('instrutor')->user()->name}} {{auth('instrutor')->user()->lastname}}</strong>!
         Você está logado como <strong>INSTRUTOR</strong>
     </p>
-@else
+{{--  @else
     <p class="text-danger">
         Você está deslogado como <strong>INSTRUTOR</strong>
-    </p>
+    </p>  --}}
 @endif
 
 {{--  Checar se está logado como ALUNO  --}}
 @if(Auth::guard('aluno')->check()) 
     <p class="text-success">
+        Olá, <strong>{{auth('aluno')->user()->name}} {{auth('aluno')->user()->lastname}}</strong>!
         Você está logado como <strong>ALUNO</strong>
     </p>
-@else
+{{--  @else
     <p class="text-danger">
         Você está deslogado como <strong>ALUNO</strong>
-    </p>
+    </p>  --}}
 @endif
 </div>
