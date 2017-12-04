@@ -70,72 +70,69 @@
                             </div>
                         </div>
 {{--  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////  --}}
-<div class="panel-group">
-@if(isset($treino))
-    @if(isset($atividades))
-        @foreach($atividades as $atividade)
-<div class="panel panel-info">
-    <div class="panel-heading">
-        <div class="col-md-4">
-            Treino: <strong>{{$atividade->treino->titulo}}</strong>
-        </div>
-        <div class="col-md-4">
-            Exercício: <strong>{{$atividade->exercicio->nome}}</strong>
-        </div>
-        <div class="col-md-4">
-            Instrutor: <strong>{{$atividade->instrutor->name}} {{$atividade->instrutor->lastname}}</strong>
-        </div>
-        <div class="col-md-4">
-            Aluno: <strong>{{$atividade->aluno->name}} {{$atividade->aluno->lastname}}</strong>
-        </div>&nbsp; <br>&nbsp;
-    </div>
-                
-                <div class="panel-body">
-                    
-                    Aluno: {{$atividade->aluno->name}} {{$atividade->aluno->lastname}} <br>
-                </div>
-            </div>
-            
-        @endforeach
-    @else
-        <h4 align='center'>AT- Nenhuma Atividade Cadastrada </h4>
-    @endif
-@else
-    @if(isset($atividades))
-        <h4 align='center'>NT- Atividade Cadastrada </h4>
-        {{$atividades}}
-    @else
-        <h4 align='center'>NT- Nenhuma Atividade Cadastrada </h4>
-    @endif
-@endif
-</div>
+                        <div class="panel-group">
+                        @if(isset($treino))
+                            @if(isset($atividades))
+                                @foreach($atividades as $atividade)
+                                    <div class="panel panel-info">
+                                        <div class="panel-heading">
+                                            <div class="col-md-4">
+                                                Treino: <strong>{{$atividade->treino->titulo}}</strong>
+                                            </div>
+                                            <div class="col-md-4">
+                                                Exercício: <strong>{{$atividade->exercicio->nome}}</strong>
+                                            </div>
+                                            <div class="col-md-4">
+                                                Instrutor: <strong>{{$atividade->instrutor->name}} {{$atividade->instrutor->lastname}}</strong>
+                                            </div>
+                                            <div class="col-md-4">
+                                                Aluno: <strong>{{$atividade->aluno->name}} {{$atividade->aluno->lastname}}</strong>
+                                            </div>
+                                            <div class="col-md-4">
+                                                Data de criação: 
+                                                <strong>
+                                                    {{$atividade->created_at->day}}/{{$atividade->created_at->month}}/{{$atividade->created_at->year}}
+                                                </strong>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <a href="{{ URL('atividade/' . $atividade->id . '/edit') }}" class="btn btn-xs btn-info">Editar</a>
+                                                <form action="{{ URL('atividade/' . $atividade->id) }}" method="POST">
+                                                    {{ csrf_field() }}
+                                                    {{ method_field('DELETE') }}
+                                                    <button type="submit" class="btn btn-xs btn-danger">Remover</button>
+                                                </form>
+                                            </div>
+                                            &nbsp;
+                                        </div>   
+                                        <div class="panel-body">
+                                            <div class="col-sm-9">
+                                                <h4 class="card-title">Comentário do Instrutor:</h4>  
+                                                {{$atividade->comentario}} <br>
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <h4 class="card-title">Atividade:</h4>  
+                                                Ordem: {{$atividade->ordem}}º <br>
+                                                Carga: {{$atividade->carga}}Kg <br>
+                                                Series: {{$atividade->series}} <br>
+                                                Repetições: {{$atividade->repeticoes}}
+                                            </div>
+                                        </div>
+                                    </div> <br>
+                                    
+                                @endforeach
+                            @else
+                                <h4 align='center'>Nenhuma Atividade Cadastrada </h4>
+                            @endif
+                        @else
+                            @if(isset($atividades))
+                                <h4 align='center'>Atividade Cadastrada </h4>
+                                {{$atividades}}
+                            @else
+                                <h4 align='center'>Nenhuma Atividade Cadastrada </h4>
+                            @endif
+                        @endif
+                        </div>
 
-
-
-
-{{--  <div class="panel-group">
-    <div class="panel panel-info">
-      <div class="panel-heading">Panel with panel-info class</div>
-      <div class="panel-body">Panel Content</div>
-    </div>
-@if(isset($treino))
-
-    <h4 align='center'>Alteração de treino - Nenhuma Atividade Cadastrada </h4><br>
-
-    @if(isset($atividades))
-        TEM ATIVIDADE!!!!!!!!!!!!!
-        @foreach($atividades as $atividade)
-{{$atividade}}
-
-        @endforeach
-    @else
-        
-    @endif
-@else
-    <h4 align='center'>Novo treino. Nenhuma Atividade Cadastrada </h4><br>
-@endif
-
-</div>  --}}
 {{--  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////  --}}
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-3">
@@ -147,15 +144,11 @@
                         </div>
                     </form>
                 </div>
-                </div>
-{{--  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////  --}}
-
-            </div>
-            </div>
             </div>
         </div>
     </div>
 </div>
+
 @endsection
 
 {{-- Posteriormente: Para fazer upload de imagem!!!

@@ -14,6 +14,7 @@
                                 <th width="5">No</th>
                                 <th width="300">Nome</th>
                                 <th width="300">Grupo Muscular</th>
+                                <th width="300">Imagem</th>
                                 <th width="5">
                                     <center>
                                         <a href="exercicio/create" class="btn btn-xs btn-success">Novo Exercício</a>
@@ -26,12 +27,11 @@
                                 <tr>
                                     <td>{{ ($key+1) }}</td>
                                     <td>{{ $exercicio->nome }}</td>
+                                    <td>{{ $exercicio->grupoMuscular->nome }}</td>
                                     <td>
-                                        {{--  @foreach($grupoMusculars as $musc)
-                                            
-                                        @endforeach  --}}
-
-                                        {{ $exercicio->grupoMuscular->nome }}
+                                        @if($exercicio->imagem != null)
+                                            <img src="{{ asset('storage/' . $exercicio->imagem) }}" width=100>                                                                                    
+                                        @endif
                                     </td>
                                     <td>
                                         <center>

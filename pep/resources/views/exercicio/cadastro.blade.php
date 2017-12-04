@@ -9,7 +9,7 @@
 <div class="panel panel-default">
     <div class="panel-heading">Cadastro de exercício</div>
     <div class="panel-body">
-    <form class="form-horizontal"
+    <form class="form-horizontal" enctype="multipart/form-data"
      action="{{ URL('exercicio') }}{{ isset($exercicio) ? '/' . $exercicio->id : '' }}"
      method="POST">
             @if(isset($exercicio))
@@ -18,8 +18,8 @@
         <fieldset>
             {{ csrf_field() }}
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
             <div class="form-group{{ $errors->has('nome') ? ' has-error' : '' }}">
-            
                 <label class="col-lg-4 control-label">Nome</label>
                 <div class="col-md-6">
                     <input type="text" name="nome" placeholder="Nome" class="form-control"
@@ -56,8 +56,38 @@
                     @endif
                 </div>
             </div>
-            
-            
+
+            <div class="form-group{{ $errors->has('imagem') ? ' has-error' : '' }}">
+                <label class="col-lg-4 control-label">Upload de imagem</label>
+                <div class="col-md-6">
+                    <input type="file" name="imagem"
+                            value="{{ isset($exercicio) ? $exercicio->imagem : '' }}">
+                    @if ($errors->has('imagem'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('imagem') }}</strong>
+                        </span>
+                    @endif
+                </div>
+            </div>
+                {{--  <h1>File Upload</h1>  --}}
+				{{--  <form action="{{ URL::to('upload') }}" method="post" enctype="multipart/form-data">  --}}
+					{{--  <label>Select image to upload:</label>
+				    <input type="file" name="imagem" id="imagem">
+				    <input type="submit" value="Upload" name="submit">  --}}
+				{{--  </form>  --}}
+
+{{--  
+            <h1>File Upload</h1>
+            <form action="{{ URL::to('upload') }}" method="post" enctype="multipart/form-data">
+                <label>Selecione a imagem para upload:</label>
+                <input type="file" name="file" id="file">
+                <input type="submit" value="Upload" name="submit">
+                <input type="hidden" value="{{ csrf_token() }}" name="_token">
+            </form>  --}}
+
+
+
+
             <div class="form-group">
                 <div class="col-md-6 col-md-offset-4">
                     <a href="{{ URL('grupoMuscular/create') }}" type="submit" class="btn btn-sm btn-success btn-block">Novo Grupo Muscular</a>

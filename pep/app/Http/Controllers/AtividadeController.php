@@ -42,9 +42,10 @@ class AtividadeController extends Controller
 
     public function create()
     {
-        $exercicios ['exercicios'] = Exercicio::all(); 
-        $alunos ['alunos'] = Aluno::all(); 
-        return view('atividade.cadastro',$exercicios,$alunos);
+        $exercicios = Exercicio::all(); 
+        $alunos = Aluno::all(); 
+        $treino = "null"; 
+        return view('atividade.cadastro',compact('exercicios','alunos','treino'));
     }
 
     public function store(Request $request)
@@ -84,8 +85,9 @@ class AtividadeController extends Controller
         $exercicios = Exercicio::all();              
         // $alunos ['alunos'] = Instrutor::find($instrutor_id)->alunos; 
         $alunos = Aluno::all();
+        $treino = Atividade::find($id)->treino;
         $atividade = Atividade::find($id);
-        return view('atividade.cadastro',compact('atividade','exercicios','alunos'));
+        return view('atividade.cadastro',compact('atividade','treino','exercicios','alunos'));
     }
 
     public function update(Request $request, $id)

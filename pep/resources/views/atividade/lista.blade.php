@@ -23,7 +23,7 @@
                                 <th width="5">Comentários</th>
                                 <th width="5">
                                     <center>
-                                        <a href="{{ url('atividade/create') }}" class="btn btn-xs btn-success">Nova Atividade</a>
+                                        <a href="{{ URL('treino/create') }}" class="btn btn-xs btn-success">Nova Atividade</a>
                                     </center>
                                 </th>
                             </tr>

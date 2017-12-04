@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use App\Exercicio;
 use App\GrupoMuscular;
 use App\Atividade;
+use \Input as Input;
 
 class ExercicioController extends Controller
 {
@@ -18,10 +20,11 @@ class ExercicioController extends Controller
 
     public function index()
     {
-        $exercicios ['exercicios'] = Exercicio::all();
-        $grupoMusculars ['grupoMusculars'] = GrupoMuscular::all(); 
-        $atividades ['atividades'] = Atividade::all(); 
-        return view('exercicio.lista', $exercicios, $grupoMusculars, $atividades);
+        $exercicios = Exercicio::all();
+        $grupoMusculars = GrupoMuscular::all(); 
+        $atividades = Atividade::all(); 
+        // $imgUrl = Storage::url('teste.png');
+        return view('exercicio.lista', compact('exercicios','grupoMusculars','atividades'));
     }
 
     public function create()
@@ -40,10 +43,25 @@ class ExercicioController extends Controller
         ]);
         $exercicio->nome = $request->nome;
         $exercicio->grupo_muscular_id = $request->grupo_muscular_id;
-        // OLD!!!! $exercicio->ordem = $request->ordem;
-        // $exercicio->carga = $request->carga;
-        // $exercicio->series = $request->series;
-        // $exercicio->repeticoes = $request->repeticoes;
+        
+		if($request->hasFile('imagem')){
+            // $request->file('imagem');
+            // $request->imagem->store('public');
+            // Storage::putFile('public',$request->file('imagem'));
+            $fileName = $request->imagem->getClientOriginalName();
+            $request->imagem->storeAs('public',$fileName);
+            $exercicio->imagem = $fileName;
+            
+            // Para criar o arquivo!!!!!!
+            // $raw = Storage::get('teste.png');
+            // Storage::put('public',$raw);//retorna boolean
+            
+            // Para deletar o arquivo!!!!!!
+            // Storage::delete('public/teste.png');//retorna boolean
+
+            // $exercicio->imagem = $request->imagem;
+        }
+
         $exercicio->save();
         return redirect('exercicio');
         // return redirect()->back()->withInput();
@@ -64,15 +82,21 @@ class ExercicioController extends Controller
 
     public function update(Request $request, $id)
     {
-        $grupoMusculars ['grupoMusculars'] = GrupoMuscular::all();
+        // $grupoMusculars ['grupoMusculars'] = GrupoMuscular::all();
         $exercicio = [
             'nome' => $request->nome,
             'grupo_muscular_id' => $request->grupo_muscular_id,
-            // 'ordem' => $request->ordem,
-            // 'carga' => $request->carga,
-            // 'series' => $request->series,
-            // 'repeticoes' => $request->repeticoes,
         ];
+        // $exercicio->nome = $request->nome;
+        // $exercicio->grupo_muscular_id = $request->grupo_muscular_id;
+        if($request->hasFile('imagem')){
+            $fileName = $request->imagem->getClientOriginalName();
+            // $exercicio->imagem = $fileName;
+            $exercicio = [
+                'imagem' => $fileName,
+            ];
+            $request->imagem->storeAs('public',$fileName);
+        }
         $update = Exercicio::find($id)->update($exercicio);
         if($update)
             return redirect('exercicio');
