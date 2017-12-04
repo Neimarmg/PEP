@@ -16,10 +16,9 @@
                         Json do treino <br>
                         {{ $treino }} <br><br>
 
-                        Treino Titulo<input id="titulo" type="text" class="form-control" name="titulo" value="{{ $treino->titulo }}">
-                        Treino ID <input id="treino_id" type="text" class="form-control" name="treino_id" value="{{ $treino->id }}">
-                        Instrutor {{ $treino->instrutor->name }}ID <input id="instrutor_id" type="text" class="form-control" name="instrutor_id" value="{{Auth::user()->id}}">
-                        Aluno {{ $treino->aluno->name }} ID <input id="aluno_id" type="text" class="form-control" name="aluno_id" value="{{ $treino->aluno_id }}">
+                        Treino: {{ $treino->titulo }} <input id="treino_id" type="text" name="treino_id" value="{{ $treino->id }}"> <br>
+                        Instrutor: {{ $treino->instrutor->name }}ID <input id="instrutor_id" type="text" name="instrutor_id" value="{{Auth::user()->id}}"> <br>
+                        Alun@: {{ $treino->aluno->name }} ID <input id="aluno_id" type="text" name="aluno_id" value="{{ $treino->aluno_id }}"> <br><br><br>
                         
                         @if(isset($atividade))
                             <div class="form-group">
@@ -76,14 +75,18 @@
                                     @if(isset($atividade))
                                         <option enable selected value="{{ $atividade->exercicio->id }}">
                                             @if($atividade->exercicio != null)
+                                                com atividade
                                                 {{$atividade->exercicio->id}} {{$atividade->exercicio->nome}}
                                             @endif
                                         </option>
                                     @else
-                                        <option disabled selected>Selecionar exercício...</option>
+                                        <option disabled selected value="">Selecionar exercício...</option>
                                     @endif
-                                    @foreach($exercicios as $ex)
-                                        <option value="{{ $ex->id }}">{{ $ex->id }} {{ $ex->nome }}</option>
+                                    @foreach($exercicios as $exercicio)
+                                        <option value="{{ $exercicio->id }}">
+                                            não tem atividade
+                                            {{ $exercicio->id }} {{ $exercicio->nome }}
+                                        </option>
                                     @endforeach
                                 </select>
                                 @if ($errors->has('exercicio_id'))
@@ -94,11 +97,6 @@
                             </div>
                         </div>
                         
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-3">
-                                <button type="submit" class="btn btn-sm btn-success btn-block">Novo Exercício</button>
-                            </div>
-                        </div>
 {{--  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////  --}}
                         <div class="form-group">
                                 <label class="col-lg-3 control-label">Ordem</label>
@@ -141,8 +139,8 @@
 {{--  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////  --}}
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
-                                {{--  <a href="{{ url('instrutor')}}{{'/' . Auth::user()->id . '/atividade' }}" class="btn btn-sm btn-primary">  --}}
-                                <a href="{{ URL('atividade/lista/' . Auth::user()->id) }}" class="btn btn-sm btn-primary">
+                                
+                                <a href="{{ URL('treino/' . $treino->id . '/edit') }}" class="btn btn-sm btn-primary">
                                     Voltar
                                 </a>
                                 <button type="submit" class="btn btn-sm btn-primary">Adicionar Atividade</button>

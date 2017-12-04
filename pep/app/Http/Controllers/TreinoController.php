@@ -32,22 +32,22 @@ class TreinoController extends Controller
         return view('treino.cadastro',$alunos,$exercicios);
     }
 
-    public function salvar(Request $request)
-    {   
-        $treino = new Treino;
-        $this->validate($request,[
-            'instrutor_id'=>'required',
-            'aluno_id'=>'required',
-            'titulo'=>'required',
-        ]);
-        $treino->instrutor_id = $request->instrutor_id;
-        $treino->aluno_id = $request->aluno_id;
-        $treino->titulo = $request->titulo;
-        $treino->comentario = $request->comentario;
-        $treino->save();
-        return redirect('atividade/cadastro',$treino);
-        // return $this->index();  
-    }
+    // public function salvar(Request $request)
+    // {   
+    //     $treino = new Treino;
+    //     $this->validate($request,[
+    //         'instrutor_id'=>'required',
+    //         'aluno_id'=>'required',
+    //         'titulo'=>'required',
+    //     ]);
+    //     $treino->instrutor_id = $request->instrutor_id;
+    //     $treino->aluno_id = $request->aluno_id;
+    //     $treino->titulo = $request->titulo;
+    //     $treino->comentario = $request->comentario;
+    //     $treino->save();
+    //     return redirect('atividade/cadastro',$treino);
+    //     // return $this->index();  
+    // }
 
     public function store(Request $request)
     {   
@@ -107,7 +107,9 @@ class TreinoController extends Controller
             // return redirect('treino/lista/' . $request->instrutor_id);
         }
         else
-            return redirect()->back()->withInput();
+            return view('atividade/cadastro', compact('treino','exercicios','alunos'));
+        
+            // return redirect()->back()->withInput();
     }
 
     public function destroy($id)

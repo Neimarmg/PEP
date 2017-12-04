@@ -11,6 +11,9 @@
                     <form class="form-horizontal" action="{{ URL('treino') }}{{ isset($treino) ? '/' . $treino->id : '' }}" method="POST">
                         @if(isset($treino))
                             {{ method_field('PUT') }}
+                            <h4 align='center'>Alteração de treino</h4>
+                        @else
+                            <h4 align='center'>Novo treino</h4>
                         @endif
                         {{ csrf_field() }}
 
@@ -19,7 +22,7 @@
                         <div class="form-group{{ $errors->has('aluno_id') ? ' has-error' : '' }}">
                             <label for="select" class="col-md-3 control-label">Aluno</label>
                             <div class="col-md-6">
-                                <select class="form-control" id="aluno_id" name="aluno_id" required="required">
+                                <select class="form-control" id="aluno_id" name="aluno_id" required>
                                     @if(isset($treino))
                                         <option enable selected value="{{ $treino->aluno_id }}">
                                             @if($treino->aluno != null)
@@ -27,7 +30,7 @@
                                             @endif   
                                         </option>
                                     @else
-                                        <option disabled selected>Selecionar aluno...</option>
+                                        <option disabled selected value="">Selecionar aluno...</option>
                                     @endif
                                     @foreach($alunos as $aluno)
                                         @if($aluno->instrutor_id == Auth::user()->id)
@@ -46,7 +49,7 @@
                         <div class="form-group">
                             <label for="titulo" class="col-md-3 control-label">Título</label>
                             <div class="col-md-6">
-                                <input id="titulo" type="text" class="form-control" name="titulo" placeholder="Título" value="{{ isset($treino) ? $treino->titulo : '' }}" required autofocus>
+                                <input id="titulo" type="text" class="form-control" name="titulo" placeholder="Título" value="{{ isset($treino) ? $treino->titulo : '' }}" required>
                             </div>
                         </div>
 
@@ -67,14 +70,63 @@
                             </div>
                         </div>
 {{--  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////  --}}
+<div class="panel-group">
+@if(isset($treino))
+    @if(isset($atividades))
+        @foreach($atividades as $atividade)
+<div class="panel panel-info">
+    <div class="panel-heading">
+        <div class="col-md-4">
+            Treino: <strong>{{$atividade->treino->titulo}}</strong>
+        </div>
+        <div class="col-md-4">
+            Exercício: <strong>{{$atividade->exercicio->nome}}</strong>
+        </div>
+        <div class="col-md-4">
+            Instrutor: <strong>{{$atividade->instrutor->name}} {{$atividade->instrutor->lastname}}</strong>
+        </div>
+        <div class="col-md-4">
+            Aluno: <strong>{{$atividade->aluno->name}} {{$atividade->aluno->lastname}}</strong>
+        </div>&nbsp; <br>&nbsp;
+    </div>
+                
+                <div class="panel-body">
+                    
+                    Aluno: {{$atividade->aluno->name}} {{$atividade->aluno->lastname}} <br>
+                </div>
+            </div>
+            
+        @endforeach
+    @else
+        <h4 align='center'>AT- Nenhuma Atividade Cadastrada </h4>
+    @endif
+@else
+    @if(isset($atividades))
+        <h4 align='center'>NT- Atividade Cadastrada </h4>
+        {{$atividades}}
+    @else
+        <h4 align='center'>NT- Nenhuma Atividade Cadastrada </h4>
+    @endif
+@endif
+</div>
+
+
+
+
+{{--  <div class="panel-group">
+    <div class="panel panel-info">
+      <div class="panel-heading">Panel with panel-info class</div>
+      <div class="panel-body">Panel Content</div>
+    </div>
 @if(isset($treino))
 
     <h4 align='center'>Alteração de treino - Nenhuma Atividade Cadastrada </h4><br>
 
     @if(isset($atividades))
         TEM ATIVIDADE!!!!!!!!!!!!!
-        @foreach($atividades as $item)
-            {{ $item }} <br><br>
+        @foreach($atividades as $atividade)
+{{$atividade}}
+
         @endforeach
     @else
         
@@ -83,18 +135,23 @@
     <h4 align='center'>Novo treino. Nenhuma Atividade Cadastrada </h4><br>
 @endif
 
+</div>  --}}
 {{--  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////  --}}
-
                         <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <a href="{{ url('instrutor')}}{{'/' . Auth::user()->id . '/treinos' }}" class="btn btn-sm btn-primary">
+                            <div class="col-md-6 col-md-offset-3">
+                                <a href="{{ url('instrutor')}}{{'/' . Auth::user()->id . '/treinos' }}" class="btn btn-sm btn-primary btn-block">
                                     Voltar
                                 </a>
-                                <button type="submit" class="btn btn-sm btn-primary">Salvar Treino</button>
+                                {{--  <button type="submit" class="btn btn-sm btn-primary">Salvar Treino</button>  --}}
                             </div>
                         </div>
                     </form>
                 </div>
+                </div>
+{{--  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////  --}}
+
+            </div>
+            </div>
             </div>
         </div>
     </div>

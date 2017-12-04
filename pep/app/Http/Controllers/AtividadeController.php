@@ -50,6 +50,12 @@ class AtividadeController extends Controller
     public function store(Request $request)
     {    
         $atividade = new Atividade;
+        $this->validate($request,[
+            'treino_id'=>'required',
+            'exercicio_id'=>'required',
+            'instrutor_id'=>'required',
+            'aluno_id'=>'required',
+        ]);
         $atividade->treino_id = $request->treino_id;
         $atividade->exercicio_id = $request->exercicio_id;
         $atividade->instrutor_id = $request->instrutor_id;
@@ -60,7 +66,7 @@ class AtividadeController extends Controller
         $atividade->repeticoes = $request->repeticoes;
         $atividade->comentario = $request->comentario;
         $atividade->save();
-        return redirect('atividade/lista/' . $request->instrutor_id);
+        return redirect('treino/' . $request->treino_id . '/edit');
     }
 
     public function show($id)
@@ -84,6 +90,12 @@ class AtividadeController extends Controller
 
     public function update(Request $request, $id)
     {
+        $this->validate($request,[
+            'treino_id'=>'required',
+            'exercicio_id'=>'required',
+            'instrutor_id'=>'required',
+            'aluno_id'=>'required',
+        ]);
         $atividade = [
             'treino_id' => $request->treino_id,
             'exercicio_id' => $request->exercicio_id,
@@ -97,7 +109,7 @@ class AtividadeController extends Controller
         ];
         $update = Atividade::find($id)->update($atividade);
         if($update)
-            return redirect('atividade/lista/' . $request->instrutor_id);
+            return redirect('treino/' . $request->treino_id . '/edit');
         else
             return redirect()->back()->withInput();
     }
