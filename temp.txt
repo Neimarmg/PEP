@@ -1,0 +1,10 @@
+﻿<?php
+    <input id="meu_id" onchange="minhafuncao()">
+?>
+
+<script>
+function minhafuncao(){
+    var teste = document.getElementById('meu_id').value;
+    localStorage.setItem('oi',teste);
+}
+</script>

@@ -3,7 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Exercicio;
+use App\Atividade;
 use App\Instrutor;
 use App\Aluno;
 
@@ -23,8 +23,8 @@ class Treino extends Model
         return $this->belongsTo(Aluno::Class);
     }   
     
-        public function exercicios()
-        {
-            return $this->belongsToMany(Exercicio::Class);
-        }
+    public function atividades()
+    {
+        return $this->hasMany(Atividade::Class);
+    }
 }

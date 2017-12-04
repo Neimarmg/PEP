@@ -17,7 +17,7 @@
                         <input id="instrutor_id" type="hidden" class="form-control" name="instrutor_id" value="{{Auth::user()->id}}">
 
                         <div class="form-group{{ $errors->has('aluno_id') ? ' has-error' : '' }}">
-                            <label for="select" class="col-md-4 control-label">Aluno</label>
+                            <label for="select" class="col-md-3 control-label">Aluno</label>
                             <div class="col-md-6">
                                 <select class="form-control" id="aluno_id" name="aluno_id" required="required">
                                     @if(isset($treino))
@@ -44,39 +44,14 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="titulo" class="col-md-4 control-label">Título</label>
+                            <label for="titulo" class="col-md-3 control-label">Título</label>
                             <div class="col-md-6">
                                 <input id="titulo" type="text" class="form-control" name="titulo" placeholder="Título" value="{{ isset($treino) ? $treino->titulo : '' }}" required autofocus>
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('id') ? ' has-error' : '' }}">
-                            <label for="select" class="col-lg-4 control-label">Exercício</label>
-                            <div class="col-md-6">
-                                <select class="form-control" id="id" name="id" required="required">
-                                    @if(isset($exercicio))
-                                        <option enable selected value="{{ $exercicio->id }}">
-                                            @if($exercicio != null)
-                                                {{$exercicio->nome}}
-                                            @endif   
-                                        </option>
-                                    @else
-                                        <option disabled selected>Selecionar exercício...</option>
-                                    @endif
-                                    @foreach($exercicios as $ex)
-                                        <option value="{{ $ex->id }}">{{ $ex->nome }}</option>
-                                    @endforeach
-                                </select>
-                                @if ($errors->has('id'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('id') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
                         <div class="form-group">
-                            <label for="titulo" class="col-md-4 control-label">Comentário</label>
+                            <label for="titulo" class="col-md-3 control-label">Comentário</label>
                             <div class="col-md-6">
                                 <textarea class="form-control" rows="5" id="comentario" name="comentario" placeholder="Comentario..." >
 @if(isset($treino))
@@ -86,11 +61,35 @@
                         </div>
 
                         <div class="form-group">
+                            <div class="col-md-6 col-md-offset-3">
+                                {{--  <button onclick="{{ url('treino/salvar')}}" type="submit" class="btn btn-sm btn-success btn-block">Adicionar Atividade</button>  --}}
+                                <button type="submit" class="btn btn-sm btn-success btn-block">Adicionar Atividade</button>
+                            </div>
+                        </div>
+{{--  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////  --}}
+@if(isset($treino))
+    <h4 align='center'>Alteração de treino - Nenhuma Atividade Cadastrada </h4><br>
+
+    @if(isset($atividades))
+        TEM ATIVIDADE!!!!!!!!!!!!!
+        @foreach($atividades as $item)
+            {{ $item }} <br><br>
+        @endforeach
+    @else
+        
+    @endif
+@else
+    <h4 align='center'>Novo treino. Nenhuma Atividade Cadastrada </h4><br>
+@endif
+
+{{--  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////  --}}
+
+                        <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <a href="{{ url('instrutor')}}{{'/' . Auth::user()->id . '/treinos' }}" class="btn btn-sm btn-primary">
                                     Voltar
                                 </a>
-                                <button type="submit" class="btn btn-sm btn-primary">Adicionar Treino</button>
+                                <button type="submit" class="btn btn-sm btn-primary">Salvar Treino</button>
                             </div>
                         </div>
                     </form>

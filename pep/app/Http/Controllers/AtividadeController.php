@@ -5,13 +5,15 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Atividade;
 use App\Exercicio;
+use App\Instrutor;
+use App\Aluno;
 
 class AtividadeController extends Controller
 {
     public function __construct()
     {
         // $this->middleware('auth:web');
-        // $this->middleware('auth:instrutor');
+        $this->middleware('auth:instrutor');
         // $this->middleware('instrutor',['except'=>'test']);
     }
 
@@ -31,53 +33,71 @@ class AtividadeController extends Controller
         // }
     }
 
+    // public function createID($id)
+    // {
+    //     $exercicios ['exercicios'] = Exercicio::all(); 
+    //     $alunos ['alunos'] = Aluno::all(); 
+    //     return view('atividade.cadastro',$exercicios,$alunos);
+    // }
+
     public function create()
     {
         $exercicios ['exercicios'] = Exercicio::all(); 
-        return view('atividade.cadastro',$exercicios);
+        $alunos ['alunos'] = Aluno::all(); 
+        return view('atividade.cadastro',$exercicios,$alunos);
     }
 
     public function store(Request $request)
     {    
         $atividade = new Atividade;
+        $atividade->treino_id = $request->treino_id;
         $atividade->exercicio_id = $request->exercicio_id;
+        $atividade->instrutor_id = $request->instrutor_id;
+        $atividade->aluno_id = $request->aluno_id;
         $atividade->ordem = $request->ordem;
         $atividade->carga = $request->carga;
         $atividade->series = $request->series;
         $atividade->repeticoes = $request->repeticoes;
+        $atividade->comentario = $request->comentario;
         $atividade->save();
-        return redirect('atividade');
-        // return redirect()->back()->withInput();
-        
-        // return redirect('atividade',$exercicios);
+        return redirect('atividade/lista/' . $request->instrutor_id);
     }
 
     public function show($id)
     {
-        //
+        // $alunos ['alunos'] = Alunos::all();
+        // $exercicios ['exercicios'] = Exercicio::all();
+        // $atividade ['atividade'] = Atividade::find($id);
+        // return view('treino.lista',$exercicios,$alunos,$atividade);
     }
 
     public function edit($id)
     {
-        $exercicios ['exercicios'] = Exercicio::all();              
-        $atividade['atividade'] = Atividade::find($id);
-        return view('atividade.cadastro',$atividade,$exercicios);
+        $instrutor_id = Atividade::find($id)->instrutor->id;
+        // $aluno = Atividade::find($id)->aluno;
+        $exercicios = Exercicio::all();              
+        // $alunos ['alunos'] = Instrutor::find($instrutor_id)->alunos; 
+        $alunos = Aluno::all();
+        $atividade = Atividade::find($id);
+        return view('atividade.cadastro',compact('atividade','exercicios','alunos'));
     }
 
     public function update(Request $request, $id)
     {
-        $exercicios ['exercicios'] = Exercicio::all();        
         $atividade = [
-            'nome' => $request->nome,
-            'grupo_muscular_id' => $request->grupo_musular_id,
+            'treino_id' => $request->treino_id,
+            'exercicio_id' => $request->exercicio_id,
+            'instrutor_id' => $request->instrutor_id,
+            'aluno_id' => $request->aluno_id,
             'ordem' => $request->ordem,
             'carga' => $request->carga,
             'series' => $request->series,
             'repeticoes' => $request->repeticoes,
+            'comentario' => $request->comentario,
         ];
         $update = Atividade::find($id)->update($atividade);
         if($update)
-            return redirect('atividade');
+            return redirect('atividade/lista/' . $request->instrutor_id);
         else
             return redirect()->back()->withInput();
     }
@@ -87,13 +107,19 @@ class AtividadeController extends Controller
         $atividade = Atividade::find($id);
         if($atividade){
             $atividade->destroy($id);
-            $msg = '* EXERCÍCIO REMOVIDO COM SUCESSO *';
+            $msg = '* ATIVIDADE REMOVIDA COM SUCESSO *';
         }
         else{
-            $msg = '* EXERCÍCIO NÃO ENCONTRADO *';
+            $msg = '* ATIVIDADE NÃO ENCONTRADA *';
         }
         return redirect()
             ->back()
             ->withSucess($msg);   
+    }
+
+    public function lista($id)
+    {
+        $atividades ['atividades'] = Instrutor::find($id)->atividades;
+        return view('atividade.lista', $atividades);
     }
 }

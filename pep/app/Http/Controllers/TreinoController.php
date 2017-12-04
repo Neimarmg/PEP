@@ -32,7 +32,7 @@ class TreinoController extends Controller
         return view('treino.cadastro',$alunos,$exercicios);
     }
 
-    public function store(Request $request)
+    public function salvar(Request $request)
     {   
         $treino = new Treino;
         $this->validate($request,[
@@ -40,15 +40,35 @@ class TreinoController extends Controller
             'aluno_id'=>'required',
             'titulo'=>'required',
         ]);
-        $treino = [
-            'instrutor_id' => $request->instrutor_id,
-            'aluno_id' => $request->aluno_id,
-            'titulo' => $request->titulo,
-            'comentario' => $request->comentario,
-        ];
+        $treino->instrutor_id = $request->instrutor_id;
+        $treino->aluno_id = $request->aluno_id;
+        $treino->titulo = $request->titulo;
+        $treino->comentario = $request->comentario;
         $treino->save();
-        // return redirect('instrutor/treinos');
-        return $this->index();  
+        return redirect('atividade/cadastro',$treino);
+        // return $this->index();  
+    }
+
+    public function store(Request $request)
+    {   
+        $data = new Treino;
+        $this->validate($request,[
+            'instrutor_id'=>'required',
+            'aluno_id'=>'required',
+            'titulo'=>'required',
+        ]);
+        $data->instrutor_id = $request->instrutor_id;
+        $data->aluno_id = $request->aluno_id;
+        $data->titulo = $request->titulo;
+        $data->comentario = $request->comentario;
+        $data->save();
+        $treino = Instrutor::find($data->instrutor_id)->treinos->last();
+        $exercicios = Exercicio::all(); 
+        $alunos = Instrutor::find($data->instrutor_id)->alunos; 
+        // $treinos = Instrutor::find($treino->instrutor_id)->treinos;
+        return view('atividade/cadastro', compact('treino','exercicios','alunos'));
+        // return redirect('treino/lista/' . $request->instrutor_id);
+        // return $this->index();  
     }
 
     public function show($id)
@@ -58,9 +78,10 @@ class TreinoController extends Controller
 
     public function edit($id)
     {
-        $alunos ['alunos'] = Aluno::all();
-        $treino['treino'] = Treino::find($id);
-        return view('treino.cadastro',$treino,$alunos);
+        $alunos = Aluno::all();
+        $treino = Treino::find($id);
+        $atividades = Treino::find($id)->atividades;
+        return view('treino.cadastro',compact('treino','atividades','alunos'));
     }
 
     public function update(Request $request, $id)
@@ -70,15 +91,21 @@ class TreinoController extends Controller
             'aluno_id'=>'required',
             'titulo'=>'required',
         ]);
-        $treino = [
+        $data = [
             'instrutor_id' => $request->instrutor_id,
             'aluno_id' => $request->aluno_id,
             'titulo' => $request->titulo,
             'comentario' => $request->comentario,
         ];
-        $update = Treino::find($id)->update($treino);
-        if($update)
-            return redirect('treino');
+        $update = Treino::find($id)->update($data);
+        if($update){
+            $treino = Treino::find($id);
+            $exercicios = Exercicio::all(); 
+            $alunos = Instrutor::find($treino->instrutor_id)->alunos;
+            // return redirect('treino');
+            return view('atividade/cadastro', compact('treino','exercicios','alunos'));            
+            // return redirect('treino/lista/' . $request->instrutor_id);
+        }
         else
             return redirect()->back()->withInput();
     }

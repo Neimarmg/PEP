@@ -2,32 +2,68 @@
 
 @section('content')
 {{--  @auth  --}}
-    <div class="row" align="center">
-        <h3>Cadastro de Grupo Muscular</h3> 
-        <div class="col-md-12">
-            <form action="{{ URL('grupoMuscular') }}{{ isset($grupoMuscular) ? '/' . $grupoMuscular->id : '' }}" method="POST">
-                <div class="form-group">
-                    {{ csrf_field() }}
-                    @if(isset($grupoMuscular))
-                        {{ method_field('PUT') }}
-                    @endif
-                    <input type="text" name="nome" placeholder="Grupo Muscular" class="form-control"
-                      value="{{ isset($grupoMuscular) ? $grupoMuscular->nome : '' }}">
-                    <input type="text" name="tipo" placeholder="Tipo" class="form-control"
-                      value="{{ isset($grupoMuscular) ? $grupoMuscular->tipo : '' }}">
-                    <button type="submit" class="btn btn-sm btn-success">Salvar</button>
-                    <a href="/grupoMuscular" class="btn btn-sm btn-info">Cancelar</a>
-                    {{--  <input type="hidden" value="{{ csrf_token() }}" name="_token">  --}}
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+                <div class="panel-heading">Cadastro de Grupo Muscular</div>
+
+                <div class="panel-body">
+                    <form class="form-horizontal" action="{{ URL('grupoMuscular') }}{{ isset($grupoMuscular) ? '/' . $grupoMuscular->id : '' }}" method="POST">
+                        {{ csrf_field() }}
+                        @if(isset($grupoMuscular))
+                            {{ method_field('PUT') }}
+                        @endif
+                        
+                        @if(isset($exercicio_id))
+
+                            <h1>TESTANDO REQUEST 123</h1>
+                            {{--  <input type="text" id="request" name="request" placeholder="request" class="form-control"
+                                value="{{ isset($request) ? $request->id : '' }}">  --}}
+                        @endif
+                            
+
+                        <div class="form-group{{ $errors->has('nome') ? ' has-error' : '' }}">
+                            <label for="select" class="col-md-3 control-label">Grupo Muscular</label>
+                            <div class="col-md-6">
+                                <input type="text" name="nome" placeholder="Grupo Muscular" class="form-control"
+                                value="{{ isset($grupoMuscular) ? $grupoMuscular->nome : '' }}">
+
+                                @if ($errors->has('nome'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('nome') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('tipo') ? ' has-error' : '' }}">
+                            <label for="select" class="col-md-3 control-label">Tipo</label>
+                            <div class="col-md-6">
+                                <input type="text" name="tipo" placeholder="Tipo" class="form-control"
+                                value="{{ isset($grupoMuscular) ? $grupoMuscular->tipo : '' }}">
+                                @if ($errors->has('tipo'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('tipo') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-6 col-md-offset-4">
+                                <a href="{{ URL('/exercicio/create') }}{{ isset($id) ? '/' . $id : ''}}" class="btn btn-sm btn-primary">Cancelar</a>
+                                {{--  <a href="{{ URL('grupoMuscular/create') }}{{ isset($exercicio) ? '/' . $exercicio->id : ''}}"></a>  --}}
+                                <button type="submit" class="btn btn-sm btn-success">Salvar</button>
+                                {{--  <input type="hidden" value="{{ csrf_token() }}" name="_token">  --}}
+                            </div>
+                        </div>
+                    </form>
                 </div>
-            </form>
-            @if(count($errors)>0)
-                @foreach($errors->all() as $error)
-                    {{$error}}
-                    <br>
-                @endforeach
-            @endif
+            </div>
         </div>
     </div>
+</div>
 {{--  @endauth  --}}
 
 {{--  @guest

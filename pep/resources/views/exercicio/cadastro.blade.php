@@ -7,7 +7,7 @@
 <div class="row">
 <div class="col-md-8 col-md-offset-2">
 <div class="panel panel-default">
-    <div class="panel-heading"><h4 align='center'>Cadastro de exercício</h4></div>
+    <div class="panel-heading">Cadastro de exercício</div>
     <div class="panel-body">
     <form class="form-horizontal"
      action="{{ URL('exercicio') }}{{ isset($exercicio) ? '/' . $exercicio->id : '' }}"
@@ -55,6 +55,14 @@
                         </span>
                     @endif
                 </div>
+            </div>
+            
+            
+            <div class="form-group">
+                <div class="col-md-6 col-md-offset-4">
+                    <a href="{{ URL('grupoMuscular/create') }}" type="submit" class="btn btn-sm btn-success btn-block">Novo Grupo Muscular</a>
+                </div>
+                {{--  <a href="{{ URL('exercicio') }}{{ isset($exercicio) ? '/' . $exercicio->id : '' }}"></a>  --}}
             </div>
 
             <div class="form-group">

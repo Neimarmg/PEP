@@ -30,17 +30,23 @@ Route::prefix('')->group(function() {
 });
 
 Route::resource('treino', 'TreinoController');
-// Route::resource('atividade', 'AtividadeController');
+Route::resource('atividade', 'AtividadeController');
 Route::resource('grupoMuscular', 'GrupoMuscularController');
 Route::resource('exercicio', 'ExercicioController');
     
+Route::prefix('grupoMuscular')->group(function() {
+    Route::GET('/create/{id}', 'GrupoMuscularController@create2');
+});
+    
 Route::prefix('treino')->group(function() {
     Route::GET('/lista/{id}', 'TreinoController@lista');
+    Route::POST('/salvar', 'TreinoController@salvar')->name('treino.salvar');
 });
 
-// Route::prefix('atividade')->group(function() {
-//     Route::GET('/lista/{id}', 'TreinoController@lista');
-// });
+Route::prefix('atividade')->group(function() {
+    Route::GET('/lista/{id}', 'AtividadeController@lista');
+    Route::GET('/create/{id}', 'AtividadeController@createID');
+});
 
 Route::prefix('aluno')->group(function() {
     Route::GET('/home', 'AlunoController@index');

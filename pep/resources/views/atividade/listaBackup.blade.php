@@ -4,15 +4,14 @@
 {{--  @auth('instrutor')  --}}
     <center>
         <h3>Lista de atividades</h3>
-        <div class="col-md-2"></div>           
-        <div class="col-md-8">            
+        <div class="col-md-3"></div>           
+        <div class="col-md-6">            
             <div class="panel">
                 <div class="table-responsive">
                     <table class="table table-striped table-hover table-bordered" >
                         <thead>
                             <tr>
                                 <th width="5">No</th>
-                                <th>Treino</th>
                                 <th>Exercicio</th>
                                 <th>Instrutor</th>
                                 <th>Aluno</th>
@@ -32,11 +31,6 @@
                             @foreach($atividades as $key =>$atividade)
                                 <tr>
                                     <td>{{ ($key+1) }}</td>
-                                    <td>
-                                        @if($atividade->treino != null)
-                                            {{ $atividade->treino->titulo }}
-                                        @endif
-                                    </td>
                                     <td>{{ $atividade->exercicio->nome }}</td>
                                     <td>{{ $atividade->instrutor->name }}</td>
                                     <td>{{ $atividade->aluno->name }}</td>
@@ -63,7 +57,7 @@
             </div>
             <a href="{{ URL('instrutor') }}" class="btn btn-sm btn-primary">Voltar</a>
         </div>
-        <div class="col-md-2"></div> 
+        <div class="col-md-3"></div> 
     </center>
 {{--  @endauth  --}}
 {{--  @guest

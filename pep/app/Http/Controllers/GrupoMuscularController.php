@@ -21,9 +21,14 @@ class GrupoMuscularController extends Controller
         return view('grupoMuscular.lista',$grupomMscular);
     }
 
-    public function create()
+    public function create(Request $request)
     {
-        return view('grupoMuscular.cadastro');
+        if($request == null){
+            return view('grupoMuscular.cadastro');
+        } else {
+            $exercicio_id ['exercicio_id'] = $request->exercicio_id;
+            return view('grupoMuscular.cadastro',$exercicio_id);
+        }
     }
 
     public function store(Request $request)
@@ -36,7 +41,9 @@ class GrupoMuscularController extends Controller
         $novo->nome = $request->nome;
         $novo->tipo = $request->tipo;
         $novo->save();
-        return redirect('grupoMuscular');
+        // return redirect('grupoMuscular');
+        return redirect('exercicio/create/');      
+        // return $this->slug;
     }
 
     public function show($id)

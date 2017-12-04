@@ -12,6 +12,7 @@
                         <thead>
                             <tr>
                                 <th width="5">ID</th>
+                                <th>Instrutor</th>
                                 <th>Titulo</th>
                                 <th width="300">Aluno</th>
                                 <th width="5">
@@ -25,6 +26,7 @@
                             @foreach($treinos as $treino)
                                 <tr>
                                     <td>{{ $treino->id }}</td>
+                                    <td>{{ $treino->instrutor->name }} {{ $treino->instrutor->lastname }}</td>
                                     <td>{{ $treino->titulo }}</td>
                                     <td>{{ $treino->aluno->name }} {{ $treino->aluno->lastname }}</td>
                                     <td>
