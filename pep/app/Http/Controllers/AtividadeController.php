@@ -67,7 +67,7 @@ class AtividadeController extends Controller
         $atividade->repeticoes = $request->repeticoes;
         $atividade->comentario = $request->comentario;
         $atividade->save();
-        return redirect('treino/' . $request->treino_id . '/edit');
+        return redirect('treino/' . $atividade->treino_id . '/edit');
     }
 
     public function show($id)

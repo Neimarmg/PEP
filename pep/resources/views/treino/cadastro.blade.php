@@ -8,9 +8,15 @@
                 <div class="panel-heading">Cadastro Treino</div>
 
                 <div class="panel-body">
-                    <form class="form-horizontal" action="{{ URL('treino') }}{{ isset($treino) ? '/' . $treino->id : '' }}" method="POST">
+                    <form
+                        class="form-horizontal"
+                        action="{{ URL('treino') }}{{ isset($treino) ? '/' . $treino->id : '' }}" 
+                        method="POST">
+
                         @if(isset($treino))
                             {{ method_field('PUT') }}
+
+
                             <h4 align='center'>Alteração de treino</h4>
                         @else
                             <h4 align='center'>Novo treino</h4>
@@ -65,12 +71,26 @@
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-3">
-                                {{--  <button onclick="{{ url('treino/salvar')}}" type="submit" class="btn btn-sm btn-success btn-block">Adicionar Atividade</button>  --}}
                                 <button type="submit" class="btn btn-sm btn-success btn-block">Adicionar Atividade</button>
                             </div>
                         </div>
-{{--  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////  --}}
-                        <div class="panel-group">
+
+                        {{--  <div class="form-group">
+                            <div class="col-md-6 col-md-offset-3">
+                                <button onclick="{{ redirect('treino/' . $treino->id . '/edit')}}" type="submit" class="btn btn-sm btn-info btn-block">Salvar Treino</button>
+                            </div>
+                        </div>  --}}
+
+                        <div class="form-group">
+                            <div class="col-md-6 col-md-offset-3">
+                                <a href="{{ url('instrutor')}}{{'/' . Auth::user()->id . '/treinos' }}" class="btn btn-sm btn-primary btn-block">
+                                    Voltar
+                                </a>
+                            </div>
+                        </div>
+                    </form>
+{{--  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////--}}
+                    <div class="panel-group">
                         @if(isset($treino))
                             @if(isset($atividades))
                                 @foreach($atividades as $atividade)
@@ -117,8 +137,7 @@
                                                 Repetições: {{$atividade->repeticoes}}
                                             </div>
                                         </div>
-                                    </div> <br>
-                                    
+                                    </div> <br>  
                                 @endforeach
                             @else
                                 <h4 align='center'>Nenhuma Atividade Cadastrada </h4>
@@ -126,23 +145,13 @@
                         @else
                             @if(isset($atividades))
                                 <h4 align='center'>Atividade Cadastrada </h4>
-                                {{$atividades}}
+                                {{--  {{$atividades}}  --}}
                             @else
                                 <h4 align='center'>Nenhuma Atividade Cadastrada </h4>
                             @endif
                         @endif
-                        </div>
-
-{{--  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////  --}}
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-3">
-                                <a href="{{ url('instrutor')}}{{'/' . Auth::user()->id . '/treinos' }}" class="btn btn-sm btn-primary btn-block">
-                                    Voltar
-                                </a>
-                                {{--  <button type="submit" class="btn btn-sm btn-primary">Salvar Treino</button>  --}}
-                            </div>
-                        </div>
-                    </form>
+                    </div>
+{{--  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////--}}
                 </div>
             </div>
         </div>
@@ -150,14 +159,3 @@
 </div>
 
 @endsection
-
-{{-- Posteriormente: Para fazer upload de imagem!!!
-        <h1>File Upload</h1>
-        <form action="{{ URL::to('upload') }}" method="post" enctype="multipart/form-data">
-            <label>Selecione a imagem para upload:</label>
-            <input type="file" name="file" id="file">
-            <input type="submit" value="Upload" name="submit">
-            <input type="hidden" value="{{ csrf_token() }}" name="_token">
-        </form>
-  --}}
-

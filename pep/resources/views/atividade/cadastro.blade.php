@@ -13,60 +13,24 @@
                             {{ method_field('PUT') }}
                         @endif
                         {{ csrf_field() }}
-                        Json do treino <br>
-                        {{ $treino }} <br><br>
-
-                        Treino: {{ $treino->titulo }} <input id="treino_id" type="text" name="treino_id" value="{{ $treino->id }}"> <br>
-                        Instrutor: {{ $treino->instrutor->name }}ID <input id="instrutor_id" type="text" name="instrutor_id" value="{{Auth::user()->id}}"> <br>
-                        Alun@: {{ $treino->aluno->name }} ID <input id="aluno_id" type="text" name="aluno_id" value="{{ $treino->aluno_id }}"> <br><br><br>
+                        <input id="treino_id" type="hidden" name="treino_id" value="{{ $treino->id }}">
+                        <input id="instrutor_id" type="hidden" name="instrutor_id" value="{{Auth::user()->id}}">
+                        <input id="aluno_id" type="hidden" name="aluno_id" value="{{ $treino->aluno_id }}">
                         
                         @if(isset($atividade))
                             <div class="form-group">
-                                <label for="select" class="col-lg-3 control-label">Atividade id</label>
-                                <div class="col-md-6">{{ $atividade->id }}</div>
-                            </div>
-                            <div class="form-group">
-                                <label for="select" class="col-lg-3 control-label">Instrutor</label>
-                                <div class="col-md-6">
+                                <div class="col-md-3 col-md-offset-3">
+                                    <strong>Instrutor: </strong><br>
                                     {{ $atividade->instrutor->name }} 
                                     {{ $atividade->instrutor->lastname }}
                                 </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="select" class="col-lg-3 control-label">Aluno</label>
-                                <div class="col-md-6">
+                                <div class="col-md-4">
+                                    <strong>Aluno: </strong><br>
                                     {{ $atividade->aluno->name }} 
                                     {{ $atividade->aluno->lastname }}
                                 </div>
                             </div>
                         @endif
-
-                        {{--  <div class="form-group{{ $errors->has('aluno_id') ? ' has-error' : '' }}">
-                            <label for="select" class="col-lg-3 control-label">Aluno</label>
-                            <div class="col-md-6">
-                                <select class="form-control" id="aluno_id" name="aluno_id" required="required">
-                                    @if(isset($atividade))
-                                        <option enable selected value="{{ $atividade->aluno->id }}">
-                                            @if($atividade->aluno_id != null)
-                                                {{$atividade->aluno->name}} {{$atividade->aluno->lastname}}
-                                            @endif
-                                        </option>
-                                    @else
-                                        <option disabled selected>Selecionar aluno...</option>
-                                    @endif
-                                    @foreach($alunos as $aluno)
-                                        @if($aluno->instrutor_id == Auth::user()->id)
-                                            <option value="{{ $aluno->id }}">{{ $aluno->id }} {{ $aluno->name }} {{ $aluno->lastname }}</option>                                            
-                                        @endif
-                                    @endforeach
-                                </select>
-                                @if ($errors->has('aluno_id'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('aluno_id') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>  --}}
 
                         <div class="form-group{{ $errors->has('exercicio_id') ? ' has-error' : '' }}">
                             <label for="select" class="col-lg-3 control-label">Exercício</label>
@@ -75,18 +39,14 @@
                                     @if(isset($atividade))
                                         <option enable selected value="{{ $atividade->exercicio->id }}">
                                             @if($atividade->exercicio != null)
-                                                com atividade
-                                                {{$atividade->exercicio->id}} {{$atividade->exercicio->nome}}
+                                                {{$atividade->exercicio->nome}}
                                             @endif
                                         </option>
                                     @else
                                         <option disabled selected value="">Selecionar exercício...</option>
                                     @endif
                                     @foreach($exercicios as $exercicio)
-                                        <option value="{{ $exercicio->id }}">
-                                            não tem atividade
-                                            {{ $exercicio->id }} {{ $exercicio->nome }}
-                                        </option>
+                                        <option value="{{ $exercicio->id }}">{{ $exercicio->nome }}</option>
                                     @endforeach
                                 </select>
                                 @if ($errors->has('exercicio_id'))
@@ -135,7 +95,6 @@
 @endif</textarea>
                             </div>
                         </div>
-
 {{--  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////  --}}
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
@@ -153,14 +112,3 @@
     </div>
 </div>
 @endsection
-
-{{-- Posteriormente: Para fazer upload de imagem!!!
-        <h1>File Upload</h1>
-        <form action="{{ URL::to('upload') }}" method="post" enctype="multipart/form-data">
-            <label>Selecione a imagem para upload:</label>
-            <input type="file" name="file" id="file">
-            <input type="submit" value="Upload" name="submit">
-            <input type="hidden" value="{{ csrf_token() }}" name="_token">
-        </form>
-  --}}
-

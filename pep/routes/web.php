@@ -1,16 +1,5 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
 Auth::routes();
 
 Route::prefix('')->group(function() {
@@ -18,15 +7,6 @@ Route::prefix('')->group(function() {
     Route::get('/home', 'HomeController@index')->name('home');
     Route::view('/selectLogin', 'auth.selectLogin');
     Route::view('/selectRegister','auth.selectRegister');    
-    //  GET|HEAD | login                  | login            | App\Http\Controllers\Auth\LoginController@showLoginForm
-    //  POST     | login                  |                  | App\Http\Controllers\Auth\LoginController@login
-    //  POST     | logout                 | logout           | App\Http\Controllers\Auth\LoginController@logout
-    //  POST     | password/email         | password.email   | App\Http\Controllers\Auth\ForgotPasswordController@sendResetLinkEmail
-    //  GET|HEAD | password/reset         | password.request | App\Http\Controllers\Auth\ForgotPasswordController@showLinkRequestForm
-    //  POST     | password/reset         |                  | App\Http\Controllers\Auth\ResetPasswordController@reset
-    //  GET|HEAD | password/reset/{token} | password.reset   | App\Http\Controllers\Auth\ResetPasswordController@showResetForm
-    //  GET|HEAD | register               | register         | App\Http\Controllers\Auth\RegisterController@showRegistrationForm
-    //  POST     | register               |                  | App\Http\Controllers\Auth\RegisterController@register
 });
 
 Route::resource('treino', 'TreinoController');
@@ -40,7 +20,7 @@ Route::prefix('grupoMuscular')->group(function() {
     
 Route::prefix('treino')->group(function() {
     Route::GET('/lista/{id}', 'TreinoController@lista');
-    Route::POST('/salvar', 'TreinoController@salvar')->name('treino.salvar');
+    // Route::POST('/salvar', 'TreinoController@salvar')->name('treino.salvar');
 });
 
 Route::prefix('atividade')->group(function() {
@@ -83,12 +63,3 @@ Route::prefix('instrutor')->group(function() {
     Route::GET('register','Instrutor\RegisterController@showRegistrationForm')->name('instrutor.register');
     Route::POST('register','Instrutor\RegisterController@register');
 });
-
-// Route::group(['prefix' => ''], function () {
-//     Route::resource('users', 'UserController');
-//     Route::resource('instrutors', 'InstrutorController');
-//     // Route::resource('exercicio', 'ExercicioController')->middleware('auth');
-//     Route::resource('exercicio', 'ExercicioController');
-//     // Route::resource('instrutor', 'InstrutorController');
-//     Route::resource('grupoMuscular', 'GrupoMuscularController');
-// });

@@ -28,43 +28,42 @@ class TreinoController extends Controller
     public function create()
     {
         $alunos ['alunos'] = Aluno::all();
-        $exercicios ['exercicios'] = Exercicio::all();
-        return view('treino.cadastro',$alunos,$exercicios);
+        return view('treino.cadastro',$alunos);
     }
 
-    // public function salvar(Request $request)
-    // {   
-    //     $treino = new Treino;
-    //     $this->validate($request,[
-    //         'instrutor_id'=>'required',
-    //         'aluno_id'=>'required',
-    //         'titulo'=>'required',
-    //     ]);
-    //     $treino->instrutor_id = $request->instrutor_id;
-    //     $treino->aluno_id = $request->aluno_id;
-    //     $treino->titulo = $request->titulo;
-    //     $treino->comentario = $request->comentario;
-    //     $treino->save();
-    //     return redirect('atividade/cadastro',$treino);
-    //     // return $this->index();  
-    // }
+    public function edit($id)
+    {
+        $alunos = Aluno::all();
+        $treino = Treino::find($id);
+        $atividades = Treino::find($id)->atividades;
+        return view('treino.cadastro',compact('treino','atividades','alunos'));
+        // return view('treino.cadastro',compact('treino','alunos'));
+    }
 
     public function store(Request $request)
     {   
-        $data = new Treino;
+        $novoTreino = new Treino;
         $this->validate($request,[
             'instrutor_id'=>'required',
             'aluno_id'=>'required',
             'titulo'=>'required',
         ]);
-        $data->instrutor_id = $request->instrutor_id;
-        $data->aluno_id = $request->aluno_id;
-        $data->titulo = $request->titulo;
-        $data->comentario = $request->comentario;
-        $data->save();
-        $treino = Instrutor::find($data->instrutor_id)->treinos->last();
+        // $novoTreino = [
+        //     'instrutor_id' => $request->instrutor_id,
+        //     'aluno_id' => $request->aluno_id,
+        //     'titulo' => $request->titulo,
+        //     'comentario' => $request->comentario,
+        // ];
+        $novoTreino->instrutor_id   = $request->instrutor_id;
+        $novoTreino->aluno_id       = $request->aluno_id;
+        $novoTreino->titulo         = $request->titulo;
+        $novoTreino->comentario     = $request->comentario;
+
+        $novoTreino->save();
+        // $treino = Instrutor::find($novoTreino->instrutor_id)->treinos->last();
+        $treino = $novoTreino;
         $exercicios = Exercicio::all(); 
-        $alunos = Instrutor::find($data->instrutor_id)->alunos; 
+        $alunos = Instrutor::find($request->instrutor_id)->alunos; 
         // $treinos = Instrutor::find($treino->instrutor_id)->treinos;
         return view('atividade/cadastro', compact('treino','exercicios','alunos'));
         // return redirect('treino/lista/' . $request->instrutor_id);
@@ -76,14 +75,6 @@ class TreinoController extends Controller
         
     }
 
-    public function edit($id)
-    {
-        $alunos = Aluno::all();
-        $treino = Treino::find($id);
-        $atividades = Treino::find($id)->atividades;
-        return view('treino.cadastro',compact('treino','atividades','alunos'));
-    }
-
     public function update(Request $request, $id)
     {
         $this->validate($request,[
@@ -91,25 +82,26 @@ class TreinoController extends Controller
             'aluno_id'=>'required',
             'titulo'=>'required',
         ]);
-        $data = [
+        $atualizaTreino = [
             'instrutor_id' => $request->instrutor_id,
             'aluno_id' => $request->aluno_id,
             'titulo' => $request->titulo,
             'comentario' => $request->comentario,
         ];
-        $update = Treino::find($id)->update($data);
+        $update = Treino::find($id)->update($atualizaTreino);
+        $atividades = Treino::find($id)->atividades;
+        $exercicios = Exercicio::all(); 
+        $alunos = Instrutor::find($request->instrutor_id)->alunos;
+        $treino = Treino::find($id);
         if($update){
-            $treino = Treino::find($id);
-            $exercicios = Exercicio::all(); 
-            $alunos = Instrutor::find($treino->instrutor_id)->alunos;
             // return redirect('treino');
-            return view('atividade/cadastro', compact('treino','exercicios','alunos'));            
+            return view('atividade/cadastro', compact('treino','exercicios','atividades','alunos'));            
             // return redirect('treino/lista/' . $request->instrutor_id);
         }
         else
-            return view('atividade/cadastro', compact('treino','exercicios','alunos'));
+            // return redirect('atividade/cadastro', compact('treino','exercicios','atividades','alunos'));
         
-            // return redirect()->back()->withInput();
+            return redirect()->back()->withInput();
     }
 
     public function destroy($id)
