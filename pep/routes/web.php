@@ -20,6 +20,8 @@ Route::prefix('grupoMuscular')->group(function() {
     
 Route::prefix('treino')->group(function() {
     Route::GET('/lista/{id}', 'TreinoController@lista');
+    Route::GET('/selecionaAluno/{id}', 'TreinoController@selecionaAluno');
+    Route::POST('/indicarTreino', 'TreinoController@indicarTreino');
     // Route::POST('/salvar', 'TreinoController@salvar')->name('treino.salvar');
 });
 

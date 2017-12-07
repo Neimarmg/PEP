@@ -15,8 +15,6 @@
 
                         @if(isset($treino))
                             {{ method_field('PUT') }}
-
-
                             <h4 align='center'>Alteração de treino</h4>
                         @else
                             <h4 align='center'>Novo treino</h4>

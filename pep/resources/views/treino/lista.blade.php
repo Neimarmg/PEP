@@ -38,6 +38,8 @@
                                                 {{ method_field('DELETE') }}
                                                 <button type="submit" class="btn btn-xs btn-danger">Remover</button>
                                             </form>
+
+                                            <a href="{{ URL('treino/selecionaAluno/' . $treino->id) }}" class="btn btn-xs btn-info">Indicar Aluno</a>
                                         </center>
                                     </td>
                                 </tr>

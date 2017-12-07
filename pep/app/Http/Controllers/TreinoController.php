@@ -7,6 +7,7 @@ use App\Aluno;
 use App\Instrutor;
 use App\Treino;
 use App\Exercicio;
+use App\Atividade;
 
 class TreinoController extends Controller
 {
@@ -123,5 +124,73 @@ class TreinoController extends Controller
     {
         $treinos ['treinos'] = Instrutor::find($id)->treinos;
         return view('treino.lista', $treinos);
+    }
+
+    public function selecionaAluno($treino_id)
+    {
+        $alunos = Aluno::all();        
+        $treino = Treino::find($treino_id);
+        return view('treino/selecionaAluno', compact('alunos', 'treino'));
+    }
+
+    public function indicarTreino(Request $request)
+    {
+        // echo ("Instrutor: " . Instrutor::find($request->instrutor_id)->name . "<br>");
+        // echo("Aluno: " .  Aluno::find($request->aluno_id)->name . "<br>");
+        // echo( "Treino ID: " . $request->treino_id . "<br>");
+
+        $aluno = Aluno::find($request->aluno_id);        
+        $treino = Treino::find($request->treino_id);
+
+        // Criar Treino
+        $novoTreino = new Treino;
+        $novoTreino->instrutor_id   = $treino->instrutor_id;
+        $novoTreino->aluno_id       = $aluno->id;
+        $novoTreino->titulo         = $treino->titulo;
+        // Não salvar comentario porque é pessoal para cada aluno
+        $novoTreino->save();
+
+        $novoTreino->id;
+        // echo (Treino::all()->last);
+        
+        //Clonar Atividades
+        // $atividade = new Atividade;
+
+        // $atividade->treino_id = $request->treino_id;
+        // $atividade->exercicio_id = $request->exercicio_id;
+        // $atividade->instrutor_id = $request->instrutor_id;
+        // $atividade->aluno_id = $request->aluno_id;
+        // $atividade->ordem = $request->ordem;
+        // $atividade->carga = $request->carga;
+        // $atividade->series = $request->series;
+        // $atividade->repeticoes = $request->repeticoes;
+        // $atividade->comentario = $request->comentario;
+        // $atividade->save();
+
+
+
+
+        // $atividades = Atividade::all();
+        // $novasAtividades;
+        // foreach ($atividades as $atividade) {
+        //     if($atividade->treino_id == $id){
+        //         $novasAtividades = $atividade;
+        //     }
+        // }
+        
+
+        // $atividade->exercicio_id = $request->exercicio_id;
+        // $atividade->instrutor_id = $request->instrutor_id;
+        // $atividade->aluno_id = $request->aluno_id;
+        // $atividade->ordem = $request->ordem;
+        // $atividade->carga = $request->carga;
+        // $atividade->series = $request->series;
+        // $atividade->repeticoes = $request->repeticoes;
+        // $atividade->comentario = $request->comentario;
+        // $atividade->save();
+
+
+        // return view('treino/indicarTreino');
+        // return view('treino/teste', compact('alunos'));
     }
 }
