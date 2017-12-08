@@ -8,7 +8,7 @@ use App\Exercicio;
 class GrupoMuscular extends Model
 {
     protected $fillable = [
-        'nome', 'tipo',
+        'nome',
     ];
 
     public function exercicios()

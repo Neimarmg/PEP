@@ -13,18 +13,16 @@
                         </div>
                     @endif
                     @if(Auth::check()) 
-
-                    <h4 align="center">Olá, {{Auth::user()->name}} {{Auth::user()->lastname}}!!! 
-                    Seu id é: {{Auth::user()->id}}</h4>
-                    @endif 
-
                     @component('components.who')
                     @endcomponent
-                    @component('components.botoes')
+                    
+                    <a href="{{ url('aluno')}}{{'/' . Auth::user()->id . '/addinstrutor' }}" class="btn btn-sm btn-primary">Selecionar Instrutor</a>
+                    <a href="{{ url('aluno/treinos') }}" class="btn btn-sm btn-primary">Meus treinos</a>  
+                    @endif 
+
+                    {{--  @component('components.botoes')
                     @endcomponent
-                    <br>
-                    @component('components.portal_aluno')
-                    @endcomponent
+                    <br>  --}}
                 </div>
             </div>
         </div>

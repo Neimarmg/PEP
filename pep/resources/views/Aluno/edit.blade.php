@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Cadastro de Aluno</div>
+                <div class="panel-heading">Editar Aluno</div>
 
                 <div class="panel-body">
                     <form class="form-horizontal" action="{{ URL('aluno') }}{{ isset($aluno) ? '/' . $aluno->id : '' }}" method="POST">
@@ -44,7 +44,10 @@
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
+                                <a href="javascript:window.history.go(-1)" class="btn btn-sm btn-primary">
+                                    Voltar
+                                </a>
+                                <button type="submit" class="btn btn-sm btn-success">
                                     Atualizar
                                 </button>
                             </div>

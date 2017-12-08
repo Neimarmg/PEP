@@ -5,7 +5,14 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Adicionar Atividade</div>
+
+                <div class="panel-heading">
+                    @if(isset($atividade))
+                        Editar Atividade 
+                    @else
+                        Adicionar Atividade 
+                    @endif
+                </div>
 
                 <div class="panel-body">
                     <form class="form-horizontal" action="{{ URL('atividade') }}{{ isset($atividade) ? '/' . $atividade->id : '' }}" method="POST">
@@ -99,10 +106,11 @@
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 
-                                <a href="{{ URL('treino/' . $treino->id . '/edit') }}" class="btn btn-sm btn-primary">
+                                {{--  <a href="{{ URL('treino/' . $treino->id . '/edit') }}" class="btn btn-sm btn-primary">  --}}
+                                <a href="javascript:window.history.go(-1)" class="btn btn-sm btn-primary">
                                     Voltar
                                 </a>
-                                <button type="submit" class="btn btn-sm btn-primary">Adicionar Atividade</button>
+                                <button type="submit" class="btn btn-sm btn-success">Salvar</button>
                             </div>
                         </div>
                     </form>

@@ -5,6 +5,8 @@ Auth::routes();
 Route::prefix('')->group(function() {
     Route::view('/','welcome');
     Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/admin/instrutor/lista', 'HomeController@listaInstrutor');
+    Route::get('/admin/instrutor/{id}/edit', 'HomeController@editInstrutor');
     Route::view('/selectLogin', 'auth.selectLogin');
     Route::view('/selectRegister','auth.selectRegister');    
 });
@@ -32,6 +34,7 @@ Route::prefix('atividade')->group(function() {
 
 Route::prefix('aluno')->group(function() {
     Route::GET('/home', 'AlunoController@index');
+    Route::GET('/treinos', 'AlunoController@treinos');
     Route::GET('/{id}/addinstrutor','AlunoController@selecionarInstrutor');
     Route::PUT('/registerInstrutor/{id}','AlunoController@updateInstrutor');
     Route::GET('/lista', 'AlunoController@show')->name('instrutor.lista');
@@ -51,9 +54,9 @@ Route::prefix('aluno')->group(function() {
 Route::prefix('instrutor')->group(function() {
     Route::GET('/home', 'InstrutorController@index');
     Route::GET('/alunos/{id}', 'InstrutorController@alunos');
-    Route::GET('/{id}/treinos', 'InstrutorController@gerenciaTreinos');
+    // Route::GET('/{id}/treinos', 'InstrutorController@gerenciaTreinos');
     Route::GET('/lista', 'InstrutorController@show')->name('instrutor.lista');
-    Route::GET('/{id}/edit', 'InstrutorController@edit');
+    // Route::GET('/{id}/edit', 'InstrutorController@edit');
     Route::PUT('/{id}', 'InstrutorController@update');
     Route::DELETE('/{id}', 'InstrutorController@destroy');
     Route::GET('/', 'Instrutor\LoginController@showLoginForm')->name('instrutor.login');

@@ -32,7 +32,7 @@
                                 <td>{{ $instrutor->email }}</td>
                                 <td>
                                     <center>
-                                        <a href="{{ URL('instrutor/' . $instrutor->id . '/edit') }}" class="btn btn-xs btn-info">Editar</a>
+                                        <a href="{{ URL('admin/instrutor/' . $instrutor->id . '/edit') }}" class="btn btn-xs btn-info">Editar</a>
                                         <form action="{{ URL('instrutor/' . $instrutor->id) }}" method="POST">
                                             {{ csrf_field() }}
                                             {{ method_field('DELETE') }}
@@ -46,6 +46,6 @@
                 </table>
             </div>
         </div>
-        <a href="home" class="btn btn-sm btn-primary">Voltar</a>
+        <a href="{{URL('/home')}}" class="btn btn-sm btn-primary">Voltar</a>
     </center>
 @endsection

@@ -36,8 +36,9 @@
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
-                                <a href="{{ url('aluno/home') }}" class="btn btn-sm btn-primary">Voltar</a>
-                                <button type="submit" class="btn btn-sm btn-primary">
+                                {{--  <a href="{{ url('aluno/home') }}" class="btn btn-sm btn-primary">Voltar</a>  --}}
+                                <a href="javascript:window.history.go(-1)" class="btn btn-sm btn-primary">Voltar</a>
+                                <button type="submit" class="btn btn-sm btn-success">
                                     Adicionar Instrutor
                                 </button>
                             </div>

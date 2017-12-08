@@ -10,7 +10,7 @@
                 <div class="panel-body">
                     <form
                         class="form-horizontal"
-                        action="{{ URL('treino/indicarTreino') }}" 
+                        action="{{ URL('treino/indicarTreino') }}"
                         method="POST">
 
                         {{ csrf_field() }}
@@ -45,7 +45,8 @@
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-3">
-                                <a href="{{ url('instrutor')}}{{'/' . Auth::user()->id . '/treinos' }}" class="btn btn-sm btn-primary btn-block">
+                                {{--  <a href="{{ url('treino/lista/' . Auth::user()->id) }}" class="btn btn-sm btn-primary btn-block">  --}}
+                                <a href="javascript:window.history.go(-1)" class="btn btn-sm btn-primary btn-block">
                                     Voltar
                                 </a>
                             </div>

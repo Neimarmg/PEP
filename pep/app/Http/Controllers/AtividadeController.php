@@ -7,14 +7,17 @@ use App\Atividade;
 use App\Exercicio;
 use App\Instrutor;
 use App\Aluno;
+// use Auth;
 
 class AtividadeController extends Controller
 {
     public function __construct()
     {
-        // $this->middleware('auth:web');
-        $this->middleware('auth:instrutor');
-        // $this->middleware('instrutor',['except'=>'test']);
+        // if(Auth::guard('instrutor')->check()){
+            $this->middleware('auth:instrutor');
+        // } elseif(Auth::guard('web')->check()) {
+        //     $this->middleware('web');
+        // }
     }
 
     public function index()
@@ -22,23 +25,7 @@ class AtividadeController extends Controller
         $atividades ['atividades'] = Atividade::all();
         $exercicios ['exercicios'] = Exercicio::all(); 
         return view('atividade.lista',$atividades,$exercicios);
-        // return view('atividade.lista',compact('atividades'));
-
-        // $atividades ['atividades'] = Atividade::all();
-        // $exercicios ['exercicios'] = Exercicio::all(); 
-        // if($this->middleware('auth')){
-        //     return view('shared.filtroLogado');
-        // } else {
-        //     return view('atividade.lista',$atividades,$exercicios);            
-        // }
     }
-
-    // public function createID($id)
-    // {
-    //     $exercicios ['exercicios'] = Exercicio::all(); 
-    //     $alunos ['alunos'] = Aluno::all(); 
-    //     return view('atividade.cadastro',$exercicios,$alunos);
-    // }
 
     public function create()
     {

@@ -1,8 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-@auth('instrutor','web')
-
 <div class="container">
 <div class="row">
 <div class="col-md-8 col-md-offset-2">
@@ -69,63 +67,24 @@
                     @endif
                 </div>
             </div>
-                {{--  <h1>File Upload</h1>  --}}
-				{{--  <form action="{{ URL::to('upload') }}" method="post" enctype="multipart/form-data">  --}}
-					{{--  <label>Select image to upload:</label>
-				    <input type="file" name="imagem" id="imagem">
-				    <input type="submit" value="Upload" name="submit">  --}}
-				{{--  </form>  --}}
-
-{{--  
-            <h1>File Upload</h1>
-            <form action="{{ URL::to('upload') }}" method="post" enctype="multipart/form-data">
-                <label>Selecione a imagem para upload:</label>
-                <input type="file" name="file" id="file">
-                <input type="submit" value="Upload" name="submit">
-                <input type="hidden" value="{{ csrf_token() }}" name="_token">
-            </form>  --}}
-
-
-
-
             <div class="form-group">
                 <div class="col-md-6 col-md-offset-4">
-                    <a href="{{ URL('grupoMuscular/create') }}" type="submit" class="btn btn-sm btn-success btn-block">Novo Grupo Muscular</a>
+                    <button type="submit" class="btn btn-sm  btn-success btn-block">Salvar Exercício</button>
                 </div>
-                {{--  <a href="{{ URL('exercicio') }}{{ isset($exercicio) ? '/' . $exercicio->id : '' }}"></a>  --}}
             </div>
 
             <div class="form-group">
                 <div class="col-md-6 col-md-offset-4">
-                    <a href="{{ URL('exercicio') }}" class="btn btn-sm  btn-default">Cancelar</a>
-                    <button type="submit" class="btn btn-sm  btn-primary">Salvar</button>
+                    <a href="javascript:window.history.go(-1)" class="btn btn-sm  btn-primary">Voltar</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a href="{{ URL('grupoMuscular/create') }}" type="submit" class="btn btn-sm btn-default">Novo Grupo Muscular</a>
                 </div>
             </div>
         </fieldset>
     </form>
     </div>
-    {{--  @if(count($errors)>0)
-        @foreach($errors->all() as $error)
-            {{$error}}<br>
-        @endforeach
-    @endif  --}}
 </div>
 </div>
 </div>
 </div>
-@endauth
 
-{{--  @guest
-    @include('shared.filtroLogado')
-@endguest  --}}
 @endsection
-
-{{-- Posteriormente: Para fazer upload de imagem!!!
-        <h1>File Upload</h1>
-        <form action="{{ URL::to('upload') }}" method="post" enctype="multipart/form-data">
-            <label>Selecione a imagem para upload:</label>
-            <input type="file" name="file" id="file">
-            <input type="submit" value="Upload" name="submit">
-            <input type="hidden" value="{{ csrf_token() }}" name="_token">
-        </form>
-  --}}

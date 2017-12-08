@@ -1,13 +1,14 @@
 @extends('layouts.app')
 @section('content')
     <center>
-        <h3>Lista de Alunos</h3>
-        @if(Session::has('success'))
-            <h3>{{ Session::get('success') }} </h3>            
-        @else
-            
-        @endif
-        <div class="row col-md-12">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <h3>Lista de Alunos</h3>
+            @if(Session::has('success'))
+                <h3>{{ Session::get('success') }} </h3>            
+            @else
+                
+            @endif
             <div class="table-responsive">
                 <table class="table table-hover table-bordered" >
                     <thead>
@@ -43,7 +44,9 @@
                     </tbody>
                 </table>
             </div>
+            {{--  <a href="home" class="btn btn-sm btn-primary">Voltar</a>  --}}
+            <a href="javascript:window.history.go(-1)" class="btn btn-sm btn-primary">Voltar</a>
         </div>
-        <a href="home" class="btn btn-sm btn-primary">Voltar</a>
+        <div class="col-md-3"></div>
     </center>
 @endsection

@@ -1,6 +1,6 @@
 <h4 align="center">BOTOES TEMPORARIOS AUXILIARES</h4><br>
 <div class="col-md-4">
-    <p align="center"><a href="{{ url('instrutor/lista') }}" class="btn btn-sm btn-primary">Gerenciar Instrutores</a></p>
+    <p align="center"><a href="{{ url('admin/instrutor/lista') }}" class="btn btn-sm btn-primary">Gerenciar Instrutores</a></p>
     <p align="center"><a href="{{ url('aluno/lista') }}" class="btn btn-sm btn-primary">Gerenciar Alunos</a></p>
     <p align="center"><a href="{{ url('/grupoMuscular') }}" class="btn btn-sm btn-primary">Gerenciar grupos musculares</a></p>
     <p align="center"><a href="{{ url('/exercicio') }}" class="btn btn-sm btn-primary">Gerenciar Exercícios</a></p>

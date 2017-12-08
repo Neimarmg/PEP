@@ -61,13 +61,10 @@
                     </table>
                 </div>
             </div>
-            <a href="{{ URL('instrutor') }}" class="btn btn-sm btn-primary">Voltar</a>
+            {{--  <a href="{{ URL('instrutor') }}" class="btn btn-sm btn-primary">Voltar</a>  --}}
+            <a href="javascript:window.history.go(-1)" class="btn btn-sm btn-primary">Voltar</a>
         </div>
         <div class="col-md-2"></div> 
     </center>
-{{--  @endauth  --}}
-{{--  @guest
-    @include('shared.filtroLogado')
-@endguest  --}}
 
 @endsection

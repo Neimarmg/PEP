@@ -12,6 +12,7 @@
                         <thead>
                             <tr>
                                 <th width="5">ID</th>
+                                <th>Instrutor</th>
                                 <th>Titulo</th>
                                 <th width="300">Aluno</th>
                                 <th width="5">
@@ -25,6 +26,7 @@
                             @foreach($treinos as $treino)
                                 <tr>
                                     <td>{{ $treino->id }}</td>
+                                    <td>{{ $treino->instrutor->name }} {{ $treino->instrutor->lastname }}</td>
                                     <td>{{ $treino->titulo }}</td>
                                     <td>{{ $treino->aluno->name }} {{ $treino->aluno->lastname }}</td>
                                     <td>
@@ -36,6 +38,8 @@
                                                 {{ method_field('DELETE') }}
                                                 <button type="submit" class="btn btn-xs btn-danger">Remover</button>
                                             </form>
+
+                                            <a href="{{ URL('treino/selecionaAluno/' . $treino->id) }}" class="btn btn-xs btn-info">Indicar Aluno</a>
                                         </center>
                                     </td>
                                 </tr>
@@ -44,7 +48,8 @@
                     </table>
                 </div>
             </div>
-            <a href="{{ URL('instrutor') }}" class="btn btn-sm btn-primary">Voltar</a>        
+            {{--  <a href="{{ URL('instrutor') }}" class="btn btn-sm btn-primary">Voltar</a>          --}}
+            <a href="javascript:window.history.go(-1)" class="btn btn-sm btn-primary">Voltar</a>        
         </div>           
         <div class="col-md-3"></div>  
     </center>

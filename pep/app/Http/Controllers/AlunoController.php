@@ -5,18 +5,17 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Aluno;
 use App\Instrutor;
+use Auth;
 
 class AlunoController extends Controller
 {
     public function __construct()
-    {
-        // $this->middleware('auth:web');
-        $this->middleware('auth:aluno');
-        // $this->middleware('aluno',['except'=>'test']);
+    {       
+        $this->middleware('auth:aluno');            
     }
 
     public function index()
-    {
+    {           
         $alunos ['alunos'] = Aluno::all();
         $instrutores ['instrutores'] = Instrutor::all();
         return view('aluno.home', $alunos,$instrutores);

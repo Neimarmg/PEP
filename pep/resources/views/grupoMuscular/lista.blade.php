@@ -1,11 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-@auth('instrutor','web')
     <center>
         <h3>Lista de Grupo Musculares</h3> 
-        <div class="col-md-3"></div>           
-        <div class="col-md-6">
+        <div class="col-md-4"></div>           
+        <div class="col-md-4">
             <div class="panel">
                 <div class="table-responsive">
                     <table class="table table-striped table-hover table-bordered" >
@@ -13,7 +12,6 @@
                             <tr>
                                 <th width="5">No</th>
                                 <th>Grupo Muscular</th>
-                                <th width="300">Tipo</th>
                                 <th width="5">
                                     <center>
                                         <a href="grupoMuscular/create" class="btn btn-xs btn-success">Novo Grupo Muscular</a>
@@ -26,7 +24,6 @@
                                 <tr>
                                     <td>{{ ($key+1) }}</td>
                                     <td>{{ $grupoMusc->nome }}</td>
-                                    <td>{{ $grupoMusc->tipo }}</td>
                                     <td>
                                         <center>
                                             <a href="{{ URL('grupoMuscular/' . $grupoMusc->id . '/edit') }}" class="btn btn-xs btn-info">Editar</a>
@@ -44,14 +41,9 @@
                     </table>
                 </div>
             </div>
-            <a href="{{ URL('instrutor') }}" class="btn btn-sm btn-primary">Voltar</a>        
+            {{--  <a href="{{ URL('instrutor') }}" class="btn btn-sm btn-primary">Voltar</a>          --}}
+            <a href="javascript:window.history.go(-1)" class="btn btn-sm btn-primary">Voltar</a>        
         </div>           
-        <div class="col-md-3"></div>  
+        <div class="col-md-4"></div>  
     </center>
-@endauth
-
-@guest('instrutor','web')
-    @component('components.filtroLogado')        
-    @endcomponent
-@endguest
 @endsection

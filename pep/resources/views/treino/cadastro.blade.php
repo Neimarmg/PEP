@@ -81,7 +81,8 @@
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-3">
-                                <a href="{{ url('instrutor')}}{{'/' . Auth::user()->id . '/treinos' }}" class="btn btn-sm btn-primary btn-block">
+                                {{--  <a href="{{ url('treino/lista/' . Auth::user()->id) }}" class="btn btn-sm btn-primary btn-block">  --}}
+                                <a href="javascript:window.history.go(-1)" class="btn btn-sm btn-primary btn-block">
                                     Voltar
                                 </a>
                             </div>
@@ -113,8 +114,8 @@
                                                 </strong>
                                             </div>
                                             <div class="col-md-4">
-                                                <a href="{{ URL('atividade/' . $atividade->id . '/edit') }}" class="btn btn-xs btn-info">Editar</a>
                                                 <form action="{{ URL('atividade/' . $atividade->id) }}" method="POST">
+                                                    <a href="{{ URL('atividade/' . $atividade->id . '/edit') }}" class="btn btn-xs btn-info">Editar</a>
                                                     {{ csrf_field() }}
                                                     {{ method_field('DELETE') }}
                                                     <button type="submit" class="btn btn-xs btn-danger">Remover</button>

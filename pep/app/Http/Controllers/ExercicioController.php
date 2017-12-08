@@ -7,15 +7,14 @@ use Illuminate\Support\Facades\Storage;
 use App\Exercicio;
 use App\GrupoMuscular;
 use App\Atividade;
+// use Auth;
 use \Input as Input;
 
 class ExercicioController extends Controller
 {
     public function __construct()
     {
-        // $this->middleware('auth:web');
-        // $this->middleware('auth:instrutor');
-        // $this->middleware('instrutor',['except'=>'test']);
+        $this->middleware('auth:instrutor');
     }
 
     public function index()

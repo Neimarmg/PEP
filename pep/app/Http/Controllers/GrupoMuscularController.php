@@ -4,19 +4,21 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\GrupoMuscular;
+// use Auth;
 
 class GrupoMuscularController extends Controller
 {
     public function __construct()
     {
-        // $this->middleware('auth:web');
-        // $this->middleware('auth:instrutor');
-        // $this->middleware('instrutor',['except'=>'test']);
+        // if(Auth::guard('instrutor')->check()){
+            $this->middleware('auth:instrutor');
+        // } elseif(Auth::guard('web')->check()) {
+        //     $this->middleware('web');
+        // }
     }
     
     public function index()
     {
-        // $this->middleware('auth');
         $grupomMscular ['grupoMuscular']= GrupoMuscular::all(); 
         return view('grupoMuscular.lista',$grupomMscular);
     }
@@ -36,14 +38,12 @@ class GrupoMuscularController extends Controller
         $novo = new GrupoMuscular;
         $this->validate($request,[
             'nome'=>'required|unique:grupo_musculars',
-            'tipo'=>'required',
         ]);
         $novo->nome = $request->nome;
-        $novo->tipo = $request->tipo;
         $novo->save();
-        // return redirect('grupoMuscular');
-        return redirect('exercicio/create/');      
-        // return $this->slug;
+        // return redirect('exercicio/create/');      
+        // return redirect()->back();     
+        return redirect()->back()->withInput(); 
     }
 
     public function show($id)
@@ -61,11 +61,9 @@ class GrupoMuscularController extends Controller
     {
         $this->validate($request,[
             'nome'=>'required',
-            'tipo'=>'required',
         ]);
         $grupoMuscular = [
             'nome' => $request->nome,
-            'tipo' => $request->tipo,
         ];
         $update = GrupoMuscular::find($id)->update($grupoMuscular);
         if($update)

@@ -7,30 +7,23 @@ use App\Instrutor;
 use App\Aluno;
 use App\Treino;
 use App\Exercicio;
+// use Auth;
 
 class InstrutorController extends Controller
 {
 
     public function __construct()
     {
-        // $this->middleware('auth:web');
-        $this->middleware('auth:instrutor');
-        // $this->middleware('instrutor',['except'=>'test']);
+        // if(Auth::guard('instrutor')->check()){
+            $this->middleware('auth:instrutor');
+        // } elseif(Auth::guard('web')->check()) {
+            // $this->middleware('web');
+        // }
     }
 
     public function index()
     {
-        // $exercicio = treino::find(1)->exercicios;
-        // $treino = exercicio::find(1)->treinos;
-        // return $treino;
-        // return view('instrutor.home', $instrutor, $alunos);
         return view('instrutor.home');
-    }
-
-    public function show()
-    {
-        $data['instrutors'] = Instrutor::all();
-        return view('instrutor.lista',$data);
     }
     
     public function gerenciaTreinos($id)

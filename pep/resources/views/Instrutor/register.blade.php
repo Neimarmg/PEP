@@ -91,7 +91,8 @@
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
+                                <a href="javascript:window.history.go(-1)" class="btn btn-sm btn-primary">Voltar</a>
+                                <button type="submit" class="btn btn-sm btn-success">
                                     Cadastrar
                                 </button>
                             </div>
