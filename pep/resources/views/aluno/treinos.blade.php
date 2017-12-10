@@ -14,11 +14,8 @@
                                 <th width="5">ID</th>
                                 <th>Instrutor</th>
                                 <th>Titulo</th>
-                                <th width="300">Aluno</th>
+                                <th width="300">Data de criação</th>
                                 <th width="5">
-                                    <center>
-                                        <a href="{{ URL('treino/create') }}" class="btn btn-xs btn-success">Novo Treino</a>
-                                    </center>
                                 </th>
                             </tr>
                         </thead>
@@ -28,18 +25,12 @@
                                     <td>{{ $treino->id }}</td>
                                     <td>{{ $treino->instrutor->name }} {{ $treino->instrutor->lastname }}</td>
                                     <td>{{ $treino->titulo }}</td>
-                                    <td>{{ $treino->aluno->name }} {{ $treino->aluno->lastname }}</td>
+                                    <td>
+                                        {{$treino->created_at->day}}/{{$treino->created_at->month}}/{{$treino->created_at->year}}
+                                    </td>
                                     <td>
                                         <center>
-                                            <a href="{{ URL('treino/' . $treino->id . '/edit') }}" class="btn btn-xs btn-info">Editar</a>
-
-                                            <form action="{{ URL('treino/' . $treino->id) }}" method="POST">
-                                                {{ csrf_field() }}
-                                                {{ method_field('DELETE') }}
-                                                <button type="submit" class="btn btn-xs btn-danger">Remover</button>
-                                            </form>
-
-                                            <a href="{{ URL('treino/selecionaAluno/' . $treino->id) }}" class="btn btn-xs btn-info">Indicar Aluno</a>
+                                            <a href="{{ URL('aluno/atividades/' . $treino->id) }}" class="btn btn-xs btn-info">Ver atividades</a>
                                         </center>
                                     </td>
                                 </tr>

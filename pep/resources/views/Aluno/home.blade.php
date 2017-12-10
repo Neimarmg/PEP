@@ -15,9 +15,18 @@
                     @if(Auth::check()) 
                     @component('components.who')
                     @endcomponent
-                    
-                    <a href="{{ url('aluno')}}{{'/' . Auth::user()->id . '/addinstrutor' }}" class="btn btn-sm btn-primary">Selecionar Instrutor</a>
-                    <a href="{{ url('aluno/treinos') }}" class="btn btn-sm btn-primary">Meus treinos</a>  
+                    <div align="center">
+                        <div class="col-md-2" align="right">
+                        </div>
+                        <div class="col-md-5" align="right">
+                            <img src="../aluno.jpg" class="img-responsive">
+                        </div>
+                        <div class="col-md-5" align="left">
+                            <br><br><br><br>
+                            <a href="{{ url('aluno')}}{{'/' . Auth::user()->id . '/addinstrutor' }}" class="btn btn-sm btn-primary">Selecionar Instrutor</a> <br><br><br>
+                            <a href="{{ url('aluno/treinos/' . Auth::user()->id ) }}" class="btn btn-sm btn-primary">Meus treinos</a>  
+                        </div>
+                    </div>
                     @endif 
 
                     {{--  @component('components.botoes')

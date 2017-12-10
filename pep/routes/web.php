@@ -19,7 +19,7 @@ Route::resource('exercicio', 'ExercicioController');
 Route::prefix('grupoMuscular')->group(function() {
     Route::GET('/create/{id}', 'GrupoMuscularController@create2');
 });
-    
+
 Route::prefix('treino')->group(function() {
     Route::GET('/lista/{id}', 'TreinoController@lista');
     Route::GET('/selecionaAluno/{id}', 'TreinoController@selecionaAluno');
@@ -34,7 +34,10 @@ Route::prefix('atividade')->group(function() {
 
 Route::prefix('aluno')->group(function() {
     Route::GET('/home', 'AlunoController@index');
-    Route::GET('/treinos', 'AlunoController@treinos');
+    Route::GET('/treinos/{id}', 'AlunoController@treinos');
+    Route::GET('/atividades/{id}', 'AlunoController@atividades');
+    Route::GET('/feedback/{id}', 'AlunoController@atividade_edit');
+    Route::PUT('/feedback/{id}', 'AlunoController@feedback_store');
     Route::GET('/{id}/addinstrutor','AlunoController@selecionarInstrutor');
     Route::PUT('/registerInstrutor/{id}','AlunoController@updateInstrutor');
     Route::GET('/lista', 'AlunoController@show')->name('instrutor.lista');

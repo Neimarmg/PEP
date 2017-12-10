@@ -52,7 +52,9 @@ class AtividadeController extends Controller
         $atividade->carga = $request->carga;
         $atividade->series = $request->series;
         $atividade->repeticoes = $request->repeticoes;
+        $atividade->duracao = $request->duracao;
         $atividade->comentario = $request->comentario;
+        $atividade->feedback = $request->feedback;
         $atividade->save();
         return redirect('treino/' . $atividade->treino_id . '/edit');
     }
@@ -94,7 +96,9 @@ class AtividadeController extends Controller
             'carga' => $request->carga,
             'series' => $request->series,
             'repeticoes' => $request->repeticoes,
+            'duracao' => $request->duracao,
             'comentario' => $request->comentario,
+            'feedback' => $request->feedback,
         ];
         $update = Atividade::find($id)->update($atividade);
         if($update)

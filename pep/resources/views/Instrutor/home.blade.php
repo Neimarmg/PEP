@@ -14,19 +14,25 @@
                     </div>
                 @endif
                 @if(Auth::check()) 
-                    <h4 align="center">Olá, {{Auth::user()->name}} {{Auth::user()->lastname}}!!! 
-                    Seu id é: {{Auth::user()->id}}</h4>
-                @endif
-
-                <p align="center"><a href="{{ url('treino/lista/' . Auth::user()->id) }}" class="btn btn-sm btn-primary">Gerenciar Treinos</a></p>
-                <p align="center"><a href="{{ url('atividade/lista/' . Auth::user()->id) }}" class="btn btn-sm btn-primary">Gerenciar Atividades</a></p>
-
-                <br><br><br><br><br><br><br><br><br><br>
                     @component('components.who')
                     @endcomponent
-                    <br>
-                    @component('components.botoes')
-                    @endcomponent
+                @endif
+                <div align="center">
+                        <div class="col-md-3" align="right">
+                        </div>
+                        <div class="col-md-4" align="right">
+                            <br>
+                            <img src="../instrutor.gif" class="img-responsive">
+                        </div>
+                        <div class="col-md-5" align="left">
+                            <br><br><br>
+                            <p><a href="{{ url('treino/lista/' . Auth::user()->id) }}" class="btn btn-sm btn-primary">Gerenciar Treinos</a></p>
+                            <p><a href="{{ url('atividade/lista/' . Auth::user()->id) }}" class="btn btn-sm btn-primary">Gerenciar Atividades</a></p>
+                            <p><a href="{{ url('/grupoMuscular') }}" class="btn btn-sm btn-primary">Gerenciar grupos musculares</a></p>
+                            <p><a href="{{ url('/exercicio') }}" class="btn btn-sm btn-primary">Gerenciar Exercícios</a></p>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>

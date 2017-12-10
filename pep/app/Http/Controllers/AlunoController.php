@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Aluno;
+use App\Treino;
 use App\Instrutor;
+use App\Atividade;
+use App\Exercicio;
 use Auth;
 
 class AlunoController extends Controller
@@ -19,6 +22,19 @@ class AlunoController extends Controller
         $alunos ['alunos'] = Aluno::all();
         $instrutores ['instrutores'] = Instrutor::all();
         return view('aluno.home', $alunos,$instrutores);
+    }
+
+    public function atividades($id)
+    {
+        $treino = Treino::find($id);
+        $atividades = Treino::find($id)->atividades;
+        return view('aluno.atividades',compact('treino','atividades'));
+    }
+
+    public function treinos($id)
+    {
+        $treinos ['treinos'] = Aluno::find($id)->treinos;
+        return view('aluno.treinos',$treinos);
     }
 
     public function selecionarInstrutor($id)
@@ -91,5 +107,36 @@ class AlunoController extends Controller
         return redirect()
             ->back()
             ->withSucess($msg);        
+    }
+
+
+    public function atividade_edit($id)
+    {  
+        $atividade = Atividade::find($id);
+        return view('aluno.feedback',compact('atividade'));
+    }
+
+    public function feedback_store(Request $request, $id)
+    {
+        // echo ('chegou no feedback store');
+        // return view('/');
+        $atividade = [
+            'treino_id' => $request->treino_id,
+            'exercicio_id' => $request->exercicio_id,
+            'instrutor_id' => $request->instrutor_id,
+            'aluno_id' => $request->aluno_id,
+            'ordem' => $request->ordem,
+            'carga' => $request->carga,
+            'series' => $request->series,
+            'repeticoes' => $request->repeticoes,
+            'duracao' => $request->duracao,
+            'comentario' => $request->comentario,
+            'feedback' => $request->feedback,
+        ];
+        $update = Atividade::find($id)->update($atividade);
+        if($update)
+            return redirect('aluno/atividades/' . $request->treino_id );
+        else
+            return redirect()->back()->withInput();
     }
 }

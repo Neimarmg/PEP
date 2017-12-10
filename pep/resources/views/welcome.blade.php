@@ -99,7 +99,7 @@
                         <div class="title m-b-md">
                             PEP
                         </div>
-                        <h3>Programa de Exercícios Pessoal</h3>
+                        <h2>Programa de Exercícios Pessoal</h2>
                         <br>
                     </div>
                 </div>

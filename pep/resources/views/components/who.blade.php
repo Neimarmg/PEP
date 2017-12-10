@@ -3,7 +3,7 @@
 @if(Auth::guard('web')->check()) 
     <h4 class="text-success">
     Olá, <strong>{{auth('web')->user()->name}} {{auth('web')->user()->lastname}}</strong>!
-    Você está logado(a) como <strong>ADMINISTRADOR(A)</strong>
+    Você está logado(a) como <strong>administrador(a)</strong>.
     </h4>
 {{--  @else
     <p class="text-danger">
@@ -15,7 +15,7 @@
 @if(Auth::guard('instrutor')->check()) 
     <h4 class="text-success">
         Olá, <strong>{{auth('instrutor')->user()->name}} {{auth('instrutor')->user()->lastname}}</strong>!
-        Você está logado(a) como <strong>INSTRUTOR(A)</strong>
+        Você está logado(a) como <strong>instrutor(a)</strong>.
     </h4>
 {{--  @else
     <p class="text-danger">
@@ -27,7 +27,7 @@
 @if(Auth::guard('aluno')->check()) 
     <h4 class="text-success">
         Olá, <strong>{{auth('aluno')->user()->name}} {{auth('aluno')->user()->lastname}}</strong>!
-        Você está logado(a) como <strong>ALUNO(A)</strong>
+        Você está logado(a) como <strong>aluno(a)</strong>.
     </h4>
 {{--  @else
     <p class="text-danger">
