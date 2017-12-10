@@ -30,6 +30,16 @@
                 </div>
             </div>
 
+            <div class="form-group">
+                <label for="titulo" class="col-md-4 control-label">Descrição</label>
+                <div class="col-md-6">
+                    <textarea class="form-control" rows="5" id="descricao" name="descricao" placeholder="Descrição..." >
+@if(isset($exercicio))
+@if($exercicio->descricao != null){{$exercicio->descricao}}@endif
+@endif</textarea>
+                </div>
+            </div>
+
             <div class="form-group{{ $errors->has('grupo_muscular_id') ? ' has-error' : '' }}">
                 <label for="select" class="col-lg-4 control-label">Grupo Muscular</label>
                 <div class="col-md-6">

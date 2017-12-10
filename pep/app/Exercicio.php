@@ -10,8 +10,7 @@ use App\Atividade;
 class Exercicio extends Model
 {
     protected $fillable = [
-        'nome', 'grupo_muscular_id', 'imagem',
-        //OLD!!!! 'nome', 'grupo_muscular_id', 'ordem', 'carga', 'series', 'repeticoes',
+        'nome', 'descricao', 'grupo_muscular_id', 'imagem',
     ];
 
     public function treinos()

@@ -11,7 +11,7 @@ use App\Treino;
 class Atividade extends Model
 {
     protected $fillable = [
-        'treino_id', 'exercicio_id', 'instrutor_id', 'aluno_id', 'ordem', 'carga', 'series', 'repeticoes', 'comentario',
+        'treino_id', 'exercicio_id', 'instrutor_id', 'aluno_id', 'ordem', 'carga', 'series', 'repeticoes', 'comentario', 'feedback',
     ];
 
     public function exercicio()

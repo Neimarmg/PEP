@@ -92,28 +92,30 @@
                     <div class="panel-group">
                         @if(isset($treino))
                             @if(isset($atividades))
+                            <h2 align="center">Atividades</h2>
                                 @foreach($atividades as $atividade)
                                     <div class="panel panel-info">
+                                        {{--  <div style="height: 65px;padding:0" class="panel-heading">  --}}
                                         <div class="panel-heading">
                                             <div class="col-md-4">
-                                                Treino: <strong>{{$atividade->treino->titulo}}</strong>
+                                                <h3><strong>{{$atividade->exercicio->nome}}</strong></h3>
                                             </div>
                                             <div class="col-md-4">
-                                                Exercício: <strong>{{$atividade->exercicio->nome}}</strong>
-                                            </div>
-                                            <div class="col-md-4">
-                                                Instrutor: <strong>{{$atividade->instrutor->name}} {{$atividade->instrutor->lastname}}</strong>
-                                            </div>
-                                            <div class="col-md-4">
-                                                Aluno: <strong>{{$atividade->aluno->name}} {{$atividade->aluno->lastname}}</strong>
+                                                Treino: <strong>{{$atividade->treino->titulo}}</strong> <br>
+                                            {{--  </div>
+                                            <div class="col-md-4">  --}}
+                                                Instrutor: <strong>{{$atividade->instrutor->name}} {{$atividade->instrutor->lastname}}</strong> <br>
+                                            {{--  </div>
+                                            <div class="col-md-4">  --}}
+                                                Aluno: <strong>{{$atividade->aluno->name}} {{$atividade->aluno->lastname}}</strong> <br>
                                             </div>
                                             <div class="col-md-4">
                                                 Data de criação: 
                                                 <strong>
                                                     {{$atividade->created_at->day}}/{{$atividade->created_at->month}}/{{$atividade->created_at->year}}
-                                                </strong>
-                                            </div>
-                                            <div class="col-md-4">
+                                                </strong> <br>
+                                            {{--  </div>
+                                            <div class="col-md-4">  --}}
                                                 <form action="{{ URL('atividade/' . $atividade->id) }}" method="POST">
                                                     <a href="{{ URL('atividade/' . $atividade->id . '/edit') }}" class="btn btn-xs btn-info">Editar</a>
                                                     {{ csrf_field() }}
@@ -123,11 +125,40 @@
                                             </div>
                                             &nbsp;
                                         </div>   
+
+
                                         <div class="panel-body">
-                                            <div class="col-sm-9">
-                                                <h4 class="card-title">Comentário do Instrutor:</h4>  
-                                                {{$atividade->comentario}} <br>
-                                            </div>
+                                            @if($atividade->exercicio->imagem != null && $atividade->exercicio->descricao != null)
+                                                <div class="col-sm-5">
+                                                    <h4 class="card-title">Descrição do Exercício:</h4> 
+                                                        <div class="text-justify">{{$atividade->comentario}}</div> <br>
+                                                </div>
+
+                                                <div class="col-sm-4">
+                                                    <img src="{{ asset('storage/' . $atividade->exercicio->imagem) }}" width=200><br>
+                                                </div>
+                                            @elseif($atividade->exercicio->descricao != null)
+                                                <div class="col-sm-9">
+                                                    <h4 class="card-title">Descrição do Exercício:</h4> 
+                                                        <div class="text-justify">{{$atividade->comentario}}</div> <br>
+                                                </div>
+                                            @elseif($atividade->exercicio->imagem != null)
+                                                <div class="col-sm-5">
+                                                    <h4 class="card-title">Descrição do Exercício:</h4> 
+                                                        Não disponível <br>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <img src="{{ asset('storage/' . $atividade->exercicio->imagem) }}" width=200><br>
+                                                </div>
+                                            @else
+                                                @if($atividade->comentario != null)
+                                                    <div class="col-sm-9">
+                                                        <h4 class="card-title">Comentário do professor:</h4>
+                                                        <div class="text-justify">{{$atividade->comentario}}</div>
+                                                    </div>
+                                                @endif
+                                            @endif
+
                                             <div class="col-sm-3">
                                                 <h4 class="card-title">Atividade:</h4>  
                                                 Ordem: {{$atividade->ordem}}º <br>
@@ -135,6 +166,18 @@
                                                 Series: {{$atividade->series}} <br>
                                                 Repetições: {{$atividade->repeticoes}}
                                             </div>
+                                            @if($atividade->comentario != null && ($atividade->exercicio->imagem != null || $atividade->exercicio->descricao != null))
+                                                <div class="col-sm-12">
+                                                     <h4 class="card-title">Comentario do professor:</h4>
+                                                     <div class="text-justify">{{$atividade->comentario}}</div>
+                                                </div>
+                                            @endif
+                                            @if($atividade->feedback != null)
+                                                <div class="col-sm-12">
+                                                     <h4 class="card-title">Feedback do aluno:</h4>
+                                                     <div class="text-justify">{{$atividade->feedback}}</div>
+                                                </div>
+                                            @endif
                                         </div>
                                     </div> <br>  
                                 @endforeach

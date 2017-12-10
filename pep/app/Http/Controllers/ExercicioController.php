@@ -41,6 +41,7 @@ class ExercicioController extends Controller
             'grupo_muscular_id'=>'required',
         ]);
         $exercicio->nome = $request->nome;
+        $exercicio->descricao = $request->descricao;
         $exercicio->grupo_muscular_id = $request->grupo_muscular_id;
         
 		if($request->hasFile('imagem')){
@@ -81,13 +82,12 @@ class ExercicioController extends Controller
 
     public function update(Request $request, $id)
     {
-        // $grupoMusculars ['grupoMusculars'] = GrupoMuscular::all();
         $exercicio = [
             'nome' => $request->nome,
+            'descricao' => $request->descricao,
             'grupo_muscular_id' => $request->grupo_muscular_id,
         ];
-        // $exercicio->nome = $request->nome;
-        // $exercicio->grupo_muscular_id = $request->grupo_muscular_id;
+
         if($request->hasFile('imagem')){
             $fileName = $request->imagem->getClientOriginalName();
             // $exercicio->imagem = $fileName;
