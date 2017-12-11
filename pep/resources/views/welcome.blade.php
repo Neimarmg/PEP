@@ -75,10 +75,14 @@
                         <a href="{{ url('/home') }}">Admin Home</a>
                     @endif
                     @if(auth('instrutor')->user())
-                        <a href="{{ url('/instrutor/home') }}">Home Instrutor</a>
+                        <a href="{{ url('/instrutor/home') }}" align="right">
+                            Home - Instrutor {{ auth('instrutor')->user()->name }} {{ auth('instrutor')->user()->lastname }}
+                        </a>
                     @endif
                     @if(auth('aluno')->user())
-                        <a href="{{ url('/aluno/home') }}">Aluno Home</a>
+                        <a href="{{ url('/aluno/home') }}">
+                            Home - Aluno {{ auth('aluno')->user()->name }} {{ auth('aluno')->user()->lastname }}
+                        </a>
                     @endif
                 @else
                     <a href="{{ url('/selectLogin') }}">Entrar</a>
@@ -91,10 +95,7 @@
             <div class="content">
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2">
-                        <div class="panel">
-                            @component('components.who')
-                            @endcomponent
-                        </div>
+                        
                         <img src="logo.png" height=200>
                         <div class="title m-b-md">
                             PEP
